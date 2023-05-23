@@ -1,0 +1,78 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(CodeClanData)
+library(tidyverse)
+```
+
+
+Question 1.
+
+Load in the dataset and have a look at it. What are the dimensions, variable types, variable names, etc.?
+
+```{r}
+drinks_content #can se ethe dimensions here bu tincluded the line below too 242,18
+dim(drinks_content)
+names(drinks_content) #let sus see variable names
+class(drinks_content$`Saturated Fat (g)`) #unsure here but i tihnk this is the variable types, we have numeric and character, used sat far but scrolling through each name shows the type
+```
+Question 2.
+
+Let’s first investigate the calories of different drinks. Select the variables Beverage_category, Beverage, Beverage prep and Calories from your data. Since we are interested in the calorie content, check if there are any NA values in the data, and drop them if there are.
+
+```{r}
+names(drinks_content)
+select(drinks_content, Beverage_category, Beverage, Beverage_prep, Calories) # hecked manually unsur ewith code but no na values
+
+```
+Question 3.
+
+Create a new variable (column) called calorie_diff, which stores the difference between 135 calories (135 calories = 10 cubes of sugar!) and the calories in each drink. (hint: you’ll want to subtract 135 from the calories to see which drink have more or less than 10 cups of sugar).
+
+```{r}
+drinks_content %>%  #hope this is right
+    mutate(calorie_dif = Calories - 135,
+           .after = Calories) 
+```
+Question 4.
+
+Summarise the mean number of calories in each beverage_category. Which 3 category of drinks have the most calories? Which 3 drinks have the least? Write a small summary of your findings.
+
+```{r}
+drinks_content %>%  #i dont understand the na.rm thing, was able to figur ethis out i think from todays work
+  group_by(Beverage_category) %>% 
+  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% 
+  arrange(desc(sum_calories)) #Smoothies, Frappuccino, Signature Espresso have the most calories 
+```
+```{r}
+drinks_content %>%  #so for the specific 3 drinks with the least i did this, the least are Tazo,Brewed Coffee, Espresso
+  group_by(Beverage) %>% 
+  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% 
+  arrange(sum_calories)
+```
+Question 5.
+
+Let’s look at this a different way. What is the average number of calories in each Beverage_prep type?
+
+```{r}
+drinks_content %>%  
+  group_by(Beverage_prep) %>% #changed how we group to beverage prep this time
+  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% 
+  arrange(sum_calories)
+```
+Question 6.
+Which Beverage_prep type contains more than the average calories of all drinks? 
+
+IM STUCK HERE
+
+```{r}
+drinks_content %>%  #did this to find the average cal across all drinks
+  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% 
+  arrange(sum_calories)
+```
+
+
+
+

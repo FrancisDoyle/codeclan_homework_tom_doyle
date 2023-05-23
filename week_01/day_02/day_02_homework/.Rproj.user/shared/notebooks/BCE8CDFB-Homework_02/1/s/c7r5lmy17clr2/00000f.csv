@@ -1,0 +1,4 @@
+"0","drinks_content %>%  #so for the specific 3 drinks with the least i did this, the least are Tazo,Brewed Coffee, Espresso"
+"0","  group_by(Beverage) %>% "
+"0","  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% "
+"0","  arrange(sum_calories)"

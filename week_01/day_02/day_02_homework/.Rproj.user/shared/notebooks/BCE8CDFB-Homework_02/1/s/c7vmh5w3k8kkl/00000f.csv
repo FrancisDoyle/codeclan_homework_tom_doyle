@@ -1,0 +1,3 @@
+"0","drinks_content %>%  #did this to find the average cal across all drinks"
+"0","  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% "
+"0","  arrange(sum_calories)"

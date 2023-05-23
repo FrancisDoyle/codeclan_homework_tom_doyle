@@ -1,0 +1,4 @@
+"0","drinks_content %>%  #i dont understand the na.rm thing, was able to figur ethis out i think from todays work"
+"0","  group_by(Beverage_category) %>% "
+"0","  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% "
+"0","  arrange(desc(sum_calories)) #Smoothies, Frappuccino, Signature Espresso have the most calories "
