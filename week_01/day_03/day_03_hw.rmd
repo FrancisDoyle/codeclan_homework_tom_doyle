@@ -54,16 +54,43 @@ Question 4.
 There’s not too many NAs, but there are actually quite a few movies with a runtime of 0 in this dataset. Since it’s impossible for a movie to have a runtime of 0, use the function na_if to convert runtimes of length 0 into NAs. Save this into a new object called movies_runtime. Then count how many missing values there are now in the column runtime.
 
 ```{r}
-movies_runtime <- movies_selected %>% #converted the runtimes with length of 0 to NA and saved to new object 
-  mutate(runtime = na_if(runtime, "0"))
+movies_runtime <- movies_selected %>% 
+  select(runtime) %>%   #not sure about this
+  mutate(runtime = na_if(runtime, 0)
+         )
 
  #stuck here but going ot move on thought it was this na_if(column, non_standard_na) no clue why no work
+# maybe unstuck with justynas help 
             
-movies_selected %>% 
-  summarise(total_missing = sum(is.na(runtime)))
+movies_runtime %>%
+  filter(is.na(movies_runtime))
+```
+Question 5.
+
+Impute the missing values in runtime with the median runtime using coalesce and save this into a new object called movies_imputed. There should now be no missing values in the column runtime - check this to make sure.
+
+```{r}
+movies_imputed <- movies_runtime %>%
+   mutate(runtime= coalesce(runtime, 
+                                   median(runtime, na.rm = TRUE))
+             )
+movies_imputed %>%
+  filter(is.na(movies_imputed))
 ```
 
+Question 6.
 
+Finally, use the slice_min and slice_max functions on movies_imputed to get the movies with the 10 shortest and 10 longest runtimes.
 
+```{r}
+movies_imputed %>% 
+  slice_max(runtime, n = 10)
 
+movies_imputed %>% 
+  slice_min(runtime, n = 10)
+```
+Question 7.
 
+Using the if_else function, impute anything with a budget below $100 with the median budget. Overwrite your movies_imputed so it contains the new budget values
+
+I think i made  a mistake with selected because my movies_imputed has only the runtime things i think it was the select() i used previously but scared ot break everything
