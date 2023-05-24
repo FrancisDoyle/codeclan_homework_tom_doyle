@@ -1,0 +1,10 @@
+"0","movies_runtime <- movies_selected %>% #converted the runtimes with length of 0 to NA and saved to new object "
+"0","  mutate(runtime = na_if(runtime, ""0""))"
+"1","[1m[33mError[39m in `mutate()`:[22m
+[38;5;255m[36mℹ[38;5;255m In argument: `runtime = na_if(runtime, ""0"")`.[39m
+[1mCaused by error in `na_if()`:[22m
+[33m![39m Can't convert `y` <character> to match type of `x` <integer>.
+Backtrace:
+[90m 1. [39mmovies_selected %>% mutate(runtime = na_if(runtime, ""0""))
+[90m 9. [39m[1m[94mdplyr::na_if([39m[22mruntime, ""0""[1m[94m)[39m[22m
+"

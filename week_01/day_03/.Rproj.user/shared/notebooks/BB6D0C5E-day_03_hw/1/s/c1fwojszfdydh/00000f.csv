@@ -1,0 +1,3 @@
+"0","movie_titles <- read.csv(""data/movies.csv"") #Copied the data and assigned them"
+"0","credits <- read.csv(""data/tmdb_5000_credits.csv"")"
+"0","movie_info <- read.csv(""data/tmdb_5000_movies.csv"")"
