@@ -1,0 +1,7 @@
+"0","least_calories <- drink_calories %>%"
+"0","  group_by(Beverage_category) %>%"
+"0","  summarise(mean_calories = mean(Calories)) %>%"
+"0","  arrange(mean_calories)%>%"
+"0","  head(3)"
+"0",""
+"0","least_calories"

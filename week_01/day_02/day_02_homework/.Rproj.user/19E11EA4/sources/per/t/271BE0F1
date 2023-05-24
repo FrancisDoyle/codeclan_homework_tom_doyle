@@ -1,9 +1,9 @@
 {
     "id": "271BE0F1",
-    "path": "~/codeclan/codeclan_homework_tom_doyle/codeclan_homework_tom_doyle/week_01/day_02/day_02_homework/day_02_homework/Homework_02.rmd",
+    "path": "~/codeclan/codeclan_homework_tom_doyle/codeclan_homework_tom_doyle/week_01/day_02/day_02_homework/Homework_02.rmd",
     "project_path": "Homework_02.rmd",
     "type": "r_markdown",
-    "hash": "4172424808",
+    "hash": "1945678261",
     "contents": "",
     "dirty": false,
     "created": 1684863291347.0,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "67,13",
-        "scrollLine": "55"
+        "cursorPosition": "70,14",
+        "scrollLine": "63"
     },
     "folds": "",
-    "lastKnownWriteTime": 1684868127,
+    "lastKnownWriteTime": 1684929641,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1684868127173,
+    "last_content_update": 1684929641406,
     "read_only": false,
     "read_only_alternatives": []
 }

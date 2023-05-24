@@ -1,0 +1,4 @@
+"0","drinks_content %>%  "
+"0","  group_by(Beverage_prep) %>% #changed how we group to beverage prep this time"
+"0","  summarise(sum_calories = mean(Calories, na.rm = TRUE)) %>% "
+"0","  arrange(sum_calories)"
