@@ -41,29 +41,30 @@ Ok, now take your subsetted data movies_selected, and count the number of missin
 
 ```{r}
 movies_selected %>% 
-  summarise(total_missing = sum(is.na(title)))
+  summarise(na_title = sum(is.na(title)))
 
 movies_selected %>% 
-  summarise(total_missing = sum(is.na(runtime)))
+  summarise(na_runtime = sum(is.na(runtime)))
 
 movies_selected %>% 
-  summarise(total_missing = sum(is.na(budget)))
+  summarise(na_budget = sum(is.na(budget)))
 ```
 Question 4.
 
 There’s not too many NAs, but there are actually quite a few movies with a runtime of 0 in this dataset. Since it’s impossible for a movie to have a runtime of 0, use the function na_if to convert runtimes of length 0 into NAs. Save this into a new object called movies_runtime. Then count how many missing values there are now in the column runtime.
 
 ```{r}
-movies_runtime <- movies_selected %>% 
-  select(runtime) %>%   #not sure about this
-  mutate(runtime = na_if(runtime, 0)
-         )
+movies_runtime <- movies_selected %>%
+ # select(runtime) %>% #from homework answer it shouldnt have thisline but i get an error when i do it without
+  mutate(runtime = na_if(runtime, 0))
+
 
  #stuck here but going ot move on thought it was this na_if(column, non_standard_na) no clue why no work
 # maybe unstuck with justynas help 
-            
-movies_runtime %>%
-  filter(is.na(movies_runtime))
+movies_runtime %>% 
+  summarise(count = sum(is.na(runtime)))           
+#movies_runtime %>%
+  #filter(is.na(movies_runtime))
 ```
 Question 5.
 
@@ -74,8 +75,11 @@ movies_imputed <- movies_runtime %>%
    mutate(runtime= coalesce(runtime, 
                                    median(runtime, na.rm = TRUE))
              )
-movies_imputed %>%
-  filter(is.na(movies_imputed))
+#movies_imputed %>%
+  #filter(is.na(movies_imputed))
+
+movies_imputed %>% 
+  summarise(count = sum(is.na(runtime)))
 ```
 
 Question 6.
@@ -93,4 +97,11 @@ Question 7.
 
 Using the if_else function, impute anything with a budget below $100 with the median budget. Overwrite your movies_imputed so it contains the new budget values
 
-I think i made  a mistake with selected because my movies_imputed has only the runtime things i think it was the select() i used previously but scared ot break everything
+
+
+```{r}
+movies_imputed <- movies_imputed %>% 
+  mutate(budget = if_else(budget < 100, median(budget), budget))
+```
+
+

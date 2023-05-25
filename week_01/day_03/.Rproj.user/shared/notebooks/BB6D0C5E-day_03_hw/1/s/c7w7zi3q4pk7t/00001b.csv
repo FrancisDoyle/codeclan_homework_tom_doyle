@@ -1,3 +1,0 @@
-"0",""
-"0","movies_selected %>% "
-"0","  summarise(total_missing = sum(is.na(budget)))"
