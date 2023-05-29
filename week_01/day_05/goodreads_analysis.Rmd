@@ -71,6 +71,14 @@ book_info %>%
   summarise_all(funs(sum(is.na(.)))) # the "." refers to the output of the previous pipe
 ```
 
+easier way!
+
+```{r}
+book_info %>% 
+  summarise(across(.fns = ~ sum(is.na(.x))))
+```
+
+
 Checking to see where the NAs are specifically located and they are within 
 the same rows for both "average_rating" and "num_pages" 
 
