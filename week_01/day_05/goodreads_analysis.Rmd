@@ -1,0 +1,171 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. There are 8 NA values that were imputed:
+streetcar suburbs: 208 - 3.6
+Tolkien: 416 - 3.58
+Patriots: 342 - 3.66
+Browns: 49 - 0
+
+2. The average rating was 3.93
+
+
+3. There were 3667 above average titles and 2974 below average titles
+
+4. Publisher average is 3.92
+
+5. There are 1266 above average publishers and 1026 below average publishers.
+
+
+
+--- Libraries
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(dplyr)
+```
+
+
+--- Data Import
+
+```{r}
+book_info <- read_csv("data/books.csv")
+```
+
+
+
+--- Initial View
+
+Dim= (11127,12) NA=8, 4 rows lost id NA's are dropped <-need to investigate 
+
+```{r}
+dim(book_info)
+
+view(book_info)
+
+sum(is.na(book_info))
+
+nrow(book_info) - nrow(drop_na(book_info))
+
+colnames(book_info)
+
+```
+--- Cleaning
+
+First thing I want to do is locate the NAs then decide what   
+is best to do with them
+
+Found simple way to see which columns contain the NAs
+(https://sebastiansauer.github.io/sum-isna/)
+
+Looking to see where the NAs are to decide how to deal with them
+Either : Impute / replace, drop, or leave alone. 
+
+
+```{r}
+book_info %>% 
+  select(everything()) %>%  
+  summarise_all(funs(sum(is.na(.)))) # the "." refers to the output of the previous pipe
+```
+
+Checking to see where the NAs are specifically located and they are within 
+the same rows for both "average_rating" and "num_pages" 
+
+The data is available on google so will impute:
+streetcar suburbs: 208 - 3.6
+Tolkien: 416 - 3.58
+Patriots: 342 - 3.66
+Browns: 49 - 0
+
+```{r}
+book_info %>% 
+  filter(is.na(num_pages))
+
+
+books_cleaning <- book_info %>% 
+  mutate(num_pages = case_when(
+    bookID == "12224" ~ 208, 
+    bookID == "16914" ~ 416,
+    bookID == "22128" ~ 342,
+    bookID == "34889" ~ 49,
+    .default = num_pages
+  ))
+
+no_na_book_info <- books_cleaning %>% 
+  mutate(average_rating = case_when(
+    bookID == "12224" ~ 3.6,
+    bookID == "16914" ~ 3.58,
+    bookID == "22128" ~ 3.66,
+    bookID == "34889" ~ 0,
+    .default = average_rating
+  ))
+
+sum(is.na(no_na_book_info))
+
+```
+
+--- Author Averages
+
+I wanted to see what authors average ratings are.
+  
+```{r}
+author_averages <- no_na_book_info %>%
+  group_by(authors) %>% 
+    summarise(authors_average = mean(average_rating)) %>%
+  arrange(desc(authors_average))
+
+author_averages
+
+```
+  
+Now I want to check which authors are above/below the overall average.
+Pulled the average rating then checked their averages against that.
+
+
+
+```{r}
+no_na_book_info %>% 
+  summarise(mean_rating = mean(average_rating)) %>% 
+  pull()
+```
+```{r}
+author_averages %>% 
+  mutate(above_average = authors_average >= 3.93) %>% 
+  filter(above_average == TRUE)
+  
+
+author_averages %>% 
+  mutate(above_average = authors_average >= 3.93) %>% 
+  filter(above_average == FALSE)
+
+```
+  
+I want to see th epublisher scores now
+
+```{r}
+publisher_averages <- no_na_book_info %>%
+  group_by(publisher) %>% 
+    summarise(publisher_average = mean(average_rating)) %>%
+  arrange(desc(publisher_average))
+
+publisher_averages
+```
+```{r}
+publisher_averages %>% 
+  summarise(mean_rating = mean(publisher_average)) %>% 
+  pull()
+```
+```{r}
+publisher_averages %>% 
+  mutate(above_average = publisher_average >= 3.93) %>% 
+  filter(above_average == TRUE)
+  
+
+publisher_averages %>% 
+  mutate(above_average = publisher_average >= 3.93) %>% 
+  filter(above_average == FALSE)
+```
+

@@ -101,7 +101,10 @@ Using the if_else function, impute anything with a budget below $100 with the me
 
 ```{r}
 movies_imputed <- movies_imputed %>% 
-  mutate(budget = if_else(budget < 100, median(budget), budget))
+  mutate(budget = if_else(budget < 100, median(budget), budget)) #(if true, do this, if not do this)
 ```
+
+
+
 
 

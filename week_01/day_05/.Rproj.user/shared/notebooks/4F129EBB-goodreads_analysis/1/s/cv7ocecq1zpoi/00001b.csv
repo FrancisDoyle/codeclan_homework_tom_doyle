@@ -1,0 +1,6 @@
+"0","author_averages <- no_na_book_info %>%"
+"0","  group_by(authors) %>% "
+"0","    summarise(authors_average = mean(average_rating)) %>%"
+"0","  arrange(desc(authors_average))"
+"0",""
+"0","author_averages"
