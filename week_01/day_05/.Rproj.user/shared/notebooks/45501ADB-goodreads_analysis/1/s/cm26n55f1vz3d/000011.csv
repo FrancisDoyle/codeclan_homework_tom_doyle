@@ -1,0 +1,5 @@
+"0","  "
+"0",""
+"0","publisher_averages %>% "
+"0","  mutate(above_average = publisher_average >= 3.93) %>% "
+"0","  filter(above_average == FALSE)"

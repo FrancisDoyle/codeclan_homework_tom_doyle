@@ -1,0 +1,6 @@
+"0","books_per_language <- book_info %>% "
+"0","   group_by(language_code) %>% "
+"0","  summarise(num_of_books = n()) %>%  # Number of books in each language"
+"0","  arrange(desc(num_of_books))"
+"0",""
+"0","books_per_language"

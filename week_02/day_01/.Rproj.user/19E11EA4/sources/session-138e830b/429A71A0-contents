@@ -1,0 +1,199 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+--- Libraries
+```{r}
+library(tidyverse)
+library(dplyr)
+library(janitor)
+```
+
+1 MVP
+
+1.1 Joins
+
+Question 1
+
+Read in all 4 credit card transaction datasets and clean column names.
+
+```{r}
+card_base <- read_csv("data/CardBase.csv") %>% 
+  clean_names()
+fraud_base <- read_csv("data/FraudBase.csv") %>% 
+  clean_names()
+customer_base <- read_csv("data/CustomerBase.csv") %>% 
+  clean_names()
+transactions_base <- read_csv("data/TransactionBase.csv") %>% 
+  clean_names()
+```
+
+
+Question 2
+
+Join the data containing card details and customer details by customer id, so 
+that all records of card details and any matching records in customer details 
+are kept. Before you run the code, think about how many rows you expect to see 
+after joining.
+
+```{r}
+updated_customer_base <- left_join(card_base, customer_base, "cust_id")
+
+updated_customer_base
+```
+
+Question 3
+
+Join the data containing fraud details with transaction details so all rows of 
+both tables are kept. What does the resulting row number tell you? 
+
+You could also left join "transaction_base" with "fraud_base" as all fraud 
+transactions will appear in "transaction base" but the wording makes me think
+the questions wants me to full join.
+
+```{r}
+updated_transactions <- full_join(transactions_base, fraud_base, "transaction_id")
+
+updated_transactions
+```
+
+
+Question 4
+
+Join the data containing card details with transaction details so rows from the
+first which have matching ones in the second are returned, but only return rows 
+in the first table once.
+
+```{r}
+updated_customer_base <- rename(updated_customer_base, credit_card_id = card_number)
+```
+
+```{r}
+semi_join(updated_customer_base, updated_transactions, by="credit_card_id")
+```
+
+
+
+1.2 tidyr
+
+Question 5
+
+Read in hat_observations and separate observation into two columns, hat_colour 
+and hat_type.
+
+```{r}
+hats <- read_csv("data/hat_observations.csv")
+
+hats
+```
+
+```{r}
+hats_updated <- hats %>% 
+  separate(observation,
+           c("hat_colour","hat_type"),
+           sep = ",")
+
+hats_updated
+```
+
+
+Question 6
+
+Unite day, month, and year columns into a column called date using a suitable 
+separator. Then find the date where the most berets were observed.
+
+hospital_visits_unite <- hospital_visits_coded %>%
+  unite(disease, c("code", "description"), sep =":")
+  
+```{r}
+hats_updated_updated <- hats_updated %>% 
+  unite(date, 
+        c("day","month","year"),
+        sep = "/")
+
+hats_updated_updated
+```
+
+
+2 Extension
+
+2.1 Joins
+
+Question 1
+
+Can you join all 4 datasets together so that you’re left with a dataset that looks like below with 109 rows and 12 columns?
+
+I think so! so 109 rows and 12 cols is how im figuring out the combo. 
+
+"fraud_base" has 109 rows so I know it gets prio
+
+If i left join I get one less row, with that in mind if i left join "card_base"
+and "customer_base" ill get 7 columns. I then need to add 5 colums to get 12 so 
+to add ill then bind to get 12? No clue if this will work lets see!
+
+
+
+```{r}
+maybe_joined <- left_join(card_base, customer_base, "cust_id")
+
+maybe_joined
+```
+
+```{r}
+#maybe_maybe_joined <- bind_cols(maybe_joined, transactions_base)
+  
+#DID NOT WORK ABORT!
+
+```
+
+ok not quite size is wrong so maybe i have to do a join where i keep the 
+matching then bind? Will need a rename again
+
+```{r}
+maybe_maybe_maybe_joined <- rename(maybe_joined, credit_card_id = card_number)
+```
+
+```{r}
+full_join(maybe_maybe_maybe_joined, transactions_base, "credit_card_id")
+```
+wait!!! all i have to do if left join updated cusotme and updated transactions !
+
+```{r}
+i_am_confused <- left_join(updated_customer_base, updated_transactions, "credit_card_id")
+```
+ok so there are now 12 cols! but my rows are messe dup again how the hell did i 
+get 109? fraud or something?!
+
+```{r}
+insanity_works <- right_join(i_am_confused, fraud_base, "transaction_id")
+
+insanity_works
+```
+how the hell do i have 13?
+
+```{r}
+colnames(insanity_works)
+```
+Ok so i can delete one of the fraud flags and rename the other one?
+
+```{r}
+insanity_works_v2 <- rename(insanity_works, fraud_flag = fraud_flag.x)
+```
+
+```{r}
+maybe_done <- select(insanity_works_v2,-fraud_flag.y)
+
+maybe_done
+```
+
+i think i did it in the worst way possible but there it is! 
+(most likely all wrong but the dimensions are there and i had fun?)
+
+2.2 tidyr
+
+Question 2
+
+Read in exam_scores and transform it into long format with two new columns 
+exam_question and score. Then, using separate and select, remove superfluous
+information from the values in exam_question
+

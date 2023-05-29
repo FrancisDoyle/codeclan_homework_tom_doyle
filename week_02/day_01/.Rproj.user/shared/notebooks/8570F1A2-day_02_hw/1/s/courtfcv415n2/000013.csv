@@ -1,0 +1,2 @@
+"0",""
+"0","semi_join(updated_transactions, updated_customer_base, by=""credit_card_id"")"

@@ -1,0 +1,6 @@
+"0","hats_updated <- hats %>% "
+"0","  separate(observation,"
+"0","           c(""hat_colour"",""hat_type""),"
+"0","           sep = "","")"
+"0",""
+"0","hats_updated"

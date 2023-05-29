@@ -1,0 +1,3 @@
+"0","author_averages %>% "
+"0","  mutate(above_average = authors_average >= 3.93) %>% "
+"0","  filter(above_average == TRUE)"

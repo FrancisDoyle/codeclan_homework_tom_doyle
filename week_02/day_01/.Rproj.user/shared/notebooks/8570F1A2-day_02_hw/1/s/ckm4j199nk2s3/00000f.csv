@@ -1,0 +1,3 @@
+"0","updated_transactions <- full_join(transactions_base, fraud_base, ""transaction_id"")"
+"0",""
+"0","updated_transactions"

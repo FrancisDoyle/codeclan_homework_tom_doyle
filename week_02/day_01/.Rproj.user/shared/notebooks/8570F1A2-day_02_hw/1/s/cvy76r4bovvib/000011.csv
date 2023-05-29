@@ -1,0 +1,1 @@
+"0","i_am_confused <- left_join(updated_customer_base, updated_transactions, ""credit_card_id"")"

@@ -1,11 +1,2 @@
-"0","book_info %>% "
-"0","  summarise(across(.fns = ~ sum(is.na(.x))))"
-"2","Warning: [38;5;255mThere was 1 warning in `summarise()`.[39m
-[38;5;255m[36mℹ[38;5;255m In argument: `across(.fns = ~sum(is.na(.x)))`.[39m
-Caused by warning:
-[38;5;255m[33m![38;5;255m Using `across()` without supplying `.cols` was deprecated in
-  dplyr 1.1.0.
-[36mℹ[38;5;255m Please supply `.cols` instead.
-[90mThis warning is displayed once every 8 hours.[38;5;255m
-[90mCall `lifecycle::last_lifecycle_warnings()` to see where this[38;5;255m
-[90mwarning was generated.[38;5;255m[39m"
+"0","book_info %>%  #summarise all = summarise and across"
+"0","  summarise_all(.funs = ~ sum(is.na(.x)))"

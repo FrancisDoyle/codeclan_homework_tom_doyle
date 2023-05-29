@@ -1,0 +1,7 @@
+"0","no_na_book_info %>% "
+"0","  summarise(mean_rating = mean(average_rating)) %>% "
+"0","  pull()"
+"1","[1]"
+"1"," 3.933635"
+"1","
+"

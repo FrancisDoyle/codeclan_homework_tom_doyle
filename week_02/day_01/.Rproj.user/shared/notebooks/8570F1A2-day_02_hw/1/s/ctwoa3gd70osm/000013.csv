@@ -1,0 +1,3 @@
+"0","updated_customer_base <- left_join(card_base, customer_base, ""cust_id"")"
+"0",""
+"0","updated_customer_base"

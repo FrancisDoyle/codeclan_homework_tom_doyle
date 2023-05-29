@@ -1,0 +1,4 @@
+"0","no_na_book_info %>% "
+"0","  select(authors) %>% "
+"0","  mutate(jk = str_detect(authors, ""J.K. Rowling""), .after = authors) %>% "
+"0","  filter(jk == TRUE)"

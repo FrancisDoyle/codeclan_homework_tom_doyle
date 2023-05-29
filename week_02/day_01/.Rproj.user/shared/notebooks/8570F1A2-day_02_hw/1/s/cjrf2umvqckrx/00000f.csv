@@ -1,0 +1,3 @@
+"0","maybe_joined <- left_join(card_base, customer_base, ""cust_id"")"
+"0",""
+"0","maybe_joined"
