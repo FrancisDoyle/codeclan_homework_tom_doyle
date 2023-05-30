@@ -3,7 +3,7 @@
     "path": "C:/Users/Francis/Documents/codeclan/codeclan_homework_tom_doyle/codeclan_homework_tom_doyle/week_02/day_01/day_02_hw.Rmd",
     "project_path": "day_02_hw.Rmd",
     "type": "r_markdown",
-    "hash": "499028199",
+    "hash": "2550627373",
     "contents": "",
     "dirty": false,
     "created": 1685387797245.0,
@@ -14,15 +14,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "152,78",
-        "scrollLine": "152"
+        "cursorPosition": "201,25",
+        "scrollLine": "197"
     },
     "folds": "",
-    "lastKnownWriteTime": 1685395948,
+    "lastKnownWriteTime": 1685436164,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1685395948347,
+    "last_content_update": 1685436164254,
     "read_only": false,
     "read_only_alternatives": []
 }
