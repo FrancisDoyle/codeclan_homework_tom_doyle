@@ -1,0 +1,6 @@
+"0","amended_string <- str_replace(original_string, pattern = ""We're going to replace"", replacement = ""I've changed"")"
+"0","amended_string"
+"1","[1]"
+"1"," ""I've changed some words."""
+"1","
+"

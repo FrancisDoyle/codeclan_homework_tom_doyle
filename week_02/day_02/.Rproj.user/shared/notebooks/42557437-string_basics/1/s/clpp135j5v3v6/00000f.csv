@@ -1,0 +1,2 @@
+"0","employees %>% "
+"0","  mutate(postcode_new = str_split(postcode, "" ""))"

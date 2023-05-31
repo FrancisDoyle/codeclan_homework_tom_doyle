@@ -1,0 +1,7 @@
+"0","tweets %>% "
+"0","    summarise(mean(display_text_width)) %>% "
+"0","  pull()"
+"1","[1]"
+"1"," 149.4188"
+"1","
+"

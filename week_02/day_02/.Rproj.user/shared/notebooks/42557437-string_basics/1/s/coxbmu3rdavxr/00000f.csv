@@ -1,0 +1,4 @@
+"0","employees %>%"
+"0","  select(first_name, last_name) %>%"
+"0","  mutate(first_name_fixed = str_to_title(first_name)) %>%"
+"0","  mutate(last_name_fixed = str_to_title(last_name))"

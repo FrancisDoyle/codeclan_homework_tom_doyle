@@ -1,0 +1,3 @@
+"0","# upcase the playlist name"
+"0","spotify_songs %>%"
+"0","  mutate(playlist_name = str_to_upper(playlist_name))"

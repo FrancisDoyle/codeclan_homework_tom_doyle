@@ -1,0 +1,4 @@
+"0",""
+"0","# take the first 5 characters of the playlist id"
+"0","spotify_songs %>%"
+"0","  mutate(playlist_start = str_sub(playlist_id, 1, 5))"

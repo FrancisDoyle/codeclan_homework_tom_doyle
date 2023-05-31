@@ -1,0 +1,6 @@
+"0","full_string %>%"
+"0","  str_sub(start = 6)"
+"1","[1]"
+"1"," "" grab a substring from this!"""
+"1","
+"

@@ -1,0 +1,3 @@
+"0","employees %>%"
+"0","  mutate(postcode_inner = str_sub(postcode, -3)) %>%"
+"0","  mutate(postcode_outer = str_sub(postcode, 1, -4))"

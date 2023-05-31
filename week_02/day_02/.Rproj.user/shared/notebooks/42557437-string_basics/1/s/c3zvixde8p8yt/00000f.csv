@@ -1,0 +1,8 @@
+"0","employees <- tibble("
+"0","  first_name = c(""Sally"", ""steven"", ""Mary"", ""John""),"
+"0","  last_name = c(""Smith"", ""hasTings"", ""Milne"", ""Davidson""),"
+"0","  postcode = c(""EH10 6GH"", ""EH3 7HL"", ""G1 7FR"", NA), "
+"0","  location = c("" "", ""Edinburgh"", """", ""Stirling"")"
+"0",")"
+"0",""
+"0","employees"

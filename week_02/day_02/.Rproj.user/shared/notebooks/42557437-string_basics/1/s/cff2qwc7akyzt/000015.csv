@@ -1,0 +1,4 @@
+"0",""
+"0","# Take the first 4 characters of the `track_album_release_date` column and save it in a new column called `year`.  "
+"0","spotify_songs %>%"
+"0","  mutate(year = str_sub(track_album_release_date, 1, 4))"
