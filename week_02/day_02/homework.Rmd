@@ -59,6 +59,11 @@ tweets %>%
   summarise(sum(favorite_count)) %>% 
   mutate(media_type= coalesce(media_type, 'text'))
 
+tweets %>% 
+  group_by(media_type) %>% 
+  summarise(total_likes = sum(favorite_count)) %>% #dont forget to rename 
+  mutate(media_type= coalesce(media_type, 'text'))
+
 ```
 Question 5.
 
@@ -68,6 +73,16 @@ Find the mean number of characters that a CodeClan tweet contains. You can eithe
 tweets %>% 
     summarise(mean(display_text_width)) %>% 
   pull()
+# below from thijmen
+
+tweets %>% 
+  mutate(length_of_tweets = str_length(text)) %>% 
+  summarise(mean_length2 = mean(length_of_tweets))
+
+#below from justyna
+tweets %>%
+  select(text) %>%
+   summarise(tweet_mean_text = mean(nchar(text), na.rm = TRUE))
 ```
 
 
@@ -88,7 +103,13 @@ From your new joined data, create a new tibble codeclan_hashtags containing only
 
 ```{r}
 codeclan_hashtags <- full_join(code_clan_info, tweets, by="tweet_id") 
+Codeclan_hashtags_selected <- codeclan_hashtags %>% 
+    select(tweet_id, hashtags) %>%
+  mutate(lowcase_hashtag  = str_to_lower(hashtags)) %>%
+  select(-hashtags) %>%
+   drop_na(lowcase_hashtag)
   
+Codeclan_hashtags_selected
 
 ```
 

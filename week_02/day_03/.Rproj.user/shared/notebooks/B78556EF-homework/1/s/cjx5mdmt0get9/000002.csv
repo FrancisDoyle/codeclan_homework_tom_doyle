@@ -1,0 +1,15 @@
+"0","```r
+weather$Thursday$chance_of_rain_percent
+```"
+"1","[1] 20
+"
+"0","```r
+weather$Friday$wind_speed_mph
+```"
+"1","[1] 8
+"
+"0","```r
+weather$Thursday$temperature
+```"
+"1","[1] 14
+"

@@ -1,0 +1,5 @@
+"0",""
+"0","#below from justyna"
+"0","tweets %>%"
+"0","  select(text) %>%"
+"0","   summarise(tweet_mean_text = mean(nchar(text), na.rm = TRUE))"

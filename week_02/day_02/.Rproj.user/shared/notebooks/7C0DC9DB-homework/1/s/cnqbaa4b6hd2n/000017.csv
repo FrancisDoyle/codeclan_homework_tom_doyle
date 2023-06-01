@@ -1,4 +1,0 @@
-"0","codeclan_hashtags <- full_join(code_clan_info, tweets, by=""tweet_id"") "
-"0","  "
-"0","codeclan_hashtags %>% "
-"0","  select('tweet_id','hashtags') "

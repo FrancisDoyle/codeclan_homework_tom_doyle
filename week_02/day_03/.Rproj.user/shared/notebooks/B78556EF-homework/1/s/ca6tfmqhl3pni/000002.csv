@@ -1,0 +1,18 @@
+"0","```r
+forecast[2,3]
+```"
+"1","[1] 17
+"
+"0","```r
+forecast[2,1:7]
+```"
+"1","   Monday   Tuesday Wednesday  Thursday    Friday  Saturday    Sunday 
+       18        17        17        17        17        17        18 
+"
+"0","```r
+forecast[, c(1, 3, 5)]
+```"
+"1","      Monday Wednesday Friday
+Week1     16        21     16
+Week2     18        17     17
+"

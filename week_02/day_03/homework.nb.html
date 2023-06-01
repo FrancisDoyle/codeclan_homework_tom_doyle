@@ -1752,275 +1752,236 @@ display: none;
 
 
 <!-- rnb-text-begin -->
+<p>Question 1. Find the weather forecast for the next three days online.
+Create a list of lists in which each inner list should be labelled with
+the name of the day of the week. Each inner list should contain named
+elements telling you the temperature, chance of rain and wind speed.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuMiAgICAg4pyUIHJlYWRyICAgICAyLjEuNFxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMFxu4pyUIGdncGxvdDIgICAzLjQuMiAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuMiAgICAg4pyUIHRpZHlyICAgICAxLjMuMFxu4pyUIHB1cnJyICAgICAxLjAuMSAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
-<pre><code>── Attaching core tidyverse packages ──────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     ── Conflicts ────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>3 MVP</p>
-<p>Question 1. Load the code_clan_tweets.csv data. Find the number of
-rows, columns, and list all the variable names.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdlZXRzIDwtIHJlYWRfY3N2KFwiZGF0YS9jb2RlX2NsYW5fdHdlZXRzLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>tweets &lt;- read_csv(&quot;data/code_clan_tweets.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjM0IENvbHVtbnM6IDI34pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICgxMik6IGNyZWF0ZWRfYXQsIHNjcmVlbl9uYW1lLCB0ZXh0LCBzb3VyY2UsIHJlcGx5X3RvX3NjLi4uXG5kYmwgKDEwKTogdHdlZXRfaWQsIHVzZXJfaWQsIGRpc3BsYXlfdGV4dF93aWR0aCwgcmVwbHlfdG9fc3QuLi5cbmxnbCAgKDUpOiBpc19xdW90ZSwgaXNfcmV0d2VldCwgcXVvdGVfY291bnQsIHJlcGx5X2NvdW50LCBzeS4uLlxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 234 Columns: 27── Column specification ────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (12): created_at, screen_name, text, source, reply_to_sc...
-dbl (10): tweet_id, user_id, display_text_width, reply_to_st...
-lgl  (5): is_quote, is_retweet, quote_count, reply_count, sy...
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubnJvdyh0d2VldHMpXG5gYGAifQ== -->
-<pre class="r"><code>nrow(tweets)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIzNFxuIn0= -->
-<pre><code>[1] 234</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmNvbCh0d2VldHMpXG5gYGAifQ== -->
-<pre class="r"><code>ncol(tweets)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDI3XG4ifQ== -->
-<pre><code>[1] 27</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXModHdlZXRzKVxuYGBgIn0= -->
-<pre class="r"><code>names(tweets)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcInR3ZWV0X2lkXCIgICAgICAgICAgICAgICBcInVzZXJfaWRcIiAgICAgICAgICAgICAgIFxuIFszXSBcImNyZWF0ZWRfYXRcIiAgICAgICAgICAgICBcInNjcmVlbl9uYW1lXCIgICAgICAgICAgIFxuIFs1XSBcInRleHRcIiAgICAgICAgICAgICAgICAgICBcInNvdXJjZVwiICAgICAgICAgICAgICAgIFxuIFs3XSBcImRpc3BsYXlfdGV4dF93aWR0aFwiICAgICBcInJlcGx5X3RvX3N0YXR1c19pZFwiICAgIFxuIFs5XSBcInJlcGx5X3RvX3VzZXJfaWRcIiAgICAgICBcInJlcGx5X3RvX3NjcmVlbl9uYW1lXCIgIFxuWzExXSBcImlzX3F1b3RlXCIgICAgICAgICAgICAgICBcImlzX3JldHdlZXRcIiAgICAgICAgICAgIFxuWzEzXSBcImZhdm9yaXRlX2NvdW50XCIgICAgICAgICBcInJldHdlZXRfY291bnRcIiAgICAgICAgIFxuWzE1XSBcInF1b3RlX2NvdW50XCIgICAgICAgICAgICBcInJlcGx5X2NvdW50XCIgICAgICAgICAgIFxuWzE3XSBcImhhc2h0YWdzXCIgICAgICAgICAgICAgICBcInN5bWJvbHNcIiAgICAgICAgICAgICAgIFxuWzE5XSBcInVybHNfdXJsXCIgICAgICAgICAgICAgICBcInVybHNfdC5jb1wiICAgICAgICAgICAgIFxuWzIxXSBcInVybHNfZXhwYW5kZWRfdXJsXCIgICAgICBcIm1lZGlhX3R5cGVcIiAgICAgICAgICAgIFxuWzIzXSBcInJldHdlZXRfc291cmNlXCIgICAgICAgICBcInJldHdlZXRfZmF2b3JpdGVfY291bnRcIlxuWzI1XSBcInJldHdlZXRfcmV0d2VldF9jb3VudFwiICBcInJldHdlZXRfdXNlcl9pZFwiICAgICAgIFxuWzI3XSBcInJldHdlZXRfbG9jYXRpb25cIiAgICAgIFxuIn0= -->
-<pre><code> [1] &quot;tweet_id&quot;               &quot;user_id&quot;               
- [3] &quot;created_at&quot;             &quot;screen_name&quot;           
- [5] &quot;text&quot;                   &quot;source&quot;                
- [7] &quot;display_text_width&quot;     &quot;reply_to_status_id&quot;    
- [9] &quot;reply_to_user_id&quot;       &quot;reply_to_screen_name&quot;  
-[11] &quot;is_quote&quot;               &quot;is_retweet&quot;            
-[13] &quot;favorite_count&quot;         &quot;retweet_count&quot;         
-[15] &quot;quote_count&quot;            &quot;reply_count&quot;           
-[17] &quot;hashtags&quot;               &quot;symbols&quot;               
-[19] &quot;urls_url&quot;               &quot;urls_t.co&quot;             
-[21] &quot;urls_expanded_url&quot;      &quot;media_type&quot;            
-[23] &quot;retweet_source&quot;         &quot;retweet_favorite_count&quot;
-[25] &quot;retweet_retweet_count&quot;  &quot;retweet_user_id&quot;       
-[27] &quot;retweet_location&quot;      </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Question 2. Find the total number of favourites (stored in
-favorite_count) that CodeClan tweets have got. Don’t add a tweet’s
-favorite_count to the total when the tweet was quoted (see the is_quote
-variable).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdlZXRzX25vdF9xdW90ZSA8LSBmaWx0ZXIodHdlZXRzLCBpc19xdW90ZSA9PSAnRkFMU0UnKVxuXG4gIFxudHdlZXRzX25vdF9xdW90ZSAlPiUgXG4gIHN1bW1hcmlzZShzdW0oZmF2b3JpdGVfY291bnQpKSAlPiUgXG4gIHB1bGwoKVxuYGBgIn0= -->
-<pre class="r"><code>tweets_not_quote &lt;- filter(tweets, is_quote == &#39;FALSE&#39;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciA8LSBsaXN0KFxuICAgICAgICAgICAgICAgIFxcVGh1cnNkYXlcXCA9IGxpc3QodGVtcGVyYXR1cmUgPSAxNCwgY2hhbmNlX29mX3JhaW5fcGVyY2VudCA9IDIwLCB3aW5kX3NwZWVkX21waCA9IDExKSxcbiAgICAgICAgICAgICAgICBcXEZyaWRheVxcID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE2LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gOCksXG4gICAgICAgICAgICAgICAgXFxTYXR1cmRheVxcID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE3LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gMTApXG4pXG5cbndlYXRoZXJcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
+weather &lt;- list(
+                \Thursday\ = list(temperature = 14, chance_of_rain_percent = 20, wind_speed_mph = 11),
+                \Friday\ = list(temperature = 16, chance_of_rain_percent = 10, wind_speed_mph = 8),
+                \Saturday\ = list(temperature = 17, chance_of_rain_percent = 10, wind_speed_mph = 10)
+)
 
-  
-tweets_not_quote %&gt;% 
-  summarise(sum(favorite_count)) %&gt;% 
-  pull()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQyNVxuIn0= -->
-<pre><code>[1] 425</code></pre>
+weather</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiJFRodXJzZGF5XG4kVGh1cnNkYXkkdGVtcGVyYXR1cmVcblsxXSAxNFxuXG4kVGh1cnNkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDIwXG5cbiRUaHVyc2RheSR3aW5kX3NwZWVkX21waFxuWzFdIDExXG5cblxuJEZyaWRheVxuJEZyaWRheSR0ZW1wZXJhdHVyZVxuWzFdIDE2XG5cbiRGcmlkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRGcmlkYXkkd2luZF9zcGVlZF9tcGhcblsxXSA4XG5cblxuJFNhdHVyZGF5XG4kU2F0dXJkYXkkdGVtcGVyYXR1cmVcblsxXSAxN1xuXG4kU2F0dXJkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRTYXR1cmRheSR3aW5kX3NwZWVkX21waFxuWzFdIDEwXG4ifQ== --&gt;
+</code></pre>
+<p>$Thursday <span class="math inline">\(Thursday\)</span>temperature
+[1] 14</p>
+<p><span class="math inline">\(Thursday\)</span>chance_of_rain_percent
+[1] 20</p>
+<p><span class="math inline">\(Thursday\)</span>wind_speed_mph [1]
+11</p>
+<p>$Friday <span class="math inline">\(Friday\)</span>temperature [1]
+16</p>
+<p><span class="math inline">\(Friday\)</span>chance_of_rain_percent [1]
+10</p>
+<p><span class="math inline">\(Friday\)</span>wind_speed_mph [1] 8</p>
+<p>$Saturday <span class="math inline">\(Saturday\)</span>temperature
+[1] 17</p>
+<p><span class="math inline">\(Saturday\)</span>chance_of_rain_percent
+[1] 10</p>
+<p><span class="math inline">\(Saturday\)</span>wind_speed_mph [1]
+10</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+Question 2.
+Using the list you’ve just made find:
+
+    The chance of rain tomorrow
+    The wind speed on the day after tomorrow
+    The temperature tomorrow.
+
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50XG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+weather$Thursday$chance_of_rain_percent</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwXG4ifQ== --&gt;
+</code></pre>
+<p>[1] 20</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRGcmlkYXkkd2luZF9zcGVlZF9tcGhcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+weather$Friday$wind_speed_mph</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDhcbiJ9 --&gt;
+</code></pre>
+<p>[1] 8</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRUaHVyc2RheSR0ZW1wZXJhdHVyZVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+weather$Thursday$temperature</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE0XG4ifQ== --&gt;
+</code></pre>
+<p>[1] 14</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+Question 3.
+Find a 14 day forecast online and create a matrix of the forecasts for 
+temperature, where each week is one row and columns correspond to days.
+
+You will want to give a name to the matrix you create.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3QgPC0gbWF0cml4KGMoMTYsMjIsMjEsMTUsMTYsMTcsMTgsIDE4LDE3LDE3LDE3LDE3LDE3LDE4KSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBucm93ID0gMiwgbmNvbCA9IDcsIGJ5cm93ID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpbW5hbWVzID0gbGlzdChjKFxcV2VlazFcXCwgXFxXZWVrMlxcKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKFxcTW9uZGF5XFwsIFxcVHVlc2RheVxcLCBcXFdlZG5lc2RheVxcLFxcVGh1cnNkYXlcXCxcXEZyaWRheVxcLFxcU2F0dXJkYXlcXCxcXFN1bmRheVxcKSkpXG5cbmZvcmVjYXN0XG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+forecast &lt;- matrix(c(16,22,21,15,16,17,18, 18,17,17,17,17,17,18), 
+                           nrow = 2, ncol = 7, byrow = TRUE,
+                           dimnames = list(c(\Week1\, \Week2\),
+                                           c(\Monday\, \Tuesday\, \Wednesday\,\Thursday\,\Friday\,\Saturday\,\Sunday\)))
+
+forecast</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFR1ZXNkYXkgV2VkbmVzZGF5IFRodXJzZGF5IEZyaWRheSBTYXR1cmRheSBTdW5kYXlcbldlZWsxICAgICAxNiAgICAgIDIyICAgICAgICAyMSAgICAgICAxNSAgICAgMTYgICAgICAgMTcgICAgIDE4XG5XZWVrMiAgICAgMTggICAgICAxNyAgICAgICAgMTcgICAgICAgMTcgICAgIDE3ICAgICAgIDE3ICAgICAxOFxuIn0= --&gt;
+</code></pre>
+<pre><code>  Monday Tuesday Wednesday Thursday Friday Saturday Sunday</code></pre>
+<p>Week1 16 22 21 15 16 17 18 Week2 18 17 17 17 17 17 18</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+Question 4.
+From the matrix you just made select:
+
+    The third day of the second week
+    The whole second week
+    The first, third and fifth days in both weeks.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbMiwzXVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+forecast[2,3]</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE3XG4ifQ== --&gt;
+</code></pre>
+<p>[1] 17</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbMiwxOjddXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+forecast[2,1:7]</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgTW9uZGF5ICAgVHVlc2RheSBXZWRuZXNkYXkgIFRodXJzZGF5ICAgIEZyaWRheSAgU2F0dXJkYXkgICAgU3VuZGF5IFxuICAgICAgIDE4ICAgICAgICAxNyAgICAgICAgMTcgICAgICAgIDE3ICAgICAgICAxNyAgICAgICAgMTcgICAgICAgIDE4IFxuIn0= --&gt;
+</code></pre>
+<p>Monday Tuesday Wednesday Thursday Friday Saturday Sunday 18 17 17 17
+17 17 18</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbLCBjKDEsIDMsIDUpXVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+forecast[, c(1, 3, 5)]</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFdlZG5lc2RheSBGcmlkYXlcbldlZWsxICAgICAxNiAgICAgICAgMjEgICAgIDE2XG5XZWVrMiAgICAgMTggICAgICAgIDE3ICAgICAxN1xuIn0= --&gt;
+</code></pre>
+<pre><code>  Monday Wednesday Friday</code></pre>
+<p>Week1 16 21 16 Week2 18 17 17 ```</p>
 <!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Question 3. Summarise the mean number of retweets (retweet_count),
-split by the type of platform that was used to tweet (source). Again,
-omit quoted tweets from the mean.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdlZXRzX25vdF9xdW90ZSAlPiUgXG4gIGdyb3VwX2J5KHNvdXJjZSkgJT4lIFxuICAgIHN1bW1hcmlzZShtZWFuKHJldHdlZXRfY291bnQpKVxuYGBgIn0= -->
-<pre class="r"><code>tweets_not_quote %&gt;% 
-  group_by(source) %&gt;% 
-    summarise(mean(retweet_count))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDJTc1U3RE1CQ0czYlFwTkZJaG9qeEFSaGlhQVNURVVsSFVDc0dBaEZBUjNaRHJYcWxwWWtlT28zYUVKK0E1ZUFHWWVJdHVmUThHaGdZN3RWRVZTN0h2dnN2ZCtiZDkzeCtlZWtNUElWUkZ0YXFhWFdVaTkyRncxVDVIcU9Zb3A0SnFxS0hYaFFxM2xLR2hyNzY2Q2V4ZGN5N1RqRW9JYmhnSkRXME01Z0N5RDJSbWdGK0FFWmZCaEl2Z0ZoUEQ5d2R6S2lXSTRCRkd3V1dTR0h5d2pYc1JCU2JMRVYySDNrMDVBNzBMdmFPTG4xWDh1WXEvdW9lb0dGM2ZyTlZscDdmczlMdkkrTHN2NVB2dDQ3MGswV1U0aHRUSWN3eXNwendUQkl6WGlnR3pJd0ZTaTNraVBHUHl1RlNsSWZnOHRKV2F1dEtybXZJOC95MjNJeEZPYlRzTHZUR1dPSndJbGErOGRTbGxoeWVTY3FhU0hIMFZiaW01SWtyQXo1amV5YmhOcGhtYnRVL09kSWNpdmhsTlk5ZTNiR2ZUMDhsTkxkY2VCTEJueXV4QnVCRWVRV1NmZ0pKY0tBNFRRZjh2eWxNMERTV1gyUDduRVI1WlVvaEQ2ejltUXk2WGdnSUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["source"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mean(retweet_count)"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Hootsuite Inc.","2":"1.428571"},{"1":"TweetDeck","2":"5.000000"},{"1":"Tweetbot for Mac","2":"4.000000"},{"1":"Twitter Web App","2":"2.478632"},{"1":"Twitter Web Client","2":"2.000000"},{"1":"Twitter for iPhone","2":"3.051948"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Question 4. Count the total number of likes (i.e. total of
-favorite_count), split by media type, and arrange them from most likes
-to least. Assume that any tweets without a listed media type are of type
-“text”.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdlZXRzICU+JSBcbiAgZ3JvdXBfYnkobWVkaWFfdHlwZSkgJT4lIFxuICBzdW1tYXJpc2Uoc3VtKGZhdm9yaXRlX2NvdW50KSkgJT4lIFxuICBtdXRhdGUobWVkaWFfdHlwZT0gY29hbGVzY2UobWVkaWFfdHlwZSwgJ3RleHQnKSlcbmBgYCJ9 -->
-<pre class="r"><code>tweets %&gt;% 
-  group_by(media_type) %&gt;% 
-  summarise(sum(favorite_count)) %&gt;% 
-  mutate(media_type= coalesce(media_type, &#39;text&#39;))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIyIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRelU3RE1BejJ1Z2EwU0J0SWV3azR0QUp4NGJnRDRnRW1rSGFiUXB0dDBkcWtTbDAyYmp3YVQ3Yml0TWxoOGNFL24rM1ArYkorMjd6d0RRZUFLYVJUOG94U1lKOGY3OWtyUUpwUU1ZRVVaaTZlcWIya3hJSDNReHdickRrWU5MNUlVWjZSNHNJTnJFNVBqZzVXNno4WTdZcVJhVkhMTm1ManRTeVYyT0pQSXoyeWJMdjZZU2UralZVb3Q0WHBORDVHVEROclRubGdtenUyWDNKOTMxL2lrMFVsMm5BeWdMd1VLUEtkcFgycTRwVmIwNkF5bXBZU3A1NUZ5eE1iQVhlZGRpOHBzK0xRNldQMjdBNE03ZEhtUGsrdWMzY3k2VDBWODFRM1V1K1ZEdi9BS3ZFbEsxOHNTUEVnT0crczBoaVVFTnJtYUZDRU9WNllLaUNETnJqOEF4WFh2Ri8wQVFBQSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["media_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sum(favorite_count)"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"photo","2":"371"},{"1":"text","2":"75"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50d2VldHMgJT4lIFxuICBncm91cF9ieShtZWRpYV90eXBlKSAlPiUgXG4gIHN1bW1hcmlzZSh0b3RhbF9saWtlcyA9IHN1bShmYXZvcml0ZV9jb3VudCkpICU+JSBcbiAgbXV0YXRlKG1lZGlhX3R5cGU9IGNvYWxlc2NlKG1lZGlhX3R5cGUsICd0ZXh0JykpXG5gYGAifQ== -->
-<pre class="r"><code>
-tweets %&gt;% 
-  group_by(media_type) %&gt;% 
-  summarise(total_likes = sum(favorite_count)) %&gt;% 
-  mutate(media_type= coalesce(media_type, &#39;text&#39;))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIyIMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRelc3Q01BdzJwUm1pQ0RhSjUyZ0YybVZIRG1nUGdEYUpHd3B0TmlKQ1VyVkJzTnNlYlU5R1o2ZkpvZkhCUDUvdHovbXkyKzVmczMwR0FHTkl4K2dacHNBK1A5N3pONEEwd1dJRUtVd3Azckc5eElUQUZ4ZjdCcXRQeGhwZnBGYmNMY1lGRFd4dUs2S0R6ZTRQZWhzd01zMHZvbzNZc291b0pEL1luMXA0WkdhTjVlcWc1Sm1HQnd6VHh0eUt3RElubGw5MFhkYzk0bE9sNG0wNEZjQ3M0cFlYWHczdVl4V3ZURXh0cGRHNGxKQnFGaTJQbWdoNHZtcDZTWldYcDZzKzUyczY0TnE5elgyZURITTZtWFNlaW5tcUo2Ry9wUTc2bWVKSG9YeXhRTVZPY0ZFM1V0dWdCTkcyY1A4VWtOS29nRGh0OFBnSHlyOTNudXdCQUFBPSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["media_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_likes"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"photo","2":"371"},{"1":"text","2":"75"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Question 5.</p>
-<p>Find the mean number of characters that a CodeClan tweet contains.
-You can either find a way to count the text in the text variable, or use
-the variable display_text_width which contains a count. Checking both
-would be a good idea if possible to see if they match (but it’s not
-essential).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdlZXRzICU+JSBcbiAgICBzdW1tYXJpc2UobWVhbihkaXNwbGF5X3RleHRfd2lkdGgpKSAlPiUgXG4gIHB1bGwoKVxuYGBgIn0= -->
-<pre class="r"><code>tweets %&gt;% 
-    summarise(mean(display_text_width)) %&gt;% 
-  pull()</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE0OS40MTg4XG4ifQ== -->
-<pre><code>[1] 149.4188</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBiZWxvdyBmcm9tIHRoaWptZW5cblxudHdlZXRzICU+JSBcbiAgbXV0YXRlKGxlbmd0aF9vZl90d2VldHMgPSBzdHJfbGVuZ3RoKHRleHQpKSAlPiUgXG4gIHN1bW1hcmlzZShtZWFuX2xlbmd0aDIgPSBtZWFuKGxlbmd0aF9vZl90d2VldHMpKVxuYGBgIn0= -->
-<pre class="r"><code># below from thijmen
-
-tweets %&gt;% 
-  mutate(length_of_tweets = str_length(text)) %&gt;% 
-  summarise(mean_length2 = mean(length_of_tweets))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFQU3dyQ01CQ2Qxa1pwOFFlZW8xM294cVVMOFFDaUlMaVEyTVphakVscFUzVHAzanQ1RzYraFRrb0Nrc0Q4WHViTnpGc3ZkN05vRndGQUI0SU9lb0lwa08xbUZjOEJBaDhMRHdJSWRiemo5NlFGQUlZNkx2TG4rN1YvdjV4R0l1aVYxWmlNLzhEK2xWRng0RXprNmp4MUNHRWxiNGtsRGREOEI3b3ZQbmR5eW1udFRvNHlxbWh5cXBDUDFjZWg5R1NwQ2ltUTVPdmJpVVAyS2djWU5VSmZrc1hwdVJHWGVLb1hHTTFncnZPTS9lVjZwZjgxbzRnWjFVV3hoV0QyZGs2UGpKdGlpSXBid1VsWkZVSlpKWWpXaVpLSzJyNG9sZHdpclRiNC9BQ3hzbS9ac2dFQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["mean_length2"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"188.3718"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jYmVsb3cgZnJvbSBqdXN0eW5hXG50d2VldHMgJT4lXG4gIHNlbGVjdCh0ZXh0KSAlPiVcbiAgIHN1bW1hcmlzZSh0d2VldF9tZWFuX3RleHQgPSBtZWFuKG5jaGFyKHRleHQpLCBuYS5ybSA9IFRSVUUpKVxuYGBgIn0= -->
-<pre class="r"><code>
-#below from justyna
-tweets %&gt;%
-  select(text) %&gt;%
-   summarise(tweet_mean_text = mean(nchar(text), na.rm = TRUE))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFQU3dyQ01CQ2RmcUswNEFjOFI3dlFqVXNYNGdGRVFYQWhzVVl0MWtUYUVWMjY5MDY5VGEraFRrb0Nrc0I4TTIvbXZlVjhNNGszTVFBRUVBYmtHYVhBMXF0Rk1nVUlmU284Q0NIUzhVbmZvN1lCME5keGRubzM5YmFwblVFbStWVlVsQXovbWdOOENJRzdxK0J5aCtLSkRpWXExU08xdUI2Wi95TDNwZWN1endwZXVjdmpBMGVlSGt2Q1UvVnhJRjExdzF4SkF2bWFQblBBWHVsU3ZVdk41SkJrNTd1OEpHTjl3TWdHdzg0ejlwZnJrLzdYckdKbVZVZklVeTZGNVY3d3ZTaE0wU2ZGcmVEMFZ1WVNyUkxxVmlrcTVIWXV6bFJoTzYwMitQd0FhSWpZY3JVQkFBQT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["tweet_mean_text"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"188.3718"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Question 6. The code_clan_info.csv data file contains status_url
-along with other info. Load this in, and join it to the code_clan_tweets
-tibble, so that you have a status_url for each tweet. Decide which
-variable to join the tibbles on.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29kZV9jbGFuX2luZm8gPC0gcmVhZF9jc3YoXCJkYXRhL2NvZGVfY2xhbl9pbmZvLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>code_clan_info &lt;- read_csv(&quot;data/code_clan_info.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjM0IENvbHVtbnM6IDE14pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICg3KTogc3RhdHVzX3VybCwgbmFtZSwgbG9jYXRpb24sIGRlc2NyaXB0aW9uLCB1cmwsIGFjY291bnRfY3JlYXRlZF9hdCwgcHJvZmlsZV91cmxcbmRibCAoNik6IHR3ZWV0X2lkLCBmb2xsb3dlcnNfY291bnQsIGZyaWVuZHNfY291bnQsIGxpc3RlZF9jb3VudCwgc3RhdHVzZXNfY291bnQsIGZhdm91cml0ZXNfY291bnRcbmxnbCAoMik6IHByb3RlY3RlZCwgdmVyaWZpZWRcbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 234 Columns: 15── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (7): status_url, name, location, description, url, account_created_at, profile_url
-dbl (6): tweet_id, followers_count, friends_count, listed_count, statuses_count, favourites_count
-lgl (2): protected, verified
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVsbF9qb2luKGNvZGVfY2xhbl9pbmZvLCB0d2VldHMsIGJ5PVwidHdlZXRfaWRcIikgJT4lIFxuc3VtbWFyaXNlKHN0YXR1c191cmwpXG5gYGAifQ== -->
-<pre class="r"><code>full_join(code_clan_info, tweets, by=&quot;tweet_id&quot;) %&gt;% 
-summarise(status_url)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogUmV0dXJuaW5nIG1vcmUgKG9yIGxlc3MpIHRoYW4gMSByb3cgcGVyIGBzdW1tYXJpc2UoKWAgZ3JvdXAgd2FzIGRlcHJlY2F0ZWQgaW4gZHBseXIgMS4xLjAuXG5QbGVhc2UgdXNlIGByZWZyYW1lKClgIGluc3RlYWQuXG5XaGVuIHN3aXRjaGluZyBmcm9tIGBzdW1tYXJpc2UoKWAgdG8gYHJlZnJhbWUoKWAsIHJlbWVtYmVyIHRoYXQgYHJlZnJhbWUoKWAgYWx3YXlzIHJldHVybnMgYW4gdW5ncm91cGVkIGRhdGEgZnJhbWUgYW5kIGFkanVzdCBhY2NvcmRpbmdseS5cbiJ9 -->
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in dplyr 1.1.0.
-Please use `reframe()` instead.
-When switching from `summarise()` to `reframe()`, remember that `reframe()` always returns an ungrouped data frame and adjust accordingly.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjM0LCJuY29sIjoxLCJzdW1tYXJ5Ijp7IkEgdGliYmxlIjpbIjIzNCDDlyAxIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQnAyYjJXNWV4eEdFZjhsU0FndklBZ1RJVzBpY3BYdVc1TktCSDhCSkFOOEZqTVRFUW1oU0lIL0J1Y3p6K2lFc2YzVklBb2x5VjRSRWtaUk9hWmJ1NnFxZU9kLzg2ZHYrNnR0WHA5UHBpOU9MTC9qOGtpOVBMLy82bDY5ZnI5UHB4WE8rZVhaNmNmcFNmLzZidi83ZDhZUFQ2YmY4L3ZIeEwvNzQzZm44NGY0UEZ4Zm5IOTZmejFkM2I5N2Vmbi94MWUyN3E2K3VMMi8rL1BiMmZIRi92angvdkwrb3RkZVljODNhOXl5cmxyVWNpTG8zdjJaTFlia1FLK3VlWSsvZFc1MFd4RnFqQTFBemFndHZGRkY2YlV3aFZsOVJESWl5V3N4ZUdpTXB0V2EzSUdydUdXVzBNVmV4MWdLSTZBeGhUSGFsN0dGQ3ROMXlqTnBqcnUxQXpKM0UxTWpOR0ZxMVJqSG42SkZzYk9zOXV3dFJWNTIxektoWjBvR0kxYkx2c1lpUXNtdXpJRWFkTzNiT0xDVzhUWTNzalZRRlo5WklheTJBS0dXc1BaTDVlSnNhVVJyQjBXZmJrNDIxSURxcFNwQjNOdGRNczZoamRDMG1veGpGZ3VnN1lSck5oTVVjWVVJd0VuZ3Y2NXJMaEdqTVlzOWNwZk8xQmJGMmpNbGlydDZ5R3BUREdzWmEybFRHc1llVHFXMUhyM05HSy9EZXRESVZpRHBXYWEza21xTTFZemtGVVZqS0ZXU0lGdFNGaURubWhEcHpHcG42Q0RGaTdNVTBoa0U1YlhjMkV3SlZRV3pUWWEwRG9yQVNXc3BadlltMG5ZTzRhaXpwbUswNkVHWDJiQ3R6WjZnOFd4Q1YrQ3daQVFYUFlzVkZvUW9tU3pFMkJiNVlhMUVLVC9iWlF4SGVESDNSRmx3MVZxaWlEU3FyczV4clE5d3RweVJPNmMzZ0N5QUNxU1NwUTNRc2h6c2J3ZENqUVo4bFNpRStQSWkyMlZjbFBXTng0bUtOSWJaQmFVa21PZHdKUk9ac1l5WHpRTGM1ckFVRUdtTVFuWUN3TGg1RW1WS2NPVFljN0FTNElBYVZpSEswbWxXS0RvaEV1KzdTTlJzck9rY1VDc2lXNmtMa2VISEJzOUJ1ajU2S1R3dWl3WnF3UmluaUx4TWlKTFZLb1VCWEU0SXNveUl1a25WNTFXd1IyU3hGYUJMVEhVV2hoRFRXZ20xaGF6MElISldvUWdhdGUybFdrTDJ5YUsxZ3I4eFJCR0tIeVFBekhBRXRDR3dFcXhCSnBIc01EdDlRVXNrU3ZGVTY2dmVBb0JMeEJkbmV3NHdMY2dSZnRpQ3ROYzBkS1ZQYmdVeEpwS01Ea1h2SkNoUnliWFdQT3hQWkNHL3BjYk95QzZMTncrWWxqdFVSU2tBZ25ITVNvTU9OenFRd1kyYW83ckNXSmFESmRBcEp6RUEyenVYWXV3T2lZa1hHU0hzNTBUa05tMWtrbU5BWkprVHByR2tWOFRqR0NvaWxaeGVUa1F5M01sVnFxeUdkNFl4YTA4b1JUSC9XR3AzYTNLcW5MekJrTTRwTSswSmtlTXQ1eU43ZDl5QlJ2RG9DUkNPMFlXOG8zS09jMWl2c3lXSmlLcmJIRjNwYWdoUHlSV0k0bXpxM2lraFBOZW5nY0djaXBGWmxMeVdUZXNGNkd4RDRvVWpsV3Nta0REaHhNZVRzWXJPeFRNamJFWHpacG80RWpKT3l6UTVFUXJ3VFIxRnhacDc2QmFLVnJWYmZXbjFhY1FHRW1vMXlpREM0MHo0R0FuRkRuczRPQWJidHBCbVNWMzAxRVhsZ0Jwd2ljRUIwS1F2WW9uWnZGSldLM3VvRW9GUXZMZ2pMbzUyT1hJT0pIVDhpU2JCN2wyUWtRaTBHQjRJaVFsWE5qY09yMXFiS2s1RWZpTStVSVhFZ3Vsdy9WSUZYTmEzdVFGaFVPSWZZWWxjdFk0WDRIV08waGlkQzdGaVZIZVZLcG5mMThxR0w2a3dFSXpIdzJuSXpPcXh4NGtKZXBHTVJXVXM4dTlPNEJXSnNqQ2JzQmVmVTdzUUZiSmVIakNlK0NBK0grRVNZYWtOTGdLdVY3RUQwaVRLZ2l1U1kwYnkxQUtJSGpJWElRWUU2TFpDRXR4ZE1vZTRCSmNWYXp0N1pVNmlDS2pDOTNtL0FNOUtiQkFiV0pweWFLZ2dXWTdDVU1ickZuZEhRUjNPUWJXaXUxYnlKNEtvbXdUR2w5eXkraU5aU2hFT1FLc29jaUM2YnpZTDJSVTFOeTdPcmtiK1FybEFHTm5VNGE0RnNqaTVybFVGVVdLMTBJQnJxUFJ0NlM0bmlRRkRQYTRrdFo3WGJjcHBTZVA0NkdVY0U2K0dwSEFDeUlsSXFaUzNEMHVCazF6bzhZcXd0aVdGQnBQSTk5M0hHWVRYb01FVU54VWQ4NDY2V2N6Q01wWktWMmRoY0ZuVlpqVnRCakVQZkxQTFVVbnlDU0RTbmVoZW9UeWM2Njl6cWlZME5ZN1JwbFNKMW5SZGxER3RFU2JMRWdTRFFCTWV4QUZMYUhRV0NiZGV0dzBTckNGU1VzdzRoSmJXYTU4MTBKcklUbGNYT2RLOFJBOFJReXhaRFZGZFlsUjBJZFhNUVd0aEV6d2tRbHRSMUhiTjBOWE9zdFlpdW83K21yUGRPZFlFb1JjOHF1R3RhUjIrVnA5VkNybk1nSEsxakJmbjlKQ2JJMTczZFViVGpOZzEvZ0dONTlpb0tENmJROFhqRDI5UktFZE45Rmpaa1dyZUREb2c4VHIwV2ROR2RzbngwNGFsalZGUWQzMW1zVmRhQXVITHFyS2haM2t3UVRTbFBPU1RJcmVqRThLTmE2eXhEQngxV3NoOEg5ZVJxazFTeFJDTVF1Q0dkSzAvWG13RlJSSm9CNld3ekxnUlI5VUZOTTdrVENQWmlMeVE0WmMzYkViVkFZRzgwWit2V2hZRURnbHhqTndicDZrVm5IUDNLenBmcG1Ra2dpSzJVVXRObmJ5MENwamt1NFlWM3AxRVEwbG9icmlqbUtRMFF1aXZGamxSZEpERkhRVVdrTHRlZFBheXJQZlc0S3FVRHpZRm9XeFozbHFBVXRTell1eDNESTc2TzJoenF4ODhzNXFiaWgzaDQ0VFZ4L2Q0b0NBWXNadFdCckhXUDc0QjRhUE1kdDdhOEFCY0VuOWtQODJ5WmgrRzlnN29rdTh5MWdEZ3ByZXE1ZXQwMUlJaUdFYnFJaHpjeWw3T0pOZUdkV2t6MUN3UnowSzB6MktKWUVxWHcwWFFWUlRGdTNkYzZEa0Z4dWt4bE1CdG5PUVVCQXk5ZFhOaGVkdzJJVlRDSmtHL1oxazNzUXlpT0tkdU56ZlR1WDVBWE9LdmExeHdUeStyRUJSQno2L29hTXJ4NlJVRFpxVFpRVTdOeFd0RlpkQzl5TktJSzJlZnBDeUFRaTR3QVN4TGVKVHhwUnB3QUptRHRXU3hqQllST0lrblRDWXU2bzBqSVlrQmV4Rmc0dHI4b05WU1hnLzFJY3prSGZnaTlsN3FBWnNZRmU5b25PVThsNkY2bTZ0NnlObVhLTFU4clUzV3ZQZFFTaXRSMWJndENiUWMxY0hmWjNtRW9GV1JBZVYxOWxPMzVWRUZFTzg1NDVMc3R2c0FWMWpqMElzYTVXNkUxUzlVTEMyeHU3OVo5OEFPQ2twcDhCSnpqVkhZZ0tLb0VWWWR6UEgyaGR0VFVGU1B5TmNyeUlKWTZCeXpwY0k4aE5ZRlNkWUVaRW03ZENpMEd3TVBaZEM3Z0tiNkM2Y2ZmamRWRDB0VWl2cVpqZWxUV0dFVkhEQllFNmpla3RCSVdkenk3em1IVnUwREFweUxFR0VYVkpYQ3lSS25lcTNYUW93TU55S2Iycmg3SWRod2k0YlJEdDlLMXF1U2JOUkYxR0p1dUwweWR3Qmx4QWRFMFhhdEJwT2lGTWNlUEFFR21iM1pUcnowc2J4VFVVVzBGM2t5RnpZTlFSNnpxdXF0NWJRRUlKV25FcWhscHZXTUZSSzhMdVFqdm1YY2FnWUE3cVNCNmNVMkg5ZzdFbERNcklxeENjRm9UWVFGMG53VzlCV2M1cHpRUTd4aGJDQ3lGTHBaYkVBbE55Q1RHZ0FJZHZtQXoyWlBXOU1ZQkpHeXR4Y09kclNYeVVnL1lnaWhUMTQrcmJtQlVLeTRROGJwMlVIU0FDQU1ibGYwNEd0ZTdYcnBGTjZ5amVpQnlnb0N6MnFWN216cVBJNGw2M0Z6bzFlTE9PWFg3bUdlUmF1SHRDTDVNY3BPTkpjbkNFUWNxaEV4QzErTUhPdGdxUmVxcXhTclV0RnJEMHAwNkZNRW9vMjhXTXNIUzRIVVUzY0VlT2c4UWpHSDdxODRQWjBOaGRMM3FpZ2IvMzllclg5NWNmbjkxZjNwNHRmcnBoNjhlSHYvYng3dnJ6Lzc1bDNlM1A3eDVldVJYL0g3K0h6NTkrdlRwOTUvanZyMit2UDgvM0hlWDU4czMvN2pqZWI3NzZiTkhmbm43NGZ6KzlvYUhudXQ5NzVlZlBmenM3ck1mL09iampVYnk3dlhiN3o3ZS9PdjEwSDl3ZW5oUC9QUTRPbjM5NDM5OS9lemh2M3orNlJIcTVTUFVMNjV1L3ZuKzV1cHA3TmVYZjcrNmZ2em0xOHo0bVBDYkQzZnZiODVQTStHbjkyL090K2ZMcDMvMzZ1M3Q5ZE5QanJtZGZ2b1pLcjZ1YXVZK0FBQT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["status_url"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"https://twitter.com/CodeClanScot/status/1131477871397081088"},{"1":"https://twitter.com/CodeClanScot/status/1131199199725477888"},{"1":"https://twitter.com/CodeClanScot/status/1131198519769993217"},{"1":"https://twitter.com/CodeClanScot/status/1131188636991541248"},{"1":"https://twitter.com/CodeClanScot/status/1131140312888483840"},{"1":"https://twitter.com/CodeClanScot/status/1130824730263601153"},{"1":"https://twitter.com/CodeClanScot/status/1130815974062678017"},{"1":"https://twitter.com/CodeClanScot/status/1130814363667972096"},{"1":"https://twitter.com/CodeClanScot/status/1130814292566134789"},{"1":"https://twitter.com/CodeClanScot/status/1130795810659209216"},{"1":"https://twitter.com/CodeClanScot/status/1130776345863233536"},{"1":"https://twitter.com/CodeClanScot/status/1130776181710741505"},{"1":"https://twitter.com/CodeClanScot/status/1130482539683110912"},{"1":"https://twitter.com/CodeClanScot/status/1130461794957500417"},{"1":"https://twitter.com/CodeClanScot/status/1130453287117971456"},{"1":"https://twitter.com/CodeClanScot/status/1130453006896553989"},{"1":"https://twitter.com/CodeClanScot/status/1130440208137297920"},{"1":"https://twitter.com/CodeClanScot/status/1130438861593763840"},{"1":"https://twitter.com/CodeClanScot/status/1130416635750297600"},{"1":"https://twitter.com/CodeClanScot/status/1130395217813745664"},{"1":"https://twitter.com/CodeClanScot/status/1130395041254518784"},{"1":"https://twitter.com/CodeClanScot/status/1130392750975803392"},{"1":"https://twitter.com/CodeClanScot/status/1130389467376832513"},{"1":"https://twitter.com/CodeClanScot/status/1129748808139759616"},{"1":"https://twitter.com/CodeClanScot/status/1129431774206017536"},{"1":"https://twitter.com/CodeClanScot/status/1129416802205876224"},{"1":"https://twitter.com/CodeClanScot/status/1129410758847148033"},{"1":"https://twitter.com/CodeClanScot/status/1129410747677720577"},{"1":"https://twitter.com/CodeClanScot/status/1129410746469822465"},{"1":"https://twitter.com/CodeClanScot/status/1129383207969992705"},{"1":"https://twitter.com/CodeClanScot/status/1129383084762247177"},{"1":"https://twitter.com/CodeClanScot/status/1129295676825886721"},{"1":"https://twitter.com/CodeClanScot/status/1129073528559546369"},{"1":"https://twitter.com/CodeClanScot/status/1129017480544968704"},{"1":"https://twitter.com/CodeClanScot/status/1129009657626931207"},{"1":"https://twitter.com/CodeClanScot/status/1129001203734601728"},{"1":"https://twitter.com/CodeClanScot/status/1128976684634562561"},{"1":"https://twitter.com/CodeClanScot/status/1128953925741240322"},{"1":"https://twitter.com/CodeClanScot/status/1128941881403084800"},{"1":"https://twitter.com/CodeClanScot/status/1128673425210400768"},{"1":"https://twitter.com/CodeClanScot/status/1128672917494161409"},{"1":"https://twitter.com/CodeClanScot/status/1128660601360801792"},{"1":"https://twitter.com/CodeClanScot/status/1128655726854004736"},{"1":"https://twitter.com/CodeClanScot/status/1128653076544540673"},{"1":"https://twitter.com/CodeClanScot/status/1128650783845691394"},{"1":"https://twitter.com/CodeClanScot/status/1128650612504182784"},{"1":"https://twitter.com/CodeClanScot/status/1128650573090365441"},{"1":"https://twitter.com/CodeClanScot/status/1128640596913074178"},{"1":"https://twitter.com/CodeClanScot/status/1128630757734350848"},{"1":"https://twitter.com/CodeClanScot/status/1128629999010029568"},{"1":"https://twitter.com/CodeClanScot/status/1128624871100039168"},{"1":"https://twitter.com/CodeClanScot/status/1128618877485748224"},{"1":"https://twitter.com/CodeClanScot/status/1128608577495687168"},{"1":"https://twitter.com/CodeClanScot/status/1128606992010969090"},{"1":"https://twitter.com/CodeClanScot/status/1128605418480197632"},{"1":"https://twitter.com/CodeClanScot/status/1128605003118202880"},{"1":"https://twitter.com/CodeClanScot/status/1128604113699311617"},{"1":"https://twitter.com/CodeClanScot/status/1128603239094550528"},{"1":"https://twitter.com/CodeClanScot/status/1128601847730667520"},{"1":"https://twitter.com/CodeClanScot/status/1128601576128569344"},{"1":"https://twitter.com/CodeClanScot/status/1128600751348047872"},{"1":"https://twitter.com/CodeClanScot/status/1128600718204645376"},{"1":"https://twitter.com/CodeClanScot/status/1128598020809998336"},{"1":"https://twitter.com/CodeClanScot/status/1128594306183368704"},{"1":"https://twitter.com/CodeClanScot/status/1128594271307751425"},{"1":"https://twitter.com/CodeClanScot/status/1128593255703162880"},{"1":"https://twitter.com/CodeClanScot/status/1128589563868450816"},{"1":"https://twitter.com/CodeClanScot/status/1128575304744697856"},{"1":"https://twitter.com/CodeClanScot/status/1128575151866568704"},{"1":"https://twitter.com/CodeClanScot/status/1128290232800096257"},{"1":"https://twitter.com/CodeClanScot/status/1128290035931992064"},{"1":"https://twitter.com/CodeClanScot/status/1128289920815177728"},{"1":"https://twitter.com/CodeClanScot/status/1128289722701361152"},{"1":"https://twitter.com/CodeClanScot/status/1128253511437832192"},{"1":"https://twitter.com/CodeClanScot/status/1128251740711788547"},{"1":"https://twitter.com/CodeClanScot/status/1128249687939661824"},{"1":"https://twitter.com/CodeClanScot/status/1128249262876319744"},{"1":"https://twitter.com/CodeClanScot/status/1128231032136830976"},{"1":"https://twitter.com/CodeClanScot/status/1128213648005050368"},{"1":"https://twitter.com/CodeClanScot/status/1127903113531285504"},{"1":"https://twitter.com/CodeClanScot/status/1127851192418230275"},{"1":"https://twitter.com/CodeClanScot/status/1126824585750556672"},{"1":"https://twitter.com/CodeClanScot/status/1126796949968031744"},{"1":"https://twitter.com/CodeClanScot/status/1126769576484556802"},{"1":"https://twitter.com/CodeClanScot/status/1126583379531636736"},{"1":"https://twitter.com/CodeClanScot/status/1126582093079883776"},{"1":"https://twitter.com/CodeClanScot/status/1126580814559551488"},{"1":"https://twitter.com/CodeClanScot/status/1126569043773751297"},{"1":"https://twitter.com/CodeClanScot/status/1126547971858944000"},{"1":"https://twitter.com/CodeClanScot/status/1126547930528219137"},{"1":"https://twitter.com/CodeClanScot/status/1126514782171910144"},{"1":"https://twitter.com/CodeClanScot/status/1126505119850192903"},{"1":"https://twitter.com/CodeClanScot/status/1126453933096996864"},{"1":"https://twitter.com/CodeClanScot/status/1126452802555994118"},{"1":"https://twitter.com/CodeClanScot/status/1126400480354156544"},{"1":"https://twitter.com/CodeClanScot/status/1126396578552524800"},{"1":"https://twitter.com/CodeClanScot/status/1126077111377321984"},{"1":"https://twitter.com/CodeClanScot/status/1126056662207430656"},{"1":"https://twitter.com/CodeClanScot/status/1126036483209617410"},{"1":"https://twitter.com/CodeClanScot/status/1125776416916819973"},{"1":"https://twitter.com/CodeClanScot/status/1125774357324861440"},{"1":"https://twitter.com/CodeClanScot/status/1125769865267163138"},{"1":"https://twitter.com/CodeClanScot/status/1125685239098028032"},{"1":"https://twitter.com/CodeClanScot/status/1125680304369340416"},{"1":"https://twitter.com/CodeClanScot/status/1125371431825674240"},{"1":"https://twitter.com/CodeClanScot/status/1125371347511779329"},{"1":"https://twitter.com/CodeClanScot/status/1125367810178387968"},{"1":"https://twitter.com/CodeClanScot/status/1125333579293167616"},{"1":"https://twitter.com/CodeClanScot/status/1124290870432415745"},{"1":"https://twitter.com/CodeClanScot/status/1124290134642446337"},{"1":"https://twitter.com/CodeClanScot/status/1124261876605517826"},{"1":"https://twitter.com/CodeClanScot/status/1124251376807219200"},{"1":"https://twitter.com/CodeClanScot/status/1124225855268556800"},{"1":"https://twitter.com/CodeClanScot/status/1123976308738883590"},{"1":"https://twitter.com/CodeClanScot/status/1123975811483275266"},{"1":"https://twitter.com/CodeClanScot/status/1123614342715461633"},{"1":"https://twitter.com/CodeClanScot/status/1123612728529248256"},{"1":"https://twitter.com/CodeClanScot/status/1123512104986849281"},{"1":"https://twitter.com/CodeClanScot/status/1123231727244148736"},{"1":"https://twitter.com/CodeClanScot/status/1123175108116455424"},{"1":"https://twitter.com/CodeClanScot/status/1123168895634898944"},{"1":"https://twitter.com/CodeClanScot/status/1123155367591075841"},{"1":"https://twitter.com/CodeClanScot/status/1122892379072208896"},{"1":"https://twitter.com/CodeClanScot/status/1122778859508727809"},{"1":"https://twitter.com/CodeClanScot/status/1122778610144882688"},{"1":"https://twitter.com/CodeClanScot/status/1122778598853763073"},{"1":"https://twitter.com/CodeClanScot/status/1121799690696052738"},{"1":"https://twitter.com/CodeClanScot/status/1121792831310352384"},{"1":"https://twitter.com/CodeClanScot/status/1121792656684638208"},{"1":"https://twitter.com/CodeClanScot/status/1121792539919392768"},{"1":"https://twitter.com/CodeClanScot/status/1121737097541562368"},{"1":"https://twitter.com/CodeClanScot/status/1121728954807783425"},{"1":"https://twitter.com/CodeClanScot/status/1121726029574418432"},{"1":"https://twitter.com/CodeClanScot/status/1121725932430135297"},{"1":"https://twitter.com/CodeClanScot/status/1121443185392345088"},{"1":"https://twitter.com/CodeClanScot/status/1121439822223163392"},{"1":"https://twitter.com/CodeClanScot/status/1121400633930731521"},{"1":"https://twitter.com/CodeClanScot/status/1121393860817620994"},{"1":"https://twitter.com/CodeClanScot/status/1121368515678699521"},{"1":"https://twitter.com/CodeClanScot/status/1121324838432456704"},{"1":"https://twitter.com/CodeClanScot/status/1121323140993437697"},{"1":"https://twitter.com/CodeClanScot/status/1121161629251637248"},{"1":"https://twitter.com/CodeClanScot/status/1121161542521827330"},{"1":"https://twitter.com/CodeClanScot/status/1121096949246124033"},{"1":"https://twitter.com/CodeClanScot/status/1121086799575691264"},{"1":"https://twitter.com/CodeClanScot/status/1121086221734879232"},{"1":"https://twitter.com/CodeClanScot/status/1121079177170628615"},{"1":"https://twitter.com/CodeClanScot/status/1121075889322758145"},{"1":"https://twitter.com/CodeClanScot/status/1121071745463721984"},{"1":"https://twitter.com/CodeClanScot/status/1121070927645749248"},{"1":"https://twitter.com/CodeClanScot/status/1121070911111610368"},{"1":"https://twitter.com/CodeClanScot/status/1121070879981678592"},{"1":"https://twitter.com/CodeClanScot/status/1121069045628002305"},{"1":"https://twitter.com/CodeClanScot/status/1121069013281464323"},{"1":"https://twitter.com/CodeClanScot/status/1121048249631215616"},{"1":"https://twitter.com/CodeClanScot/status/1121047915873615872"},{"1":"https://twitter.com/CodeClanScot/status/1121046700263641088"},{"1":"https://twitter.com/CodeClanScot/status/1121045367972409344"},{"1":"https://twitter.com/CodeClanScot/status/1121044402628120578"},{"1":"https://twitter.com/CodeClanScot/status/1121042609751953413"},{"1":"https://twitter.com/CodeClanScot/status/1121041662862659587"},{"1":"https://twitter.com/CodeClanScot/status/1121040632502419460"},{"1":"https://twitter.com/CodeClanScot/status/1121038966227075072"},{"1":"https://twitter.com/CodeClanScot/status/1121038875089080320"},{"1":"https://twitter.com/CodeClanScot/status/1121008864214822912"},{"1":"https://twitter.com/CodeClanScot/status/1121008547930750976"},{"1":"https://twitter.com/CodeClanScot/status/1121008541005959168"},{"1":"https://twitter.com/CodeClanScot/status/1121007450709217280"},{"1":"https://twitter.com/CodeClanScot/status/1121005462135148544"},{"1":"https://twitter.com/CodeClanScot/status/1121004606463578112"},{"1":"https://twitter.com/CodeClanScot/status/1121002610390110208"},{"1":"https://twitter.com/CodeClanScot/status/1121002514017587201"},{"1":"https://twitter.com/CodeClanScot/status/1121000024941502465"},{"1":"https://twitter.com/CodeClanScot/status/1120999885203963904"},{"1":"https://twitter.com/CodeClanScot/status/1120999069890109440"},{"1":"https://twitter.com/CodeClanScot/status/1120998055321509888"},{"1":"https://twitter.com/CodeClanScot/status/1120994673512910848"},{"1":"https://twitter.com/CodeClanScot/status/1120979961387671552"},{"1":"https://twitter.com/CodeClanScot/status/1120977983085391872"},{"1":"https://twitter.com/CodeClanScot/status/1120976782625267712"},{"1":"https://twitter.com/CodeClanScot/status/1120974862720425984"},{"1":"https://twitter.com/CodeClanScot/status/1120972732672434177"},{"1":"https://twitter.com/CodeClanScot/status/1120969633152897025"},{"1":"https://twitter.com/CodeClanScot/status/1120968251578703877"},{"1":"https://twitter.com/CodeClanScot/status/1120965135600898049"},{"1":"https://twitter.com/CodeClanScot/status/1120963970024771584"},{"1":"https://twitter.com/CodeClanScot/status/1120960736375734272"},{"1":"https://twitter.com/CodeClanScot/status/1120948637100642304"},{"1":"https://twitter.com/CodeClanScot/status/1120763869637562370"},{"1":"https://twitter.com/CodeClanScot/status/1120763446889459714"},{"1":"https://twitter.com/CodeClanScot/status/1120710351253909504"},{"1":"https://twitter.com/CodeClanScot/status/1120706502388539392"},{"1":"https://twitter.com/CodeClanScot/status/1120706429411893248"},{"1":"https://twitter.com/CodeClanScot/status/1120704141561614339"},{"1":"https://twitter.com/CodeClanScot/status/1120701814209433600"},{"1":"https://twitter.com/CodeClanScot/status/1120701507555549186"},{"1":"https://twitter.com/CodeClanScot/status/1120700542303526912"},{"1":"https://twitter.com/CodeClanScot/status/1120696718478254082"},{"1":"https://twitter.com/CodeClanScot/status/1120680633414619137"},{"1":"https://twitter.com/CodeClanScot/status/1120352016469983234"},{"1":"https://twitter.com/CodeClanScot/status/1120341983527043072"},{"1":"https://twitter.com/CodeClanScot/status/1120314174683459585"},{"1":"https://twitter.com/CodeClanScot/status/1120257509166604290"},{"1":"https://twitter.com/CodeClanScot/status/1120240640921567233"},{"1":"https://twitter.com/CodeClanScot/status/1119299934413570050"},{"1":"https://twitter.com/CodeClanScot/status/1119270041390931968"},{"1":"https://twitter.com/CodeClanScot/status/1119209451335163905"},{"1":"https://twitter.com/CodeClanScot/status/1119194207925751810"},{"1":"https://twitter.com/CodeClanScot/status/1119156221267730432"},{"1":"https://twitter.com/CodeClanScot/status/1118922517735976960"},{"1":"https://twitter.com/CodeClanScot/status/1118907592338808832"},{"1":"https://twitter.com/CodeClanScot/status/1118877319651909632"},{"1":"https://twitter.com/CodeClanScot/status/1118856701757751297"},{"1":"https://twitter.com/CodeClanScot/status/1118846994481545216"},{"1":"https://twitter.com/CodeClanScot/status/1118831809855467520"},{"1":"https://twitter.com/CodeClanScot/status/1118801539315970048"},{"1":"https://twitter.com/CodeClanScot/status/1118786420913709056"},{"1":"https://twitter.com/CodeClanScot/status/1118521337973223424"},{"1":"https://twitter.com/CodeClanScot/status/1118466979734671360"},{"1":"https://twitter.com/CodeClanScot/status/1118457238547464193"},{"1":"https://twitter.com/CodeClanScot/status/1118158312200126466"},{"1":"https://twitter.com/CodeClanScot/status/1118112823824068608"},{"1":"https://twitter.com/CodeClanScot/status/1118107857713541120"},{"1":"https://twitter.com/CodeClanScot/status/1117795776061636609"},{"1":"https://twitter.com/CodeClanScot/status/1117793166374076416"},{"1":"https://twitter.com/CodeClanScot/status/1117757663989903360"},{"1":"https://twitter.com/CodeClanScot/status/1117744181865263105"},{"1":"https://twitter.com/CodeClanScot/status/1117703231055044608"},{"1":"https://twitter.com/CodeClanScot/status/1116732370282004482"},{"1":"https://twitter.com/CodeClanScot/status/1116668659999694850"},{"1":"https://twitter.com/CodeClanScot/status/1116364480299114504"},{"1":"https://twitter.com/CodeClanScot/status/1116330394088034304"},{"1":"https://twitter.com/CodeClanScot/status/1116030666376908801"},{"1":"https://twitter.com/CodeClanScot/status/1115988721743142914"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[234]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Question 7. From your new joined data, create a new tibble
-codeclan_hashtags containing only tweet_id and hashtags, then convert
-hashtags into lowercase for analysis. Keep only those tweets with
-hashtags.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29kZWNsYW5faGFzaHRhZ3MgPC0gZnVsbF9qb2luKGNvZGVfY2xhbl9pbmZvLCB0d2VldHMsIGJ5PVwidHdlZXRfaWRcIikgXG5Db2RlY2xhbl9oYXNodGFnc19zZWxlY3RlZCA8LSBjb2RlY2xhbl9oYXNodGFncyAlPiUgXG4gICAgc2VsZWN0KHR3ZWV0X2lkLCBoYXNodGFncykgJT4lXG4gIG11dGF0ZShsb3djYXNlX2hhc2h0YWcgID0gc3RyX3RvX2xvd2VyKGhhc2h0YWdzKSkgJT4lXG4gIHNlbGVjdCgtaGFzaHRhZ3MpICU+JVxuICAgZHJvcF9uYShsb3djYXNlX2hhc2h0YWcpXG4gIFxuQ29kZWNsYW5faGFzaHRhZ3Nfc2VsZWN0ZWRcbmBgYCJ9 -->
-<pre class="r"><code>codeclan_hashtags &lt;- full_join(code_clan_info, tweets, by=&quot;tweet_id&quot;) 
-Codeclan_hashtags_selected &lt;- codeclan_hashtags %&gt;% 
-    select(tweet_id, hashtags) %&gt;%
-  mutate(lowcase_hashtag  = str_to_lower(hashtags)) %&gt;%
-  select(-hashtags) %&gt;%
-   drop_na(lowcase_hashtag)
-  
-Codeclan_hashtags_selected</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTE3LCJuY29sIjoyLCJzdW1tYXJ5Ijp7IkEgdGliYmxlIjpbIjExNyDDlyAyIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQnMxWVRYSWNOUlR1MkI0U216aHhKZGdRZmwxT0ZZVmQyUGlIUlZqaEJaVTFSVUZWVnRocXRhWmJZNDNVbHJwblBLeXlaOE1ST0FKSDRBZ2NJVWZnQkRGUFBaOW1ldG96bVRGaGdhdHNxZlcrOTcwZjZUMTErNGZ2WHB5c3ZWaUxvbWc1V2xtbXZ5MmFScTJmZm55Ky95eUtWcGJvNFU2MEVxMzY4WXJFajJuaUZ4L1FiM2xhL3ViUjBXbjVFdU01eHU4eG5tS01obVB4TjhZL01mNkJFVHhGamhFOHhmWndkTUM1M3pIQ25nUGV3WjZEUFhlSWNRTWo3TnRYR1AvQ0NGNExYZ3MvTFBndCtDMTRMWGd0L0xMZ3QrQy9CTzhsNHJzRS95VjRMNkYvQ2YwYytCejRIUGdjOW5QWXp4RmZEajl5OE9TQkIvWU5ualg0Tk9MU1lSMjQ3aXVNa0N2d1hnQjNBVndIdUE1d0hmalZPY2NJbk1TNnhMb0Vud1NmQkM0RFh3Yi9NdWhsME11Z2x3R2ZBcGRDbmtLZWdqY0ZyZzFjRzN4dDRBVHNDZmd2SUJmZ0V3RUhQZ0crQkhvSmVCUG9KOUJQb0o5QUw0RWVCNTdqT1laZURId01lekhrREhnR1hnYStjNnlmUS84Yyt1ZEJEdjB6NE02Z2Z3YitNOGgvanNMUEJ2MldLT1Iza2xJblF1QnBwUkE4dy95ZW4zZkxydnVYejQvYXhncnRKSGVaRWJtVnVuZ2J5YXJVUFdHMWNBdEFSU0oxWE5vMFJMTEVyekM3ejAwaXVHSmF5WGFJdWNWU3FjTERQU2RUelk2T0JuamU1bC9zZEZpUE9XNWxYdXg4dWIyVEt1WlMwL2ZUanR2WkJlNDU0YnlhWDJhY2s1c3lsa29XMVlJejdhTFByUER6ckdSOUlmT1R3OXlhU3BhWnd1amg2b2p0TWJINWJIckFjSDlHb2dleW16TmV1TExibGNYUk4xajlqQlNzYUplcEVNNHJUWUxtS08rUmNrT0JLSHBNbFNDanpMdkMySEcwZC9QUzVzYUpOOUkrSWRxZXZiVTMwMWUvSXJLK1VNb2ZnQ21VdEZMZjJaR0puYW1oeVM1dGVjd0thZlFJdVQwVnlabE9USnVpdnpWdVhlakMwcmtVV3BUVzNWTDU4Nm00UXJCdW5QcFp6STNONStUeHZ3N29maWh2cnNwNFJzay82VkxVVEdXQ3FTSmovc2o3L2VvTGNRSEFNekkycXM0YnUxYkZ5TE13OXpJdCtyRWM3K2NIcEUvTFVxZmhZRll0WVNSL21NaFVrZ2VlNXZod2xJdi96N0l2MUxIYnZ2NjVLU2orcEVyNFJKek5QUG1nNThUNUxhbXBrbDhNMHFPVFJxOXFKaHFpZXQ3SDVRM2hHNXJtWmxXUDhiQytnNW5kR2NkaUdzRUJFYVNXSmVXd0RPZDR1UHNHcGsrYktRMFluOXFSNXNlRWFwZEt1WUx4aTZwNWo3djZibTF6T3E0aHZKbjhyZWJtZVBRRVNjTElDck81N3dIVkRWRElaRUFldW5Fa0h4RnNjdThKSnFTbzljZjN2WjFxeFl0R0JvTzRWY25lNHVGZHYwMTBpNmJHSk9IKzk1N1grbmVxVE15VTk5UGQ5RytDYkowUFloOGdMeTNkZWxnODl1V3FKS1hoS2hlV1JqNHM3S3N4bVU5T0ptMUNtblRGVE9lZWs0Z2Jyd1pidUQ3OUVaemo5cGFQclpBdTgzaFgycDRZMU9ycFVkMndLMFIzZ2VSLzRtTXU2YjdzaXFvNDZpMXhab1hNcG52cVhYQzVzZlVkOE5lelRJUkpXVmU0Mng2SStoNXYxQU9rYlFsVWV4T0I0NWhLcHlkN1NTeC9tUmxSODNtUit0dGIrSFlJR2grU0JyMUlVU09ocTJ0NEtUU0s5VDJVNDdRK3RXQ3BMZ2k3Y1F4OVk1cm9qMVBWTm1zT2hreFBkSzJKakNTaUo1U2hZbkt6dXZYeHpaUlFvNGFlUDR3VkRSbGttcW1CazJPaVRlZGZvMU91Qk5NRFUxcUtWd2dMNGJJMDliZVlSWnIxakR0aThoOEpMZTNQTUQ1S2xrYUhoOTRaaWpNWjJ0SkRaZnFjT1hHV01hcFVsalk0VnEzcEh3U2VkYy96a3Y1Y1gxLy8yalJHTHJ0Z0xDeXUrV1FjdENsZi9vdnZkVVBscnNuOUJVVktTLzdmSGEyRzhoM2JXTmdvdGZjazJlZFpxUy8yajc3MkZpcjU4R2NkODdJMlh4cmFYTG9HVnl0OG13bWRTajM2VGxFc0ZpcTg4MUhJVmNRSDFhZFBDSVZXM1VGaHFPR0VGVzVVV0ttQ2kxNy9BNTQwMHhybUVRQUEifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["tweet_id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["lowcase_hashtag"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"345","2":"dundee"},{"1":"344","2":"tech"},{"1":"342","2":"techmums"},{"1":"341","2":"techmums"},{"1":"340","2":"techmums"},{"1":"336","2":"techmums"},{"1":"335","2":"forensicshoeprints"},{"1":"332","2":"forensicshoeprints"},{"1":"331","2":"forensicshoeprints"},{"1":"329","2":"inverness"},{"1":"327","2":"forensicshoeprints"},{"1":"326","2":"edinburgh"},{"1":"322","2":"cx"},{"1":"315","2":"codeclanlife"},{"1":"314","2":"agile"},{"1":"312","2":"signa11y"},{"1":"311","2":"c(\"javascript\", \"glasgow\", \"js\")"},{"1":"309","2":"c(\"a11y\", \"accessibility\", \"software\", \"huaweip30pro\", \"shotonhuawei\")"},{"1":"308","2":"c(\"tech\", \"dundee\")"},{"1":"307","2":"impactsummit19"},{"1":"305","2":"c(\"refugees\", \"impactsummit19\")"},{"1":"304","2":"impactsummit19"},{"1":"302","2":"c(\"impactsummit19\", \"values\", \"investors\")"},{"1":"301","2":"purpose"},{"1":"299","2":"impactsummit19"},{"1":"298","2":"c(\"vr\", \"impactsummit19\")"},{"1":"297","2":"impactsummit19"},{"1":"296","2":"impactsummit19"},{"1":"295","2":"c(\"wellness\", \"impactsummit19\", \"codeclanlife\")"},{"1":"292","2":"c(\"impactsummit19\", \"imagibation\")"},{"1":"291","2":"c(\"impactsummit19\", \"candofest\")"},{"1":"290","2":"c(\"impactsummit19\", \"candofest\")"},{"1":"289","2":"entrepreneurs"},{"1":"288","2":"c(\"impactsummit19\", \"candofest\")"},{"1":"285","2":"c(\"impactsummit19\", \"teambg\", \"bcorp\")"},{"1":"284","2":"impactsummit19"},{"1":"283","2":"c(\"impactsummit19\", \"candofest\")"},{"1":"281","2":"c(\"impactsummit19\", \"candofest\")"},{"1":"275","2":"techmumsclub"},{"1":"274","2":"techmums"},{"1":"269","2":"mentalhealthawarenessweek"},{"1":"268","2":"c(\"edinburgh\", \"codeclanlife\", \"techlife\", \"codenewbie\")"},{"1":"267","2":"c(\"coding\", \"inverness\")"},{"1":"264","2":"digitaltech2019"},{"1":"263","2":"digitaltech2019"},{"1":"261","2":"digitaltech2019"},{"1":"260","2":"digitaltech2019"},{"1":"259","2":"digitaltech2019"},{"1":"258","2":"digitaltech2019"},{"1":"256","2":"digitaltech2019"},{"1":"249","2":"c(\"inverness\", \"scotlandcando\")"},{"1":"246","2":"c(\"edinburgh\", \"coding\")"},{"1":"245","2":"digitaltech2019"},{"1":"241","2":"c(\"luckyg13\", \"glasgow\", \"codeclanlife\", \"glasgowlife\", \"tech\")"},{"1":"240","2":"glasgow"},{"1":"239","2":"codeclanlife"},{"1":"237","2":"c(\"webvr\", \"glasgow\")"},{"1":"226","2":"techmums"},{"1":"217","2":"codeclanlife"},{"1":"216","2":"c(\"graduation\", \"codeclanlife\", \"glasgowlife\")"},{"1":"215","2":"codeclanlife"},{"1":"213","2":"c(\"inverness\", \"codeclanscot\")"},{"1":"212","2":"c(\"fullstack\", \"javascript\")"},{"1":"211","2":"c(\"js\", \"javascript\", \"coding\")"},{"1":"208","2":"c(\"edinburgh\", \"java\")"},{"1":"204","2":"c(\"datacarpentry\", \"tidyverse\")"},{"1":"203","2":"c(\"scotlandcando\", \"eie19\")"},{"1":"202","2":"c(\"eie19\", \"edinburgh\")"},{"1":"201","2":"eie19"},{"1":"200","2":"eie19"},{"1":"199","2":"eie19"},{"1":"198","2":"eie19"},{"1":"196","2":"eie19"},{"1":"195","2":"techforgood"},{"1":"194","2":"data"},{"1":"192","2":"c(\"globalscots\", \"eie19\")"},{"1":"190","2":"eie19"},{"1":"187","2":"cybersecurity"},{"1":"186","2":"c(\"clientxperience\", \"cx\", \"eie19\", \"thirdsector\")"},{"1":"185","2":"eie19"},{"1":"184","2":"c(\"eie19\", \"edinburgh\")"},{"1":"182","2":"inverness"},{"1":"180","2":"c(\"techmums\", \"eie19\")"},{"1":"178","2":"eie19"},{"1":"175","2":"scottishtechsurvey2019"},{"1":"173","2":"c(\"eie19\", \"stem\")"},{"1":"172","2":"eie19"},{"1":"171","2":"eie19"},{"1":"170","2":"c(\"customer\", \"mentalhealth\")"},{"1":"169","2":"techmums"},{"1":"168","2":"eie19"},{"1":"167","2":"eie19"},{"1":"166","2":"c(\"esports\", \"eie19\", \"videogames\")"},{"1":"165","2":"eie19"},{"1":"164","2":"eie19"},{"1":"163","2":"eie19"},{"1":"161","2":"data"},{"1":"160","2":"c(\"eie19\", \"cx\")"},{"1":"158","2":"c(\"eie19\", \"scotlandisnow\", \"codeclanbiz\")"},{"1":"152","2":"techmums"},{"1":"149","2":"techmums"},{"1":"147","2":"c(\"fullstack\", \"javascript\")"},{"1":"146","2":"c(\"edinburgh\", \"codeclanlife\", \"techlife\")"},{"1":"144","2":"c(\"programming\", \"coding\")"},{"1":"142","2":"c(\"data\", \"glasgow\")"},{"1":"140","2":"c(\"datacarpentry\", \"tidyverse\")"},{"1":"137","2":"c(\"datacarpentry\", \"tidyverse\")"},{"1":"134","2":"inverness"},{"1":"133","2":"c(\"r\", \"glasgow\", \"tidyverse\")"},{"1":"131","2":"c(\"data\", \"scotland\")"},{"1":"129","2":"c(\"edinburgh\", \"developers\")"},{"1":"128","2":"glasgow"},{"1":"127","2":"c(\"programming\", \"webdevelopment\", \"dataanalysis\")"},{"1":"126","2":"springcleanyourcareer"},{"1":"125","2":"ios"},{"1":"124","2":"c(\"codeclanlife\", \"glasgowlife\")"},{"1":"120","2":"c(\"webvr\", \"glasgow\")"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[117]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
+<p>Write a function that pre-appends “The answer is:” to any character
+input, while for numeric input, it either just returns the number for
+numbers less than 10, or divides the number by 10 for numbers greater
+than 10. For anything else return “Invalid input”.</p>
+<p>function_name &lt;- function(argument_1, argument_2 = value){</p>
+<p>Do something with arguments</p>
+<p>return(output) }</p>
+<p>messed aroudn with 5 and 6 but cant ge tit right</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShkcGx5cikNCmBgYA0KDQozIE1WUA0KDQpRdWVzdGlvbiAxLg0KTG9hZCB0aGUgY29kZV9jbGFuX3R3ZWV0cy5jc3YgZGF0YS4gRmluZCB0aGUgbnVtYmVyIG9mIHJvd3MsIGNvbHVtbnMsIGFuZCBsaXN0IGFsbCB0aGUgdmFyaWFibGUgbmFtZXMuDQoNCmBgYHtyfQ0KdHdlZXRzIDwtIHJlYWRfY3N2KCJkYXRhL2NvZGVfY2xhbl90d2VldHMuY3N2IikNCmBgYA0KDQpgYGB7cn0NCm5yb3codHdlZXRzKQ0KDQpuY29sKHR3ZWV0cykNCg0KbmFtZXModHdlZXRzKQ0KYGBgDQoNCg0KDQpRdWVzdGlvbiAyLg0KRmluZCB0aGUgdG90YWwgbnVtYmVyIG9mIGZhdm91cml0ZXMgKHN0b3JlZCBpbiBmYXZvcml0ZV9jb3VudCkgdGhhdCBDb2RlQ2xhbiB0d2VldHMgaGF2ZSBnb3QuIERvbuKAmXQgYWRkIGEgdHdlZXTigJlzIGZhdm9yaXRlX2NvdW50IHRvIHRoZSB0b3RhbCB3aGVuIHRoZSB0d2VldCB3YXMgcXVvdGVkIChzZWUgdGhlIGlzX3F1b3RlIHZhcmlhYmxlKS4NCg0KYGBge3J9DQp0d2VldHNfbm90X3F1b3RlIDwtIGZpbHRlcih0d2VldHMsIGlzX3F1b3RlID09ICdGQUxTRScpDQoNCiAgDQp0d2VldHNfbm90X3F1b3RlICU+JSANCiAgc3VtbWFyaXNlKHN1bShmYXZvcml0ZV9jb3VudCkpICU+JSANCiAgcHVsbCgpDQoNCmBgYA0KUXVlc3Rpb24gMy4NClN1bW1hcmlzZSB0aGUgbWVhbiBudW1iZXIgb2YgcmV0d2VldHMgKHJldHdlZXRfY291bnQpLCBzcGxpdCBieSB0aGUgdHlwZSBvZiBwbGF0Zm9ybSB0aGF0IHdhcyB1c2VkIHRvIHR3ZWV0IChzb3VyY2UpLiBBZ2Fpbiwgb21pdCBxdW90ZWQgdHdlZXRzIGZyb20gdGhlIG1lYW4uDQoNCmBgYHtyfQ0KdHdlZXRzX25vdF9xdW90ZSAlPiUgDQogIGdyb3VwX2J5KHNvdXJjZSkgJT4lIA0KICAgIHN1bW1hcmlzZShtZWFuKHJldHdlZXRfY291bnQpKQ0KYGBgDQoNCg0KDQpRdWVzdGlvbiA0Lg0KQ291bnQgdGhlIHRvdGFsIG51bWJlciBvZiBsaWtlcyAoaS5lLiB0b3RhbCBvZiBmYXZvcml0ZV9jb3VudCksIHNwbGl0IGJ5IG1lZGlhIHR5cGUsIGFuZCBhcnJhbmdlIHRoZW0gZnJvbSBtb3N0IGxpa2VzIHRvIGxlYXN0LiBBc3N1bWUgdGhhdCBhbnkgdHdlZXRzIHdpdGhvdXQgYSBsaXN0ZWQgbWVkaWEgdHlwZSBhcmUgb2YgdHlwZSDigJx0ZXh04oCdLg0KDQpgYGB7cn0NCnR3ZWV0cyAlPiUgDQogIGdyb3VwX2J5KG1lZGlhX3R5cGUpICU+JSANCiAgc3VtbWFyaXNlKHN1bShmYXZvcml0ZV9jb3VudCkpICU+JSANCiAgbXV0YXRlKG1lZGlhX3R5cGU9IGNvYWxlc2NlKG1lZGlhX3R5cGUsICd0ZXh0JykpDQoNCnR3ZWV0cyAlPiUgDQogIGdyb3VwX2J5KG1lZGlhX3R5cGUpICU+JSANCiAgc3VtbWFyaXNlKHRvdGFsX2xpa2VzID0gc3VtKGZhdm9yaXRlX2NvdW50KSkgJT4lICNkb250IGZvcmdldCB0byByZW5hbWUgDQogIG11dGF0ZShtZWRpYV90eXBlPSBjb2FsZXNjZShtZWRpYV90eXBlLCAndGV4dCcpKQ0KDQpgYGANClF1ZXN0aW9uIDUuDQoNCkZpbmQgdGhlIG1lYW4gbnVtYmVyIG9mIGNoYXJhY3RlcnMgdGhhdCBhIENvZGVDbGFuIHR3ZWV0IGNvbnRhaW5zLiBZb3UgY2FuIGVpdGhlciBmaW5kIGEgd2F5IHRvIGNvdW50IHRoZSB0ZXh0IGluIHRoZSB0ZXh0IHZhcmlhYmxlLCBvciB1c2UgdGhlIHZhcmlhYmxlIGRpc3BsYXlfdGV4dF93aWR0aCB3aGljaCBjb250YWlucyBhIGNvdW50LiBDaGVja2luZyBib3RoIHdvdWxkIGJlIGEgZ29vZCBpZGVhIGlmIHBvc3NpYmxlIHRvIHNlZSBpZiB0aGV5IG1hdGNoIChidXQgaXTigJlzIG5vdCBlc3NlbnRpYWwpLg0KDQpgYGB7cn0NCnR3ZWV0cyAlPiUgDQogICAgc3VtbWFyaXNlKG1lYW4oZGlzcGxheV90ZXh0X3dpZHRoKSkgJT4lIA0KICBwdWxsKCkNCiMgYmVsb3cgZnJvbSB0aGlqbWVuDQoNCnR3ZWV0cyAlPiUgDQogIG11dGF0ZShsZW5ndGhfb2ZfdHdlZXRzID0gc3RyX2xlbmd0aCh0ZXh0KSkgJT4lIA0KICBzdW1tYXJpc2UobWVhbl9sZW5ndGgyID0gbWVhbihsZW5ndGhfb2ZfdHdlZXRzKSkNCg0KI2JlbG93IGZyb20ganVzdHluYQ0KdHdlZXRzICU+JQ0KICBzZWxlY3QodGV4dCkgJT4lDQogICBzdW1tYXJpc2UodHdlZXRfbWVhbl90ZXh0ID0gbWVhbihuY2hhcih0ZXh0KSwgbmEucm0gPSBUUlVFKSkNCmBgYA0KDQoNClF1ZXN0aW9uIDYuDQpUaGUgY29kZV9jbGFuX2luZm8uY3N2IGRhdGEgZmlsZSBjb250YWlucyBzdGF0dXNfdXJsIGFsb25nIHdpdGggb3RoZXIgaW5mby4gTG9hZCB0aGlzIGluLCBhbmQgam9pbiBpdCB0byB0aGUgY29kZV9jbGFuX3R3ZWV0cyB0aWJibGUsIHNvIHRoYXQgeW91IGhhdmUgYSBzdGF0dXNfdXJsIGZvciBlYWNoIHR3ZWV0LiBEZWNpZGUgd2hpY2ggdmFyaWFibGUgdG8gam9pbiB0aGUgdGliYmxlcyBvbi4NCg0KYGBge3J9DQpjb2RlX2NsYW5faW5mbyA8LSByZWFkX2NzdigiZGF0YS9jb2RlX2NsYW5faW5mby5jc3YiKQ0KYGBgDQpgYGB7cn0NCmZ1bGxfam9pbihjb2RlX2NsYW5faW5mbywgdHdlZXRzLCBieT0idHdlZXRfaWQiKSAlPiUgDQpzdW1tYXJpc2Uoc3RhdHVzX3VybCkNCmBgYA0KDQoNClF1ZXN0aW9uIDcuDQpGcm9tIHlvdXIgbmV3IGpvaW5lZCBkYXRhLCBjcmVhdGUgYSBuZXcgdGliYmxlIGNvZGVjbGFuX2hhc2h0YWdzIGNvbnRhaW5pbmcgb25seSB0d2VldF9pZCBhbmQgaGFzaHRhZ3MsIHRoZW4gY29udmVydCBoYXNodGFncyBpbnRvIGxvd2VyY2FzZSBmb3IgYW5hbHlzaXMuIEtlZXAgb25seSB0aG9zZSB0d2VldHMgd2l0aCBoYXNodGFncy4NCg0KYGBge3J9DQpjb2RlY2xhbl9oYXNodGFncyA8LSBmdWxsX2pvaW4oY29kZV9jbGFuX2luZm8sIHR3ZWV0cywgYnk9InR3ZWV0X2lkIikgDQpDb2RlY2xhbl9oYXNodGFnc19zZWxlY3RlZCA8LSBjb2RlY2xhbl9oYXNodGFncyAlPiUgDQogICAgc2VsZWN0KHR3ZWV0X2lkLCBoYXNodGFncykgJT4lDQogIG11dGF0ZShsb3djYXNlX2hhc2h0YWcgID0gc3RyX3RvX2xvd2VyKGhhc2h0YWdzKSkgJT4lDQogIHNlbGVjdCgtaGFzaHRhZ3MpICU+JQ0KICAgZHJvcF9uYShsb3djYXNlX2hhc2h0YWcpDQogIA0KQ29kZWNsYW5faGFzaHRhZ3Nfc2VsZWN0ZWQNCg0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpRdWVzdGlvbiAxLg0KRmluZCB0aGUgd2VhdGhlciBmb3JlY2FzdCBmb3IgdGhlIG5leHQgdGhyZWUgZGF5cyBvbmxpbmUuIENyZWF0ZSBhIGxpc3Qgb2YgbGlzdHMNCmluIHdoaWNoIGVhY2ggaW5uZXIgbGlzdCBzaG91bGQgYmUgbGFiZWxsZWQgd2l0aCB0aGUgbmFtZSBvZiB0aGUgZGF5IG9mIHRoZSANCndlZWsuIEVhY2ggaW5uZXIgbGlzdCBzaG91bGQgY29udGFpbiBuYW1lZCBlbGVtZW50cyB0ZWxsaW5nIHlvdSB0aGUgdGVtcGVyYXR1cmUsIA0KY2hhbmNlIG9mIHJhaW4gYW5kIHdpbmQgc3BlZWQuDQoNCmBgYHtyfQ0Kd2VhdGhlciA8LSBsaXN0KA0KICAgICAgICAgICAgICAgICJUaHVyc2RheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTQsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAyMCwgd2luZF9zcGVlZF9tcGggPSAxMSksDQogICAgICAgICAgICAgICAgIkZyaWRheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTYsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAxMCwgd2luZF9zcGVlZF9tcGggPSA4KSwNCiAgICAgICAgICAgICAgICAiU2F0dXJkYXkiID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE3LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gMTApDQopDQoNCndlYXRoZXINCmBgYA0KDQpRdWVzdGlvbiAyLg0KVXNpbmcgdGhlIGxpc3QgeW914oCZdmUganVzdCBtYWRlIGZpbmQ6DQoNCiAgICBUaGUgY2hhbmNlIG9mIHJhaW4gdG9tb3Jyb3cNCiAgICBUaGUgd2luZCBzcGVlZCBvbiB0aGUgZGF5IGFmdGVyIHRvbW9ycm93DQogICAgVGhlIHRlbXBlcmF0dXJlIHRvbW9ycm93Lg0KDQoNCmBgYHtyfQ0Kd2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50DQoNCndlYXRoZXIkRnJpZGF5JHdpbmRfc3BlZWRfbXBoDQoNCndlYXRoZXIkVGh1cnNkYXkkdGVtcGVyYXR1cmUNCg0KYGBgDQpRdWVzdGlvbiAzLg0KRmluZCBhIDE0IGRheSBmb3JlY2FzdCBvbmxpbmUgYW5kIGNyZWF0ZSBhIG1hdHJpeCBvZiB0aGUgZm9yZWNhc3RzIGZvciANCnRlbXBlcmF0dXJlLCB3aGVyZSBlYWNoIHdlZWsgaXMgb25lIHJvdyBhbmQgY29sdW1ucyBjb3JyZXNwb25kIHRvIGRheXMuDQoNCllvdSB3aWxsIHdhbnQgdG8gZ2l2ZSBhIG5hbWUgdG8gdGhlIG1hdHJpeCB5b3UgY3JlYXRlLg0KDQpgYGB7cn0NCmZvcmVjYXN0IDwtIG1hdHJpeChjKDE2LDIyLDIxLDE1LDE2LDE3LDE4LCAxOCwxNywxNywxNywxNywxNywxOCksIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgbnJvdyA9IDIsIG5jb2wgPSA3LCBieXJvdyA9IFRSVUUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBkaW1uYW1lcyA9IGxpc3QoYygiV2VlazEiLCAiV2VlazIiKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKCJNb25kYXkiLCAiVHVlc2RheSIsICJXZWRuZXNkYXkiLCJUaHVyc2RheSIsIkZyaWRheSIsIlNhdHVyZGF5IiwiU3VuZGF5IikpKQ0KDQpmb3JlY2FzdA0KYGBgDQpRdWVzdGlvbiA0Lg0KRnJvbSB0aGUgbWF0cml4IHlvdSBqdXN0IG1hZGUgc2VsZWN0Og0KDQogICAgVGhlIHRoaXJkIGRheSBvZiB0aGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgd2hvbGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgZmlyc3QsIHRoaXJkIGFuZCBmaWZ0aCBkYXlzIGluIGJvdGggd2Vla3MuDQoNCmBgYHtyfQ0KZm9yZWNhc3RbMiwzXQ0KZm9yZWNhc3RbMiwxOjddDQpmb3JlY2FzdFssIGMoMSwgMywgNSldDQpgYGANClF1ZXN0aW9uIDUuDQoNCldyaXRlIGEgZnVuY3Rpb24gdGhhdCBwcmUtYXBwZW5kcyDigJxUaGUgYW5zd2VyIGlzOuKAnSB0byBhbnkgY2hhcmFjdGVyIGlucHV0LCANCndoaWxlIGZvciBudW1lcmljIGlucHV0LCBpdCBlaXRoZXIganVzdCByZXR1cm5zIHRoZSBudW1iZXIgZm9yIG51bWJlcnMgbGVzcyANCnRoYW4gMTAsIG9yIGRpdmlkZXMgdGhlIG51bWJlciBieSAxMCBmb3IgbnVtYmVycyBncmVhdGVyIHRoYW4gMTAuIEZvciBhbnl0aGluZyANCmVsc2UgcmV0dXJuIOKAnEludmFsaWQgaW5wdXTigJ0uDQoNCmZ1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oYXJndW1lbnRfMSwgYXJndW1lbnRfMiA9IHZhbHVlKXsNCiAgDQogIERvIHNvbWV0aGluZyB3aXRoIGFyZ3VtZW50cw0KICANCiAgcmV0dXJuKG91dHB1dCkNCn0NCg0KbWVzc2VkIGFyb3VkbiB3aXRoIDUgYW5kIDYgYnV0IGNhbnQgZ2UgdGl0IHJpZ2h0DQo=</div>
 
 
 
