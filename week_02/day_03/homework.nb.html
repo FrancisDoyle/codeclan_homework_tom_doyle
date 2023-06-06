@@ -1758,215 +1758,123 @@ the name of the day of the week. Each inner list should contain named
 elements telling you the temperature, chance of rain and wind speed.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciA8LSBsaXN0KFxuICAgICAgICAgICAgICAgIFxcVGh1cnNkYXlcXCA9IGxpc3QodGVtcGVyYXR1cmUgPSAxNCwgY2hhbmNlX29mX3JhaW5fcGVyY2VudCA9IDIwLCB3aW5kX3NwZWVkX21waCA9IDExKSxcbiAgICAgICAgICAgICAgICBcXEZyaWRheVxcID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE2LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gOCksXG4gICAgICAgICAgICAgICAgXFxTYXR1cmRheVxcID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE3LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gMTApXG4pXG5cbndlYXRoZXJcbmBgYFxuYGBgIn0= -->
-<pre class="r"><code>```r
-weather &lt;- list(
-                \Thursday\ = list(temperature = 14, chance_of_rain_percent = 20, wind_speed_mph = 11),
-                \Friday\ = list(temperature = 16, chance_of_rain_percent = 10, wind_speed_mph = 8),
-                \Saturday\ = list(temperature = 17, chance_of_rain_percent = 10, wind_speed_mph = 10)
-)
-
-weather</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiJFRodXJzZGF5XG4kVGh1cnNkYXkkdGVtcGVyYXR1cmVcblsxXSAxNFxuXG4kVGh1cnNkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDIwXG5cbiRUaHVyc2RheSR3aW5kX3NwZWVkX21waFxuWzFdIDExXG5cblxuJEZyaWRheVxuJEZyaWRheSR0ZW1wZXJhdHVyZVxuWzFdIDE2XG5cbiRGcmlkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRGcmlkYXkkd2luZF9zcGVlZF9tcGhcblsxXSA4XG5cblxuJFNhdHVyZGF5XG4kU2F0dXJkYXkkdGVtcGVyYXR1cmVcblsxXSAxN1xuXG4kU2F0dXJkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRTYXR1cmRheSR3aW5kX3NwZWVkX21waFxuWzFdIDEwXG4ifQ== --&gt;
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlclxuXG5gYGAifQ== -->
+<pre class="r"><code>weather
 </code></pre>
-<p>$Thursday <span class="math inline">\(Thursday\)</span>temperature
-[1] 14</p>
-<p><span class="math inline">\(Thursday\)</span>chance_of_rain_percent
-[1] 20</p>
-<p><span class="math inline">\(Thursday\)</span>wind_speed_mph [1]
-11</p>
-<p>$Friday <span class="math inline">\(Friday\)</span>temperature [1]
-16</p>
-<p><span class="math inline">\(Friday\)</span>chance_of_rain_percent [1]
-10</p>
-<p><span class="math inline">\(Friday\)</span>wind_speed_mph [1] 8</p>
-<p>$Saturday <span class="math inline">\(Saturday\)</span>temperature
-[1] 17</p>
-<p><span class="math inline">\(Saturday\)</span>chance_of_rain_percent
-[1] 10</p>
-<p><span class="math inline">\(Saturday\)</span>wind_speed_mph [1]
-10</p>
-<pre><code>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJFRodXJzZGF5XG4kVGh1cnNkYXkkdGVtcGVyYXR1cmVcblsxXSAxNFxuXG4kVGh1cnNkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDIwXG5cbiRUaHVyc2RheSR3aW5kX3NwZWVkX21waFxuWzFdIDExXG5cblxuJEZyaWRheVxuJEZyaWRheSR0ZW1wZXJhdHVyZVxuWzFdIDE2XG5cbiRGcmlkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRGcmlkYXkkd2luZF9zcGVlZF9tcGhcblsxXSA4XG5cblxuJFNhdHVyZGF5XG4kU2F0dXJkYXkkdGVtcGVyYXR1cmVcblsxXSAxN1xuXG4kU2F0dXJkYXkkY2hhbmNlX29mX3JhaW5fcGVyY2VudFxuWzFdIDEwXG5cbiRTYXR1cmRheSR3aW5kX3NwZWVkX21waFxuWzFdIDEwXG4ifQ== -->
+<pre><code>$Thursday
+$Thursday$temperature
+[1] 14
+
+$Thursday$chance_of_rain_percent
+[1] 20
+
+$Thursday$wind_speed_mph
+[1] 11
 
 
-&lt;!-- rnb-output-end --&gt;
+$Friday
+$Friday$temperature
+[1] 16
 
-&lt;!-- rnb-chunk-end --&gt;
+$Friday$chance_of_rain_percent
+[1] 10
 
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-Question 2.
-Using the list you’ve just made find:
-
-    The chance of rain tomorrow
-    The wind speed on the day after tomorrow
-    The temperature tomorrow.
+$Friday$wind_speed_mph
+[1] 8
 
 
+$Saturday
+$Saturday$temperature
+[1] 17
 
-&lt;!-- rnb-text-end --&gt;
+$Saturday$chance_of_rain_percent
+[1] 10
 
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50XG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-weather$Thursday$chance_of_rain_percent</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwXG4ifQ== --&gt;
-</code></pre>
-<p>[1] 20</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRGcmlkYXkkd2luZF9zcGVlZF9tcGhcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-weather$Friday$wind_speed_mph</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDhcbiJ9 --&gt;
-</code></pre>
-<p>[1] 8</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxud2VhdGhlciRUaHVyc2RheSR0ZW1wZXJhdHVyZVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-weather$Thursday$temperature</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE0XG4ifQ== --&gt;
-</code></pre>
-<p>[1] 14</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-Question 3.
-Find a 14 day forecast online and create a matrix of the forecasts for 
-temperature, where each week is one row and columns correspond to days.
-
-You will want to give a name to the matrix you create.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3QgPC0gbWF0cml4KGMoMTYsMjIsMjEsMTUsMTYsMTcsMTgsIDE4LDE3LDE3LDE3LDE3LDE3LDE4KSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBucm93ID0gMiwgbmNvbCA9IDcsIGJ5cm93ID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpbW5hbWVzID0gbGlzdChjKFxcV2VlazFcXCwgXFxXZWVrMlxcKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKFxcTW9uZGF5XFwsIFxcVHVlc2RheVxcLCBcXFdlZG5lc2RheVxcLFxcVGh1cnNkYXlcXCxcXEZyaWRheVxcLFxcU2F0dXJkYXlcXCxcXFN1bmRheVxcKSkpXG5cbmZvcmVjYXN0XG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-forecast &lt;- matrix(c(16,22,21,15,16,17,18, 18,17,17,17,17,17,18), 
+$Saturday$wind_speed_mph
+[1] 10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Question 2. Using the list you’ve just made find:</p>
+<pre><code>The chance of rain tomorrow
+The wind speed on the day after tomorrow
+The temperature tomorrow.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50XG5gYGAifQ== -->
+<pre class="r"><code>weather$Thursday$chance_of_rain_percent</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwXG4ifQ== -->
+<pre><code>[1] 20</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlciRGcmlkYXkkd2luZF9zcGVlZF9tcGhcbmBgYCJ9 -->
+<pre class="r"><code>weather$Friday$wind_speed_mph</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDhcbiJ9 -->
+<pre><code>[1] 8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlciRUaHVyc2RheSR0ZW1wZXJhdHVyZVxuYGBgIn0= -->
+<pre class="r"><code>weather$Thursday$temperature</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE0XG4ifQ== -->
+<pre><code>[1] 14</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Question 3. Find a 14 day forecast online and create a matrix of the
+forecasts for temperature, where each week is one row and columns
+correspond to days.</p>
+<p>You will want to give a name to the matrix you create.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yZWNhc3QgPC0gbWF0cml4KGMoMTYsMjIsMjEsMTUsMTYsMTcsMTgsIDE4LDE3LDE3LDE3LDE3LDE3LDE4KSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBucm93ID0gMiwgbmNvbCA9IDcsIGJ5cm93ID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGRpbW5hbWVzID0gbGlzdChjKFwiV2VlazFcIiwgXCJXZWVrMlwiKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKFwiTW9uZGF5XCIsIFwiVHVlc2RheVwiLCBcIldlZG5lc2RheVwiLFwiVGh1cnNkYXlcIixcIkZyaWRheVwiLFwiU2F0dXJkYXlcIixcIlN1bmRheVwiKSkpXG5cbmZvcmVjYXN0XG5gYGAifQ== -->
+<pre class="r"><code>forecast &lt;- matrix(c(16,22,21,15,16,17,18, 18,17,17,17,17,17,18), 
                            nrow = 2, ncol = 7, byrow = TRUE,
-                           dimnames = list(c(\Week1\, \Week2\),
-                                           c(\Monday\, \Tuesday\, \Wednesday\,\Thursday\,\Friday\,\Saturday\,\Sunday\)))
+                           dimnames = list(c(&quot;Week1&quot;, &quot;Week2&quot;),
+                                           c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;,&quot;Thursday&quot;,&quot;Friday&quot;,&quot;Saturday&quot;,&quot;Sunday&quot;)))
 
 forecast</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFR1ZXNkYXkgV2VkbmVzZGF5IFRodXJzZGF5IEZyaWRheSBTYXR1cmRheSBTdW5kYXlcbldlZWsxICAgICAxNiAgICAgIDIyICAgICAgICAyMSAgICAgICAxNSAgICAgMTYgICAgICAgMTcgICAgIDE4XG5XZWVrMiAgICAgMTggICAgICAxNyAgICAgICAgMTcgICAgICAgMTcgICAgIDE3ICAgICAgIDE3ICAgICAxOFxuIn0= --&gt;
-</code></pre>
-<pre><code>  Monday Tuesday Wednesday Thursday Friday Saturday Sunday</code></pre>
-<p>Week1 16 22 21 15 16 17 18 Week2 18 17 17 17 17 17 18</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-Question 4.
-From the matrix you just made select:
-
-    The third day of the second week
-    The whole second week
-    The first, third and fifth days in both weeks.
-
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbMiwzXVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-forecast[2,3]</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE3XG4ifQ== --&gt;
-</code></pre>
-<p>[1] 17</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbMiwxOjddXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-forecast[2,1:7]</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgTW9uZGF5ICAgVHVlc2RheSBXZWRuZXNkYXkgIFRodXJzZGF5ICAgIEZyaWRheSAgU2F0dXJkYXkgICAgU3VuZGF5IFxuICAgICAgIDE4ICAgICAgICAxNyAgICAgICAgMTcgICAgICAgIDE3ICAgICAgICAxNyAgICAgICAgMTcgICAgICAgIDE4IFxuIn0= --&gt;
-</code></pre>
-<p>Monday Tuesday Wednesday Thursday Friday Saturday Sunday 18 17 17 17
-17 17 18</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZm9yZWNhc3RbLCBjKDEsIDMsIDUpXVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-forecast[, c(1, 3, 5)]</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFdlZG5lc2RheSBGcmlkYXlcbldlZWsxICAgICAxNiAgICAgICAgMjEgICAgIDE2XG5XZWVrMiAgICAgMTggICAgICAgIDE3ICAgICAxN1xuIn0= --&gt;
-</code></pre>
-<pre><code>  Monday Wednesday Friday</code></pre>
-<p>Week1 16 21 16 Week2 18 17 17 ```</p>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFR1ZXNkYXkgV2VkbmVzZGF5IFRodXJzZGF5IEZyaWRheSBTYXR1cmRheVxuV2VlazEgICAgIDE2ICAgICAgMjIgICAgICAgIDIxICAgICAgIDE1ICAgICAxNiAgICAgICAxN1xuV2VlazIgICAgIDE4ICAgICAgMTcgICAgICAgIDE3ICAgICAgIDE3ICAgICAxNyAgICAgICAxN1xuICAgICAgU3VuZGF5XG5XZWVrMSAgICAgMThcbldlZWsyICAgICAxOFxuIn0= -->
+<pre><code>      Monday Tuesday Wednesday Thursday Friday Saturday
+Week1     16      22        21       15     16       17
+Week2     18      17        17       17     17       17
+      Sunday
+Week1     18
+Week2     18</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Question 4. From the matrix you just made select:</p>
+<pre><code>The third day of the second week
+The whole second week
+The first, third and fifth days in both weeks.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yZWNhc3RbMiwzXVxuYGBgIn0= -->
+<pre class="r"><code>forecast[2,3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE3XG4ifQ== -->
+<pre><code>[1] 17</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yZWNhc3RbMiwxOjddXG5gYGAifQ== -->
+<pre class="r"><code>forecast[2,1:7]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTW9uZGF5ICAgVHVlc2RheSBXZWRuZXNkYXkgIFRodXJzZGF5ICAgIEZyaWRheSBcbiAgICAgICAxOCAgICAgICAgMTcgICAgICAgIDE3ICAgICAgICAxNyAgICAgICAgMTcgXG4gU2F0dXJkYXkgICAgU3VuZGF5IFxuICAgICAgIDE3ICAgICAgICAxOCBcbiJ9 -->
+<pre><code>   Monday   Tuesday Wednesday  Thursday    Friday 
+       18        17        17        17        17 
+ Saturday    Sunday 
+       17        18 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yZWNhc3RbLCBjKDEsIDMsIDUpXVxuYGBgIn0= -->
+<pre class="r"><code>forecast[, c(1, 3, 5)]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgTW9uZGF5IFdlZG5lc2RheSBGcmlkYXlcbldlZWsxICAgICAxNiAgICAgICAgMjEgICAgIDE2XG5XZWVrMiAgICAgMTggICAgICAgIDE3ICAgICAxN1xuIn0= -->
+<pre><code>      Monday Wednesday Friday
+Week1     16        21     16
+Week2     18        17     17</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1980,8 +1888,51 @@ than 10. For anything else return “Invalid input”.</p>
 <p>return(output) }</p>
 <p>messed aroudn with 5 and 6 but cant ge tit right</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5zd2VyX29yX2RpdmlkZSA8LSBmdW5jdGlvbih4KSB7XG4gIGlmIChpcy5jaGFyYWN0ZXIoeCkpIHtcbiAgICByZXR1cm4ocGFzdGUoXCJUaGUgYW5zd2VyIGlzOiBcIiwgeCkpXG4gIH1cblxuICBpZiAoaXMubnVtZXJpYyh4KSkge1xuICAgIGlmICh4IDwgMTApIHtcbiAgICAgIHJldHVybih4KVxuICAgIH0gZWxzZSB7XG4gICAgICByZXR1cm4oeCAvIDEwKVxuICAgIH1cbiAgfVxuXG4gIHJldHVybihcIkludmFsaWQgaW5wdXRcIilcbn1cbmBgYCJ9 -->
+<pre class="r"><code>answer_or_divide &lt;- function(x) {
+  if (is.character(x)) {
+    return(paste(&quot;The answer is: &quot;, x))
+  }
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpRdWVzdGlvbiAxLg0KRmluZCB0aGUgd2VhdGhlciBmb3JlY2FzdCBmb3IgdGhlIG5leHQgdGhyZWUgZGF5cyBvbmxpbmUuIENyZWF0ZSBhIGxpc3Qgb2YgbGlzdHMNCmluIHdoaWNoIGVhY2ggaW5uZXIgbGlzdCBzaG91bGQgYmUgbGFiZWxsZWQgd2l0aCB0aGUgbmFtZSBvZiB0aGUgZGF5IG9mIHRoZSANCndlZWsuIEVhY2ggaW5uZXIgbGlzdCBzaG91bGQgY29udGFpbiBuYW1lZCBlbGVtZW50cyB0ZWxsaW5nIHlvdSB0aGUgdGVtcGVyYXR1cmUsIA0KY2hhbmNlIG9mIHJhaW4gYW5kIHdpbmQgc3BlZWQuDQoNCmBgYHtyfQ0Kd2VhdGhlciA8LSBsaXN0KA0KICAgICAgICAgICAgICAgICJUaHVyc2RheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTQsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAyMCwgd2luZF9zcGVlZF9tcGggPSAxMSksDQogICAgICAgICAgICAgICAgIkZyaWRheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTYsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAxMCwgd2luZF9zcGVlZF9tcGggPSA4KSwNCiAgICAgICAgICAgICAgICAiU2F0dXJkYXkiID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE3LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gMTApDQopDQoNCndlYXRoZXINCmBgYA0KDQpRdWVzdGlvbiAyLg0KVXNpbmcgdGhlIGxpc3QgeW914oCZdmUganVzdCBtYWRlIGZpbmQ6DQoNCiAgICBUaGUgY2hhbmNlIG9mIHJhaW4gdG9tb3Jyb3cNCiAgICBUaGUgd2luZCBzcGVlZCBvbiB0aGUgZGF5IGFmdGVyIHRvbW9ycm93DQogICAgVGhlIHRlbXBlcmF0dXJlIHRvbW9ycm93Lg0KDQoNCmBgYHtyfQ0Kd2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50DQoNCndlYXRoZXIkRnJpZGF5JHdpbmRfc3BlZWRfbXBoDQoNCndlYXRoZXIkVGh1cnNkYXkkdGVtcGVyYXR1cmUNCg0KYGBgDQpRdWVzdGlvbiAzLg0KRmluZCBhIDE0IGRheSBmb3JlY2FzdCBvbmxpbmUgYW5kIGNyZWF0ZSBhIG1hdHJpeCBvZiB0aGUgZm9yZWNhc3RzIGZvciANCnRlbXBlcmF0dXJlLCB3aGVyZSBlYWNoIHdlZWsgaXMgb25lIHJvdyBhbmQgY29sdW1ucyBjb3JyZXNwb25kIHRvIGRheXMuDQoNCllvdSB3aWxsIHdhbnQgdG8gZ2l2ZSBhIG5hbWUgdG8gdGhlIG1hdHJpeCB5b3UgY3JlYXRlLg0KDQpgYGB7cn0NCmZvcmVjYXN0IDwtIG1hdHJpeChjKDE2LDIyLDIxLDE1LDE2LDE3LDE4LCAxOCwxNywxNywxNywxNywxNywxOCksIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgbnJvdyA9IDIsIG5jb2wgPSA3LCBieXJvdyA9IFRSVUUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBkaW1uYW1lcyA9IGxpc3QoYygiV2VlazEiLCAiV2VlazIiKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKCJNb25kYXkiLCAiVHVlc2RheSIsICJXZWRuZXNkYXkiLCJUaHVyc2RheSIsIkZyaWRheSIsIlNhdHVyZGF5IiwiU3VuZGF5IikpKQ0KDQpmb3JlY2FzdA0KYGBgDQpRdWVzdGlvbiA0Lg0KRnJvbSB0aGUgbWF0cml4IHlvdSBqdXN0IG1hZGUgc2VsZWN0Og0KDQogICAgVGhlIHRoaXJkIGRheSBvZiB0aGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgd2hvbGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgZmlyc3QsIHRoaXJkIGFuZCBmaWZ0aCBkYXlzIGluIGJvdGggd2Vla3MuDQoNCmBgYHtyfQ0KZm9yZWNhc3RbMiwzXQ0KZm9yZWNhc3RbMiwxOjddDQpmb3JlY2FzdFssIGMoMSwgMywgNSldDQpgYGANClF1ZXN0aW9uIDUuDQoNCldyaXRlIGEgZnVuY3Rpb24gdGhhdCBwcmUtYXBwZW5kcyDigJxUaGUgYW5zd2VyIGlzOuKAnSB0byBhbnkgY2hhcmFjdGVyIGlucHV0LCANCndoaWxlIGZvciBudW1lcmljIGlucHV0LCBpdCBlaXRoZXIganVzdCByZXR1cm5zIHRoZSBudW1iZXIgZm9yIG51bWJlcnMgbGVzcyANCnRoYW4gMTAsIG9yIGRpdmlkZXMgdGhlIG51bWJlciBieSAxMCBmb3IgbnVtYmVycyBncmVhdGVyIHRoYW4gMTAuIEZvciBhbnl0aGluZyANCmVsc2UgcmV0dXJuIOKAnEludmFsaWQgaW5wdXTigJ0uDQoNCmZ1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oYXJndW1lbnRfMSwgYXJndW1lbnRfMiA9IHZhbHVlKXsNCiAgDQogIERvIHNvbWV0aGluZyB3aXRoIGFyZ3VtZW50cw0KICANCiAgcmV0dXJuKG91dHB1dCkNCn0NCg0KbWVzc2VkIGFyb3VkbiB3aXRoIDUgYW5kIDYgYnV0IGNhbnQgZ2UgdGl0IHJpZ2h0DQo=</div>
+  if (is.numeric(x)) {
+    if (x &lt; 10) {
+      return(x)
+    } else {
+      return(x / 10)
+    }
+  }
+
+  return(&quot;Invalid input&quot;)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Question 6. Write a function which checks if two vectors have the
+same elements.</p>
+<pre><code>If they have the same elements in the same order, return “Exactly the same”
+If they have the same elements but in a different order, return “The same”
+If they don’t have the same elements, return “Different”.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXNfc2FtZV92ZWN0b3IgPC0gZnVuY3Rpb24odmVjdG9yXzEsIHZlY3Rvcl8yKSB7XG4gIGlmIChhbGwodmVjdG9yXzEgPT0gdmVjdG9yXzIpKSB7XG4gICAgcmV0dXJuKFwiRXhhY3RseSB0aGUgc2FtZVwiKVxuICB9XG5cbiAgaWYgKGFsbChzb3J0KHZlY3Rvcl8xKSA9PSBzb3J0KHZlY3Rvcl8yKSkpIHtcbiAgICByZXR1cm4oXCJUaGUgc2FtZVwiKVxuICB9XG5cbiAgcmV0dXJuKFwiRGlmZmVyZW50XCIpXG59XG5gYGAifQ== -->
+<pre class="r"><code>is_same_vector &lt;- function(vector_1, vector_2) {
+  if (all(vector_1 == vector_2)) {
+    return(&quot;Exactly the same&quot;)
+  }
+
+  if (all(sort(vector_1) == sort(vector_2))) {
+    return(&quot;The same&quot;)
+  }
+
+  return(&quot;Different&quot;)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpRdWVzdGlvbiAxLg0KRmluZCB0aGUgd2VhdGhlciBmb3JlY2FzdCBmb3IgdGhlIG5leHQgdGhyZWUgZGF5cyBvbmxpbmUuIENyZWF0ZSBhIGxpc3Qgb2YgbGlzdHMNCmluIHdoaWNoIGVhY2ggaW5uZXIgbGlzdCBzaG91bGQgYmUgbGFiZWxsZWQgd2l0aCB0aGUgbmFtZSBvZiB0aGUgZGF5IG9mIHRoZSANCndlZWsuIEVhY2ggaW5uZXIgbGlzdCBzaG91bGQgY29udGFpbiBuYW1lZCBlbGVtZW50cyB0ZWxsaW5nIHlvdSB0aGUgdGVtcGVyYXR1cmUsIA0KY2hhbmNlIG9mIHJhaW4gYW5kIHdpbmQgc3BlZWQuDQoNCmBgYHtyfQ0Kd2VhdGhlciA8LSBsaXN0KA0KICAgICAgICAgICAgICAgICJUaHVyc2RheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTQsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAyMCwgd2luZF9zcGVlZF9tcGggPSAxMSksDQogICAgICAgICAgICAgICAgIkZyaWRheSIgPSBsaXN0KHRlbXBlcmF0dXJlID0gMTYsIGNoYW5jZV9vZl9yYWluX3BlcmNlbnQgPSAxMCwgd2luZF9zcGVlZF9tcGggPSA4KSwNCiAgICAgICAgICAgICAgICAiU2F0dXJkYXkiID0gbGlzdCh0ZW1wZXJhdHVyZSA9IDE3LCBjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50ID0gMTAsIHdpbmRfc3BlZWRfbXBoID0gMTApDQopDQoNCndlYXRoZXINCmBgYA0KDQpRdWVzdGlvbiAyLg0KVXNpbmcgdGhlIGxpc3QgeW914oCZdmUganVzdCBtYWRlIGZpbmQ6DQoNCiAgICBUaGUgY2hhbmNlIG9mIHJhaW4gdG9tb3Jyb3cNCiAgICBUaGUgd2luZCBzcGVlZCBvbiB0aGUgZGF5IGFmdGVyIHRvbW9ycm93DQogICAgVGhlIHRlbXBlcmF0dXJlIHRvbW9ycm93Lg0KDQoNCmBgYHtyfQ0Kd2VhdGhlciRUaHVyc2RheSRjaGFuY2Vfb2ZfcmFpbl9wZXJjZW50DQoNCndlYXRoZXIkRnJpZGF5JHdpbmRfc3BlZWRfbXBoDQoNCndlYXRoZXIkVGh1cnNkYXkkdGVtcGVyYXR1cmUNCg0KYGBgDQpRdWVzdGlvbiAzLg0KRmluZCBhIDE0IGRheSBmb3JlY2FzdCBvbmxpbmUgYW5kIGNyZWF0ZSBhIG1hdHJpeCBvZiB0aGUgZm9yZWNhc3RzIGZvciANCnRlbXBlcmF0dXJlLCB3aGVyZSBlYWNoIHdlZWsgaXMgb25lIHJvdyBhbmQgY29sdW1ucyBjb3JyZXNwb25kIHRvIGRheXMuDQoNCllvdSB3aWxsIHdhbnQgdG8gZ2l2ZSBhIG5hbWUgdG8gdGhlIG1hdHJpeCB5b3UgY3JlYXRlLg0KDQpgYGB7cn0NCmZvcmVjYXN0IDwtIG1hdHJpeChjKDE2LDIyLDIxLDE1LDE2LDE3LDE4LCAxOCwxNywxNywxNywxNywxNywxOCksIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgbnJvdyA9IDIsIG5jb2wgPSA3LCBieXJvdyA9IFRSVUUsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBkaW1uYW1lcyA9IGxpc3QoYygiV2VlazEiLCAiV2VlazIiKSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjKCJNb25kYXkiLCAiVHVlc2RheSIsICJXZWRuZXNkYXkiLCJUaHVyc2RheSIsIkZyaWRheSIsIlNhdHVyZGF5IiwiU3VuZGF5IikpKQ0KDQpmb3JlY2FzdA0KYGBgDQpRdWVzdGlvbiA0Lg0KRnJvbSB0aGUgbWF0cml4IHlvdSBqdXN0IG1hZGUgc2VsZWN0Og0KDQogICAgVGhlIHRoaXJkIGRheSBvZiB0aGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgd2hvbGUgc2Vjb25kIHdlZWsNCiAgICBUaGUgZmlyc3QsIHRoaXJkIGFuZCBmaWZ0aCBkYXlzIGluIGJvdGggd2Vla3MuDQoNCmBgYHtyfQ0KZm9yZWNhc3RbMiwzXQ0KZm9yZWNhc3RbMiwxOjddDQpmb3JlY2FzdFssIGMoMSwgMywgNSldDQpgYGANClF1ZXN0aW9uIDUuDQoNCldyaXRlIGEgZnVuY3Rpb24gdGhhdCBwcmUtYXBwZW5kcyDigJxUaGUgYW5zd2VyIGlzOuKAnSB0byBhbnkgY2hhcmFjdGVyIGlucHV0LCANCndoaWxlIGZvciBudW1lcmljIGlucHV0LCBpdCBlaXRoZXIganVzdCByZXR1cm5zIHRoZSBudW1iZXIgZm9yIG51bWJlcnMgbGVzcyANCnRoYW4gMTAsIG9yIGRpdmlkZXMgdGhlIG51bWJlciBieSAxMCBmb3IgbnVtYmVycyBncmVhdGVyIHRoYW4gMTAuIEZvciBhbnl0aGluZyANCmVsc2UgcmV0dXJuIOKAnEludmFsaWQgaW5wdXTigJ0uDQoNCmZ1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oYXJndW1lbnRfMSwgYXJndW1lbnRfMiA9IHZhbHVlKXsNCiAgDQogIERvIHNvbWV0aGluZyB3aXRoIGFyZ3VtZW50cw0KICANCiAgcmV0dXJuKG91dHB1dCkNCn0NCg0KbWVzc2VkIGFyb3VkbiB3aXRoIDUgYW5kIDYgYnV0IGNhbnQgZ2UgdGl0IHJpZ2h0DQoNCmBgYHtyfQ0KYW5zd2VyX29yX2RpdmlkZSA8LSBmdW5jdGlvbih4KSB7DQogIGlmIChpcy5jaGFyYWN0ZXIoeCkpIHsNCiAgICByZXR1cm4ocGFzdGUoIlRoZSBhbnN3ZXIgaXM6ICIsIHgpKQ0KICB9DQoNCiAgaWYgKGlzLm51bWVyaWMoeCkpIHsNCiAgICBpZiAoeCA8IDEwKSB7DQogICAgICByZXR1cm4oeCkNCiAgICB9IGVsc2Ugew0KICAgICAgcmV0dXJuKHggLyAxMCkNCiAgICB9DQogIH0NCg0KICByZXR1cm4oIkludmFsaWQgaW5wdXQiKQ0KfQ0KYGBgDQoNClF1ZXN0aW9uIDYuDQpXcml0ZSBhIGZ1bmN0aW9uIHdoaWNoIGNoZWNrcyBpZiB0d28gdmVjdG9ycyBoYXZlIHRoZSBzYW1lIGVsZW1lbnRzLg0KDQogICAgSWYgdGhleSBoYXZlIHRoZSBzYW1lIGVsZW1lbnRzIGluIHRoZSBzYW1lIG9yZGVyLCByZXR1cm4g4oCcRXhhY3RseSB0aGUgc2FtZeKAnQ0KICAgIElmIHRoZXkgaGF2ZSB0aGUgc2FtZSBlbGVtZW50cyBidXQgaW4gYSBkaWZmZXJlbnQgb3JkZXIsIHJldHVybiDigJxUaGUgc2FtZeKAnQ0KICAgIElmIHRoZXkgZG9u4oCZdCBoYXZlIHRoZSBzYW1lIGVsZW1lbnRzLCByZXR1cm4g4oCcRGlmZmVyZW504oCdLg0KDQpgYGB7cn0NCmlzX3NhbWVfdmVjdG9yIDwtIGZ1bmN0aW9uKHZlY3Rvcl8xLCB2ZWN0b3JfMikgew0KICBpZiAoYWxsKHZlY3Rvcl8xID09IHZlY3Rvcl8yKSkgew0KICAgIHJldHVybigiRXhhY3RseSB0aGUgc2FtZSIpDQogIH0NCg0KICBpZiAoYWxsKHNvcnQodmVjdG9yXzEpID09IHNvcnQodmVjdG9yXzIpKSkgew0KICAgIHJldHVybigiVGhlIHNhbWUiKQ0KICB9DQoNCiAgcmV0dXJuKCJEaWZmZXJlbnQiKQ0KfQ0KYGBgDQoNCg==</div>
 
 
 
