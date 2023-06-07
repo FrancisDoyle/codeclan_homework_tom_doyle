@@ -6,21 +6,22 @@
    -- (a). Find the first name, last name and team name of employees who are members of teams. 
 
 SELECT 
-e.first_name,
-e.last_name 
-FROM employees AS e 
-INNER JOIN teams ON team_id = teams.id ;
+  e.first_name, 
+  e.last_name, 
+  t.name AS team_name
+FROM employees AS e INNER JOIN teams AS t
+ON e.team_id = t.id;
 
 
 SELECT 
 e.first_name,
-e.last_name 
+e.last_name
 FROM employees AS e 
 INNER JOIN teams ON team_id = teams.id 
 WHERE pension_enrol = TRUE; 
 
 
-SELECT e.first_name, e.last_name
+SELECT e.first_name, e.last_name, t.name
 FROM employees AS e
 INNER JOIN teams AS t ON e.team_id = t.id
 WHERE CAST(t.charge_cost AS INTEGER) > 80;
@@ -93,11 +94,27 @@ ORDER BY count (e.id);
 
 SELECT 
   t.name,
-  t.id,
-  SUM(t.charge_cost * COUNT(e.id)) AS total_day_charge
+   COUNT(e.id) * CAST(t.charge_cost AS INT) AS total_day_charge
 FROM teams AS t
 LEFT JOIN employees AS e ON e.team_id = t.id
 GROUP BY t.name, t.id;
+
+SELECT 
+  t.name,
+  COUNT(e.id) * CAST(t.charge_cost AS INT) AS total_day_charge
+FROM employees AS e
+INNER JOIN teams AS t
+ON e.team_id = t.id
+GROUP BY t.id;
+
+SELECT 
+  t.name,
+  COUNT(e.id) * CAST(t.charge_cost AS INT) AS total_day_charge
+FROM employees AS e
+INNER JOIN teams AS t
+ON e.team_id = t.id
+GROUP BY t.id
+HAVING COUNT(e.id) * CAST(t.charge_cost AS INT) > 5000;
 
 
 
