@@ -225,9 +225,13 @@ ORDER BY something DESC, first_name ASC;
 --Find the proportion of employees in each department who are grade 1.
 --Hints 
 
+SELECT department,
+       CAST(SUM(CAST(grade = '1' AS INTEGER)) AS REAL) / COUNT(*) AS prop_grade_1
+FROM employees
+GROUP BY department;
 
 SELECT 
   department, 
-  SUM(CAST(grade = '1' AS INT)) / CAST(COUNT(id) AS REAL) AS prop_grade_1 
+  SUM(CAST(grade = '1' AS INT)) / CAST(COUNT(*) AS REAL) AS prop_grade_1 
 FROM employees 
 GROUP BY department
