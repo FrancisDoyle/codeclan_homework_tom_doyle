@@ -168,6 +168,20 @@ INNER JOIN
 --Hint
 --You will need to use a subquery to calculate the mode
 
+ SELECT
+  first_name,
+  last_name,
+  salary
+FROM employees
+WHERE country = 'Japan' AND fte_hours = (
+  SELECT fte_hours
+  FROM employees
+  GROUP BY fte_hours
+  ORDER BY COUNT(*) ASC NULLS LAST
+  LIMIT 1
+  )
+ORDER BY salary ASC NULLS LAST
+LIMIT 1
 
 --Question 14.
 --obtain a table showing any departments in which there are two or more employees lacking
@@ -211,7 +225,9 @@ ORDER BY something DESC, first_name ASC;
 --Find the proportion of employees in each department who are grade 1.
 --Hints 
 
-SELECT department,
-       CAST(SUM(CAST(grade = 1 AS INTEGER)) AS REAL) / COUNT(*) AS proportion_grade_1
-FROM employees
-GROUP BY department;
+
+SELECT 
+  department, 
+  SUM(CAST(grade = '1' AS INT)) / CAST(COUNT(id) AS REAL) AS prop_grade_1 
+FROM employees 
+GROUP BY department
