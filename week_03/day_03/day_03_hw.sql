@@ -230,6 +230,19 @@ SELECT department,
 FROM employees
 GROUP BY department;
 
+--Think of the desired proportion for a given department as the number of employees in that department who are grade 1, divided 
+--by the total number of employees in that department.
+
+
+--You can write an expression in a SELECT statement, e.g. grade = 1. This would result in BOOLEAN values.
+
+
+--If you could convert BOOLEAN to INTEGER 1 and 0, you could sum them. The CAST() function lets you convert data types.
+
+
+--In SQL, an INTEGER divided by an INTEGER yields an INTEGER. To get a REAL value, you need to convert the top, 
+--bottom or both sides of the division to REAL. 
+
 SELECT 
   department, 
   SUM(CAST(grade = '1' AS INT)) / CAST(COUNT(*) AS REAL) AS prop_grade_1 

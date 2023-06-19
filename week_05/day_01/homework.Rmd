@@ -1,0 +1,206 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(CodeClanData)
+library(janitor)
+```
+
+2 MVP
+2.1 Part 1
+
+```{r}
+col_scheme <- c("#E89FE9", "#50434F", "#B6A7B5", "#F9A472", "#BD7040")
+```
+
+
+Question 1.
+Take the data in the dataset qb_revenue_breakdown and make a stacked bar chart showing the sources of revenue across the two years in the dataset.
+
+```{r}
+ggplot(qb_revenue_breakdown) +
+  geom_bar(aes(x = Product, y = Revenue, fill = Year), stat = "identity")+
+  xlab("\nProduct")+
+  ylab("Revenue")+
+  ggtitle("Revenue Breakdown",
+          subtitle = "2018 - 2019")+
+  labs(fill = "Year")+
+  scale_fill_manual(values = col_scheme) +
+  scale_y_continuous(labels = scales::dollar)+
+  theme_light() +
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+```
+
+
+Question 2.
+Make a line chart showing monthly sales of the “flagship product” - the ‘KwikBit Unit 1’ - over the last year. This data is inside qb_monthly_sales, but you will need to use filter() or subset() (base R).
+
+```{r}
+kwikbit_sales <- clean_names(qb_monthly_sales) %>% 
+  filter(date >= "2019-01-01" & date <= "2019-12-31") %>% 
+  filter(cashflow == "Kwikbit Unit 1 Sales")
+
+
+ggplot(kwikbit_sales)+
+         geom_line(
+    aes(x = date, y = amount, group = cashflow, colour = cashflow), alpha = 1)+
+    xlab("\nMonths")+
+  geom_point(aes(x = date, y = amount), alpha = 1) +
+  ylab("Amount")+
+  ggtitle("Kwikbit Unit 1 Sales",
+          subtitle = "2018 - 2019")+
+  labs(colour = "Flagship Product") +
+  scale_color_manual(values = col_scheme) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+  scale_y_continuous(breaks = seq(500, 700, by = 10),labels = scales::dollar)+
+  theme_light() +
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+  
+  
+```
+
+
+Question 3.
+Make a line chart showing monthly revenue and costs over the last year. This data is also in qb_monthly_sales.
+
+```{r}
+revenue_cost <- clean_names(qb_monthly_sales) %>% 
+  filter(date >= "2019-01-01" & date <= "2019-12-31") %>% 
+  filter(cashflow != "Kwikbit Unit 1 Sales")
+
+ggplot(revenue_cost)+
+  geom_line(
+    aes(x = date, y = amount, group = cashflow, colour = cashflow),alpha = 1)+
+  geom_point(aes(x = date, y = amount), alpha = 1) +
+  xlab("\nMonths")+
+  ylab("Amount")+
+  ggtitle("Cost vs Revenue",
+          subtitle = "2019")+
+  labs(colour = "Cashflow") +
+  scale_color_manual(values = col_scheme) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+    scale_y_continuous(breaks = seq(1600, 3000, by = 100),labels = scales::dollar) +
+  theme_light() +
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+
+
+```
+
+
+Question 4.
+Show annual sales of personal fitness trackers over the last 5 years broken down by company as a ribbon plot (use geom_area). This data is in qb_competitors.
+
+```{r}
+qb_competitors
+
+ggplot(qb_competitors)+
+  geom_area(aes(x = Year, y = Revenue, fill = Company), stat = "identity")+
+  xlab("\nYear")+
+  ylab("Revenue")+
+  ggtitle("Personal Fitness Tracker Sales",
+          subtitle = "2015 - 2019")+
+  labs(fill = "Company") +
+  scale_fill_manual(values = col_scheme) +
+  scale_y_continuous(labels = scales::dollar)+
+    theme_light() +
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+```
+
+
+Question 5.
+Now show the sales from the four competitors as a line graph. Include an extra layer that shows the data points used to make the lines.
+
+```{r}
+ggplot(qb_competitors) + 
+  aes(x = Year, y = Revenue, colour = Company) +
+  geom_line(aes(group = Company), alpha = 0.5) +
+  geom_point(alpha = 1)+
+    xlab("\nYear")+
+  ylab("Revenue")+
+    ggtitle("Personal Fitness Tracker Sales",
+          subtitle = "2015 - 2019")+
+    labs(fill = "Company") +
+  scale_color_manual(values = col_scheme)+
+  scale_y_continuous(labels = scales::dollar)+
+    theme_light() +
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+  
+```
+
+
+Question 6.
+Now the company wants to compare the number of steps that their device counts vs. their competitors. Make a line graph of the number of steps throughout time, and use faceting to compare between companies and people. The data for this is in qb_device_data.
+
+
+```{r}
+ggplot(qb_device_data) + 
+  aes(x = hours, y = counts, colour = device)+
+geom_line(aes(group = device), alpha = 0.25)+
+  geom_point(alpha = 0.5)+
+  xlab("\nTime (H)")+
+  ylab("Steps")+
+    ggtitle("Personal Fitness Tracker Step Comparison")+
+    labs(fill = "Company") +
+  facet_grid(id ~ device)+
+    scale_color_manual(values = col_scheme)+
+    theme_light()+
+  theme(
+    text = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 12),
+    panel.grid.minor = element_line(colour = "#edf0f5")
+  )
+  
+```
+
+2.2 Part 2
+
+Question 1.
+Take the plots that you produced in part one and now polish them by:
+
+    Adding appropriate labels
+    Changing the scales and coordinates when appropriate.
+    Applying a unified theme, which is described below:
+
+    Graphs should have white backgrounds, and use colour sparingly.
+    There should be faint grid lines.
+    Font sizes should be ~12pt although titles should be slightly larger and axis labels can be slightly smaller.
+    All plots should use colours from the following company colour scheme.
+
+
+
+
