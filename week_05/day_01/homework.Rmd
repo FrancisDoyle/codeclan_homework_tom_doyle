@@ -22,7 +22,7 @@ Take the data in the dataset qb_revenue_breakdown and make a stacked bar chart s
 
 ```{r}
 ggplot(qb_revenue_breakdown) +
-  geom_bar(aes(x = Product, y = Revenue, fill = Year), stat = "identity")+
+  geom_bar(aes(x = Year, y = Revenue, fill = Product), stat = "identity")+
   xlab("\nProduct")+
   ylab("Revenue")+
   ggtitle("Revenue Breakdown",
