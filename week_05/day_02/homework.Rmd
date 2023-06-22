@@ -1,0 +1,116 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+1 Homework Info
+
+This homework recaps what you learnt in class today.
+
+You’ll be looking at the backpack dataset contained within the CodeClanData package using tidyverse. You’ll need to load the appropriate packages first.In all plots you make, ensure your labels are appropriate
+
+You must write down a short summary of what each plot tells you in order to meet MVP. Being an analyst is not just the ability to write code, you need to be able to interpret the visualisations and translate the relationships found (or not found) into plain language to explain to non-technical decision makers. Getting as much practice of this as you can while on this course is just (if not more!) important than the code!
+2 MVP
+
+
+Question 1.
+
+Load in the libraries you need, and look at the backpack data. Take note of variable names and dimensions.
+
+```{r}
+library(tidyverse)
+library(CodeClanData)
+
+backpack %>% 
+  names()
+
+backpack %>% 
+  slice_max(backpack_weight)
+```
+
+
+Question 2.
+
+What is the distribution of backpack weights that students are carrying? Choose an appropriate graph to show the distribution.
+
+I went with a histogram with a density curve. I felt this allowed me to show the
+exact counts at every weight while showing the curve which mimicked if the data 
+was shown using bin.
+
+```{r}
+ggplot(backpack, aes(x = backpack_weight)) +
+  geom_histogram(fill = "grey", color = "white") +
+  geom_density(aes(y = ..count..), color = "black") +
+  labs(title = "Backpack Weight Distribution", x = "Weight", y = "Count") +
+  scale_x_continuous(breaks = seq(1, 35, by = 1)) +
+  scale_y_continuous(breaks = seq(1, 13, by = 1)) +
+  theme_minimal() +
+  theme(panel.grid.major = element_blank())
+```
+
+
+Question 3.
+
+Are there differences in backpack weight between sex?
+
+Here I added a facet wrap and felt increasing the breaks to 3 made it easier
+to read. As the goal is to compare between sexes I felt having them side by side
+was a good idea and the change ot the x scale did not alter the interpretation 
+of the data. With both labeled i didnt want to have color
+
+```{r}
+ggplot(backpack) +
+  geom_histogram(aes(x = backpack_weight), fill = "grey", col = "white") +
+  facet_wrap(~ sex) +
+  labs(title = "Backpack Weight Distribution", x = "Weight", y = "Count") +
+  scale_x_continuous(breaks = seq(1, 35, by = 3)) +
+  scale_y_continuous(breaks = seq(1, 20, by = 1)) +
+  theme_minimal() +
+  theme(panel.grid.major = element_blank()) +
+  guides(fill = FALSE)
+```
+
+
+Question 4.
+
+What is the relationship between body weight and backpack weight?
+
+Hard to tell although heavier body weight has maybe slightly heavier bags to a point.
+
+Went with this one, initially though line would be good but looking at class notes
+the geom_point is best for showing relationships between two things.
+
+Question 5.
+
+Is this relationship different between men and women? Choose an appropriate plot and interpret your findings.
+
+for this i added a facet wrap and again its hard ot tell. 
+
+```{r}
+ggplot(backpack) +
+  geom_point(aes(x = body_weight, y = backpack_weight)) +
+  labs(title = "Backpack Weight Distribution", x = "Body Weight", y = "Backpack Weight") +
+  #scale_x_continuous(breaks = seq(1, 35, by = 3)) +
+  #scale_y_continuous(breaks = seq(1, 20, by = 1)) +
+  theme_light() +
+  theme(panel.grid.major = element_blank()) +
+  guides(fill = FALSE)+
+  facet_wrap(~sex)
+```
+
+
+Question 6.
+
+What proportion of students report back pain?
+
+Question 7.
+
+Is this proportion different between men and women?
+
+Question 8.
+
+Now you’ve investigated your data separately, create plots to describe the relationship between backpack weight, body weight, gender and reported backpain.
+
+Try both backpack_weight and body_weight as well as the ratio.
+
+Hint: faceting would be useful here.
+

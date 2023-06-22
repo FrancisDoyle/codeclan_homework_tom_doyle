@@ -33,7 +33,7 @@ ggplot(qb_revenue_breakdown) +
   theme_light() +
   theme(
     text = element_text(size = 12),
-    axis.text = element_text(size = 10),
+    axis.text = element_text(size = 12),
     axis.title = element_text(size = 12),
     plot.title = element_text(size = 12),
     panel.grid.minor = element_line(colour = "#edf0f5")
@@ -98,6 +98,8 @@ ggplot(revenue_cost)+
     panel.grid.minor = element_line(colour = "#edf0f5")
   )
 ```
+
+
 Question 4.
 Show annual sales of personal fitness trackers over the last 5 years broken down by company as a ribbon plot (use geom_area). This data is in qb_competitors.
 
@@ -153,8 +155,8 @@ Now the company wants to compare the number of steps that their device counts vs
 ```{r}
 ggplot(qb_device_data) + 
   aes(x = hours, y = counts, colour = device)+
-geom_line(aes(group = device), alpha = 0.25)+
-  geom_point(alpha = 0.5)+
+geom_line(aes(group = device), alpha = 2.0)+
+  #geom_point(alpha = 0.5)+
   xlab("\nTime (H)")+
   ylab("Steps")+
     ggtitle("Personal Fitness Tracker Step Comparison")+
@@ -184,7 +186,6 @@ Take the plots that you produced in part one and now polish them by:
     There should be faint grid lines.
     Font sizes should be ~12pt although titles should be slightly larger and axis labels can be slightly smaller.
     All plots should use colours from the following company colour scheme.
-
 
 
 
