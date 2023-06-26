@@ -1,0 +1,62 @@
+library(shiny)
+library(tidyverse)
+library(bslib)
+library(readxl)
+library(janitor)
+
+goalie_stats <- read_xlsx("")
+all_teams <- clean_names(goalie_stats) %>%   
+    distinct(team) %>% 
+    pull()
+
+players <- clean_names(goalie_stats) %>%   
+    distinct(name) %>% 
+    pull()
+
+
+ui <- fluidPage(
+    theme = bs_theme(bootswatch = "lux"),
+    
+    titlePanel(tags$h1("NHL Goalie Comparison")),
+    
+    sidebarLayout(
+        sidebarPanel(
+            
+            #make the text summor or winter be in italics 
+            selectInput("team_input",
+                        tags$b("Team"),
+                        choices = all_teams
+            )
+        ),
+        
+        #make team bold
+        selectInput("player_input",
+                    tags$b("Player"),
+                    choices = players
+        )
+    ),
+    
+    mainPanel(
+        plotOutput("test"),
+       
+
+    )
+)
+
+
+server <- function(input, output) {
+    
+    output$medal_plot <- renderPlot({
+        olympics_overall_medals %>%
+            filter(team == input$team_input) %>%
+            filter(season == input$season_input) %>%
+            ggplot() +
+            aes(x = medal, y = count, fill = medal) +
+            geom_col()
+    })
+    
+}
+
+shinyApp(ui = ui, server = server)
+
+

@@ -1,0 +1,8 @@
+"0","goalie_stats <- read_xlsx(""data/goalie_stats.xlsx"")"
+"0","all_teams <- clean_names(goalie_stats) %>%   "
+"0","  distinct(team) %>% "
+"0","  pull()"
+"0",""
+"0","players <- clean_names(goalie_stats) %>%   "
+"0","  distinct(name) %>% "
+"0","  pull()"
