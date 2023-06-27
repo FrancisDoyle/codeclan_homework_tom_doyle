@@ -1,0 +1,101 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(gtools)
+library(tidyverse)
+source("prob.R")
+library(dplyr)
+library(janitor)
+```
+
+```{r}
+titanic <- read_csv("data/titanic.csv")
+```
+```{r}
+titanic %>% 
+  distinct(class)
+
+titanic_clean <- titanic %>%
+  mutate(class = ifelse(class %in% c("1st", "2nd", "3rd"), "passenger", "crew"))
+
+titanic_clean %>% 
+distinct(class)
+
+titanic_clean2 <- titanic_clean %>%
+  tabyl(class, survived)
+
+titanic_clean2 <- titanic_clean2 %>% 
+  adorn_totals(where = c("row", "col"))
+
+titanic_clean2
+
+# Crew .76
+
+679/890
+
+# Passengers .62
+
+817/1317
+
+```
+
+Tianic answers : Crew more probable to die.
+
+
+Question 1.
+If I roll a six-sided dice once, what is the probability of getting a number less than 5?
+
+```{r}
+4/6
+```
+Question 2.
+How many outcomes are there in the sample space of an experiment in which we toss three dice?
+
+```{r}
+6^3
+```
+Question 3.
+In an experiment where we roll four dice:
+
+how many outcomes are in the event where the total of the four dice equals 5, 6 or 7
+?
+
+34
+
+what is the probability of this event?
+0.02623457
+
+what assumptions do we apply in answering part ii?
+
+likelyhood of each num on die being equal
+
+```{r}
+s_four_dice <- rolldie(4)
+
+s_four_dice %>% 
+  summarise(size_of_s = n()) #1296
+
+s_four_dice <- s_four_dice %>%
+  mutate(total = rowSums(across(1:4)))
+
+numbers_to_count <- c(5, 6, 7)
+
+count <- sum(s_four_dice$total %in% numbers_to_count)
+
+count
+
+
+```
+Question 4.
+Five chairs are placed in a row in a room, along with five people of differing height. The people sit down randomly on the chairs. What is the probability that they sit in order of decreasing height, left to right?
+
+1/120 or 0.008333333
+
+```{r}
+5*4*3*2*1 
+
+1/120
+```
+

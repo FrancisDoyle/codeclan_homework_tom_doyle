@@ -18,8 +18,9 @@ ui <- fluidPage(
     ),
     
     tabPanel("Calgary",
+             id = "#tab-calgary",
              fluidRow(
-               column(width = 3,
+               column(width = 1,
                        imageOutput("calgary_icon")
                )
              ),
@@ -235,13 +236,14 @@ ui <- fluidPage(
                      "<b>Arena:</b> ", overview$Arena, "<br>",
                      "<b>Capacity:</b> ", overview$Capacity, "<br>",
                      "<b>Founded:</b> ", overview$Founded, "<br>",
-                     "<b>Standings:</b> ", overview$Standings
+                     "<b>Standings:</b> ", overview$Standings, "<br>", 
+                     "<a href='#tab-calgary'>Open Team Tab</a>"
                    )
         )
     })
     #output$calgary_icon <- renderImage({
      # matrix(
-        #image("icons/calgary.png", alt = "Calgary Icon", width = "100px", height = "100px"),
+        #image("data/icons/calgary.png", alt = "Calgary Icon", width = "100px", height = "100px"),
         #nrow = 1, ncol = 1, byrow = TRUE
       #)
     #}, deleteFile = FALSE)
@@ -261,3 +263,4 @@ ui <- fluidPage(
   
   shinyApp(ui, server)
   
+  # checkout plotly for the stats
