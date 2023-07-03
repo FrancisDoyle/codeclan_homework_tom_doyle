@@ -1,8 +1,8 @@
-Name,Arena,Capacity,Founded,Standings,Latitude,Longitude
-Calgary,Saddledome,19289,1972,16,51.05011,-114.08529
-Edmonton,Rogers Place,18347,1972,6,53.55014,-113.46871
-Montreal,Bell Centre,21105,1909,28,45.50884,-73.58781
-Ottawa,Canadian Tire Centre,20500,1992,21,45.41117,-75.69812
-Toronto,Scotiabank Arena,20270,1917,4,43.70011,-79.4163
-Winnipeg,Canada Life Centre,15321,1999,14,49.8844,-97.14704
-Vancouver,Rogers Arena,18910,1945,22,49.24966,-123.11934
+Name,Arena,Capacity,Founded,Standings,Latitude,Longitude,Avg,Max
+Calgary,Saddledome,19289,1972,16,51.05011,-114.08529,17956,19289
+Edmonton,Rogers Place,18347,1972,6,53.55014,-113.46871,17838,18347
+Montreal,Bell Centre,21105,1909,28,45.50884,-73.58781,21078,21105
+Ottawa,Canadian Tire Centre,20500,1992,21,45.41117,-75.69812,16757,20500
+Toronto,Scotiabank Arena,20270,1917,4,43.70011,-79.4163,18753,20270
+Winnipeg,Canada Life Centre,15321,1999,14,49.8844,-97.14704,14045,15321
+Vancouver,Rogers Arena,18910,1945,22,49.24966,-123.11934,18702,18910

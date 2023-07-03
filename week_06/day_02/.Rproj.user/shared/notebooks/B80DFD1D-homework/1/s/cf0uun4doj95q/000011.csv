@@ -1,0 +1,25 @@
+"0","phones %>% 
+  skim()
+"
+"1","── Data Summary ────────────────────────
+"
+"1","                           Values    
+"
+"1","Name                       Piped data
+"
+"1","Number of rows             792       
+"
+"1","Number of columns          9         
+"
+"1","_______________________              
+"
+"1","Column type frequency:               
+"
+"1","  character                7         
+"
+"1","  numeric                  2         
+"
+"1","________________________             
+"
+"1","Group variables            None      
+"

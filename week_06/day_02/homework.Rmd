@@ -1,0 +1,73 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(janitor)
+library(dplyr)
+library(ggplot2)
+```
+
+
+1 MVP
+
+Question 1.
+Load the data, clean_names() and explore it.
+
+```{r}
+phones <- read_csv("data/20190928-items.csv")
+
+phones %>% 
+  skim()
+```
+
+
+Question 2.
+Find the brand with the highest numbers of phones in the dataset. Samsung 397
+
+```{r}
+phones %>% 
+  group_by(brand) %>% 
+  count() %>% 
+  arrange(desc(n))
+```
+
+
+Question 3.
+For your top brand, plot the distribution of phone ratings as a probability density, overlaying a fitted normal distribution. Do you think the normal distribution provides a good model of these ratings?
+Hint
+You will need to calculate the and of the ratings to plot the appropriate normal distribution. Alternatively, investigate using the function in the package]
+
+```{r}
+samsung <- phones %>% filter(brand == "Samsung")
+```
+
+```{r}
+samsung %>% 
+ggplot(aes(x = rating)) +
+  geom_histogram(aes(y = stat(density)), bins = 20, fill = "lightblue", color = "white") +
+  labs(title = "Samsung Phone Ratings distribution", x = "Rating", y = "Density")+
+  geom_density(fill = "transparent", color = "blue", size = 1)
+
+
+```
+
+
+
+Question 4.
+
+Hint
+You can use a to get only the ratings within one-, two- and three standard deviations of the mean, and then think about how to calculate what proportion each of these filtered sets make of the total number of ratings. You’ll need to use three separate and pipes to do this.
+Further hint - code to filter within one SD 
+
+
+```{r}
+mean_rating <- mean(phones$rating)
+sd_rating <- sd(phones$rating)
+
+
+```
+

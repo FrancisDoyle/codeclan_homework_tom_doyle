@@ -1,0 +1,5 @@
+"0","samsung %>% "
+"0","ggplot(aes(x = rating)) +"
+"0","  geom_histogram(aes(y = stat(density)), bins = 20, fill = ""lightblue"", color = ""white"") +"
+"0","  labs(title = ""Samsung Phone Ratings distribution"", x = ""Rating"", y = ""Density"")+"
+"0","  geom_density(fill = ""transparent"", color = ""blue"", size = 1)"
