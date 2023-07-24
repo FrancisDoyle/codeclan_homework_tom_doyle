@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+management_data <- read_csv("data/project_management.csv")
+```
+```{r}
+management_data %>% 
+    ggplot(aes(estimated_length,actual_length))+
+  geom_point()
+```
+```{r}
+management_data %>% 
+  summarise(cor = cor(estimated_length,actual_length))
+```
+
+very strong positive cor
+
+Perform a simple linear regression using actual_length as the dependent variable, and estimated_length as the independent variable. Save the model object to a variable.
+
+```{r}
+model <- lm(formula = actual_length ~ estimated_length, data = management_data)
+```
+
+
+Interpret the regression coefficient of estimated_length (i.e. slope, gradient) you obtain from the model. How do you interpret the r2
+
+value reported by the model?
