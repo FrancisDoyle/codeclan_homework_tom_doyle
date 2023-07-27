@@ -17,12 +17,21 @@ glimpse(house)
 
 ```
 ```{r}
-houses_tidy <- house %>% 
-  mutate(renovated = ifelse(yr_renovated > 0, TRUE, FALSE)) %>% 
-  select(-date, -id, -sqft_living15, -sqft_lot15, -zipcode, -yr_renovated)
+#houses_tidy <- house %>% 
+  #mutate(renovated = ifelse(yr_renovated > 0, TRUE, FALSE)) %>% 
+  #select(-date, -id, -sqft_living15, -sqft_lot15, -zipcode, -yr_renovated)
 
-houses_tidy <- houses_tidy %>% 
-  fastDummies::dummy_cols(select_columns = c("view", "condition", "grade"), remove_first_dummy = TRUE, remove_selected_columns = TRUE)
+#houses_tidy <- houses_tidy %>% 
+  #fastDummies::dummy_cols(select_columns = c("view", "condition", "grade"), remove_first_dummy = TRUE, remove_selected_columns = TRUE)
+
+houses_tidy <- house %>%
+  select(-c("id", "date", "sqft_living15", "sqft_lot15", "zipcode")) %>%
+  mutate(waterfront = as.logical(waterfront)) %>%
+  mutate(renovated = yr_renovated != 0) %>%
+  select(-"yr_renovated") %>%
+  mutate(view = as_factor(view)) %>% 
+  mutate(condition = as_factor(condition)) %>%
+  mutate(grade = as_factor(grade))
 ```
 
 ```{r}
