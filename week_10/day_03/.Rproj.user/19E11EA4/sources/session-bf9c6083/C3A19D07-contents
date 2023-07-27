@@ -38,7 +38,7 @@ houses_tidy <- house %>%
 alias(lm(price~., data = houses_tidy))
 
 houses_tidy <- houses_tidy %>% 
-select(-sqft_above)
+select(-sqft_living)
 
 alias(lm(price~., data = houses_tidy))
 ```
@@ -59,7 +59,7 @@ sum_predictors$which[4,]
 ```
 
 ```{r}
-mod2 <- lm(price~ sqft_living + waterfront + lat + yr_built, data = houses_tidy)
+mod2 <- lm(price~ bathrooms + view + grade + lat, data = houses_tidy)
 
 summary(mod2)
 
