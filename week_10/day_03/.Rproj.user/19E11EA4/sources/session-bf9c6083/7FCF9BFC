@@ -1,0 +1,28 @@
+{
+    "id": "7FCF9BFC",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1690402180715.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "id": "775e707f711d436c8c8e2e25fb118ef7",
+        "name": "sum_predictors",
+        "title": "sum_predictors",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 32370124835913834,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1690402180715,
+    "read_only": false,
+    "read_only_alternatives": []
+}

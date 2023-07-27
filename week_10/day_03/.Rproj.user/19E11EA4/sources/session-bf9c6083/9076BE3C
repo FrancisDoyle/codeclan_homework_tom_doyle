@@ -1,0 +1,28 @@
+{
+    "id": "9076BE3C",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1690401337628.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "id": "092f4fa27a504a1a8a94ca70f6f9fe53",
+        "name": "pedictors",
+        "title": "pedictors",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 32369824192659557,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1690401337628,
+    "read_only": false,
+    "read_only_alternatives": []
+}
