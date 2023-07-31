@@ -1,28 +1,27 @@
 {
-    "id": "C3A19D07",
+    "id": "73BD03CF",
     "path": "~/codeclan/codeclan_homework_tom_doyle/codeclan_homework_tom_doyle/week_10/day_03/day_03.Rmd",
-    "project_path": "day_03.Rmd",
+    "project_path": null,
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "4042611310",
     "contents": "",
     "dirty": false,
-    "created": 1690385452754.0,
+    "created": 1690747352367.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 5,
     "properties": {
-        "tempName": "Untitled1",
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "30,29",
-        "scrollLine": "18"
+        "cursorPosition": "46,0",
+        "scrollLine": "36"
     },
     "folds": "",
-    "lastKnownWriteTime": 1690447765,
+    "lastKnownWriteTime": 1690451423,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1690447766004,
+    "last_content_update": 1690451423,
     "read_only": false,
     "read_only_alternatives": []
 }

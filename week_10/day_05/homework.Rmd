@@ -1,0 +1,183 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# Task 1 
+
+1 MVP
+
+We’ve looked at a few different ways in which we can build models this week, 
+including how to prepare them properly. This weekend we’ll build a multiple 
+linear regression model on a dataset which will need some preparation. 
+The data can be found in the data folder, along with a data dictionary
+
+We want to investigate the wine_quality_red and wine_quality_white datasets, 
+and, in particular, to model the quality of the wines. Use regression to 
+determine which physiochemical properties make a wine ‘good’!
+
+Use the tools we’ve worked with this week in order to prepare your dataset and
+find appropriate predictors. Once you’ve built your model use the validation 
+techniques discussed on Wednesday to evaluate it. Feel free to focus either 
+on building an explanatory or a predictive model, or both if you are feeling energetic!
+
+Acknowledgements This dataset is from the UCI machine learning repository, 
+https://archive.ics.uci.edu/ml/datasets/wine+quality.
+
+Ref: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine 
+preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+
+As part of the MVP we want you not to just run the code but also have a go at 
+interpreting the results and write your thinking in comments in your script.
+
+Hints and tips
+
+region may lead to many dummy variables. Think carefully about whether to 
+include this variable or not (there is no one ‘right’ answer to this!)
+
+Think about whether each variable is categorical or numerical. 
+If categorical, make sure that the variable is represented as a factor.
+
+If you want to build a predictive model, consider using either leaps or glmulti to help with this.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(GGally)
+library(psych)
+library(leaps)
+```
+```{r}
+red <- read_csv("data/wine_quality_red.csv")
+white <- read_csv("data/wine_quality_white.csv")
+```
+
+```{r}
+skimr::skim(red)
+skimr::skim(white)
+
+view(red)
+view(white)
+
+```
+
+```{r}
+# tidying before checkign for correlations wiht gg pairs
+
+red_clean <- red %>% 
+  select(-wine_id,-region)
+
+red_clean%>%
+  ggpairs() 
+
+# hard to read i am just cecking cor at this point and quite like the corplot from psych so using that
+```
+```{r}
+cor.plot(red_clean, min.length = 3, stars = TRUE) # going to use alc, volatile acidity, sulphates, and citric acid. will be using adjusted r squared as validation here. will include a second model with more predictors and compare the adjusted r squared. These are my initial thoughts but will start with all and work backwards.
+```
+```{r}
+
+#initial thoughts
+
+mod1 <- lm(quality ~ alcohol + volatile_acidity + sulphates + citric_acid, data = red_clean )
+mod2 <- lm(quality ~ alcohol + volatile_acidity + sulphates + citric_acid + total_sulfur_dioxide, data = red_clean )
+
+summary(mod1)
+summary(mod2)
+
+#goign to swap citric with total sulfur dioxide as it was more significant
+
+mod1 <- lm(quality ~ alcohol + volatile_acidity + sulphates + total_sulfur_dioxide, data = red_clean )
+summary(mod3)
+
+mod3 <- lm(quality ~ ., data = red_clean )
+summary(mod3)
+
+#can see va,chlorides,tsd,sulphates,alc are most sig will see the effect ph has
+
+mod_final <- lm(quality ~ alcohol + volatile_acidity + sulphates + total_sulfur_dioxide + chlorides + p_h, data = red_clean )
+summary(mod_final)
+
+```
+goign to use leaps to see what is "optimal"
+
+```{r}
+leap1 <- lm(quality~., data = red_clean)
+
+#using regsubset son all predictors going to use which.max to find the number of predictors that is optimal using adjusted r squared
+
+predictors <- regsubsets(quality~., data = red_clean, nbest = 1, nvmax = NULL, force.in = NULL, force.out = NULL, method = "exhaustive") 
+
+sum_predictors <- summary(predictors)
+
+as.data.frame(sum_predictors$outmat)
+
+which.max(sum_predictors$adjr2)
+
+sum_predictors$which[8,]
+
+leapmod <- lm(quality~ volatile_acidity + citric_acid + chlorides + free_sulfur_dioxide + total_sulfur_dioxide + p_h + sulphates + alcohol, data=red_clean)
+
+summary(leapmod)
+```
+
+
+## Task 2
+
+I want to predict how well 6 year-olds are going to do in their final school
+exams. Using the following variables am I likely under-fitting, fitting well 
+or over-fitting? Postcode, gender, reading level, score in maths test, date 
+of birth, family income.
+    
+> Likely over fitting, gender seems like it wouldnt correlate with exam scores 
+  and, as the exam participants fall within the same birth year, it may 
+  lead to accurate predictions within the original data but may impact the 
+  ability to predict scores in other exams where the ages are different. 
+
+If I have two models, one with an AIC score of 34,902 and the other with an AIC 
+score of 33,559 which model should I use?
+
+> Using AIC the best-fit model is the one that explains the greatest amount of 
+  variation using the fewest possible independent variables. The lower score is
+  better and should be used.
+
+I have two models, the first with: r-squared: 0.44, adjusted r-squared: 0.43.
+The second with: r-squared: 0.47, adjusted r-squared: 0.41. Which one should I use?
+
+> I would use the first model as the adjusted r-squared is higher even though
+  the r-squared is higher. R-squared will always increase as mor epredictors 
+  are used however adjusted r-squared penalises over using predictors. It is 
+  likely the second is overfit and may better predict within the original data
+  but be outperformed by th eother model with new data.
+
+I have a model with the following errors: RMSE error on test set: 10.3, 
+RMSE error on training data: 10.4. Do you think this model is over-fitting?
+
+> I don't think so as the model is performing slightly better on the unseen test data. 
+
+How does k-fold validation work?
+
+> Data is divided or folded randomly into k groups and one is used as the test 
+  set and the others for trianining. You then make the model from the trianing 
+  set then evaluate the performance on th etest set. The groups stay unique 
+  throughout allowing you to cycle through so that each set is "used as the 
+  "held out". All data is the nused in testing and trianing. 10 folds is a set
+  norm however it is not a rule. If the data is small too many "fold" could mean 
+  each set is no longer a true representation of the whole so fewer should be used.
+
+What is a validation set? When do you need one?
+
+> A validation set is used to optimise the model before evaluting on the test 
+  set. Keeping it seperate from the unseen data is important so the test scores 
+  stay as accurate as possible. (unsure of this)
+
+Describe how backwards selection works.
+
+> The model begins with all possible predictors and they are removed one by one 
+  to keep it simple while improving its performance. 
+
+Describe how best subset selection works.
+
+> In best subset selection all possible combinations of predictors are considered 
+  and the best performing subset is chosen. This is ideal however not always 
+  possible if the data is too large. It is possible to do it automatically 
+  but again if th edata is too large computing power could become a problem.

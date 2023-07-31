@@ -1,0 +1,19 @@
+"0","```r
+alias(lm(price~., data = houses_tidy))
+```"
+"1","Model :
+price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + 
+    waterfront + view + condition + grade + sqft_basement + yr_built + 
+    lat + long + renovated
+"
+"0","```r
+houses_tidy <- houses_tidy %>% 
+select(-sqft_living)
+
+alias(lm(price~., data = houses_tidy))
+```"
+"1","Model :
+price ~ bedrooms + bathrooms + sqft_lot + floors + waterfront + 
+    view + condition + grade + sqft_basement + yr_built + lat + 
+    long + renovated
+"

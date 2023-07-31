@@ -1,0 +1,12 @@
+"0","```r
+
+sum_predictors$which[4,]
+
+```"
+"1","   (Intercept)       bedrooms      bathrooms       sqft_lot         floors waterfrontTRUE          view1          view2          view3          view4 
+          TRUE          FALSE           TRUE          FALSE          FALSE          FALSE          FALSE          FALSE          FALSE           TRUE 
+    condition2     condition3     condition4     condition5         grade3         grade4         grade5         grade6         grade7         grade8 
+         FALSE          FALSE          FALSE          FALSE          FALSE          FALSE          FALSE          FALSE          FALSE          FALSE 
+        grade9        grade10        grade11        grade12        grade13  sqft_basement       yr_built            lat           long  renovatedTRUE 
+         FALSE          FALSE           TRUE          FALSE          FALSE          FALSE          FALSE           TRUE          FALSE          FALSE 
+"

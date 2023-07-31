@@ -1,0 +1,43 @@
+"0","```r
+mod2 <- lm(price~ bathrooms + view + grade + lat, data = houses_tidy)
+
+summary(mod2)
+```"
+"1","
+Call:
+lm(formula = price ~ bathrooms + view + grade + lat, data = houses_tidy)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1820937  -103901   -21520    67374  5415915 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -31466094     559782 -56.211  < 2e-16 ***
+bathrooms       83916       2617  32.061  < 2e-16 ***
+view1          196928      12131  16.233  < 2e-16 ***
+view2          140821       7294  19.306  < 2e-16 ***
+view3          236696       9951  23.786  < 2e-16 ***
+view4          590306      12598  46.858  < 2e-16 ***
+grade3         173205     252477   0.686  0.49270    
+grade4           2130     222395   0.010  0.99236    
+grade5          18047     219114   0.082  0.93436    
+grade6          44576     218721   0.204  0.83851    
+grade7          82415     218708   0.377  0.70631    
+grade8         156436     218749   0.715  0.47453    
+grade9         334825     218799   1.530  0.12596    
+grade10        569001     218886   2.600  0.00934 ** 
+grade11        906874     219120   4.139 3.51e-05 ***
+grade12       1475624     220129   6.703 2.09e-11 ***
+grade13       2866012     227322  12.608  < 2e-16 ***
+lat            665002      10842  61.337  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 218600 on 21595 degrees of freedom
+Multiple R-squared:  0.6456,	Adjusted R-squared:  0.6453 
+F-statistic:  2314 on 17 and 21595 DF,  p-value: < 2.2e-16
+"
+"0","```r
+autoplot(mod2)
+```"
