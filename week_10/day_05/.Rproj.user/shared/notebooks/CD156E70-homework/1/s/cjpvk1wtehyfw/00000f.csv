@@ -1,0 +1,7 @@
+"0","# tidying before checkign for correlations wiht gg pairs"
+"0",""
+"0","red_clean <- red %>% "
+"0","  select(-wine_id,-region)"
+"0",""
+"0","red_clean%>%"
+"0","  ggpairs() "

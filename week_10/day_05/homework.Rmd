@@ -115,7 +115,7 @@ which.max(sum_predictors$adjr2)
 
 sum_predictors$which[8,]
 
-leapmod <- lm(quality~ volatile_acidity + citric_acid + chlorides + free_sulfur_dioxide + total_sulfur_dioxide + p_h + sulphates + alcohol, data=red_clean)
+leapmod <- lm(quality~ volatile_acidity + citric_acid + chlorides + total_sulfur_dioxide + p_h + sulphates + alcohol, data=red_clean)
 
 summary(leapmod)
 ```
@@ -181,3 +181,24 @@ Describe how best subset selection works.
   and the best performing subset is chosen. This is ideal however not always 
   possible if the data is too large. It is possible to do it automatically 
   but again if th edata is too large computing power could become a problem.
+  
+  
+  jamie below
+  
+  
+  
+```{r}
+n_data_white <- nrow(white)
+test_prop <- 0.1
+test_index_white <- sample(1:n_data_white, size = n_data_white* test_prop)
+test_white <- slice(white, test_index_white)
+train_white <- slice(white, -test_index_white)
+```
+  
+```{r}
+skimr::skim(train_white) %>% view()
+
+head(train_white)
+```
+  
+  

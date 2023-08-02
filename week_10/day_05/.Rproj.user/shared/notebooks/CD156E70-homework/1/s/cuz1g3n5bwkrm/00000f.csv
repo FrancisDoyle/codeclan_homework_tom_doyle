@@ -1,0 +1,1 @@
+"0","cor.plot(red_clean, min.length = 3, stars = TRUE) # going to use alc, volatile acidity, sulphates, and citric acid. will be using adjusted r squared as validation here. will include a second model with more predictors and compare the adjusted r squared. These are my initial thoughts but will start with all and work backwards."

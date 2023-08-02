@@ -1,0 +1,2 @@
+"0","titanic_test_pred %>%"
+"0","  select(sex, class, sib_sp, age_status, survived_flag, pred)"

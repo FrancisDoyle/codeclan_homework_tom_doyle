@@ -1,0 +1,2 @@
+"0","titanic_test_pred <- titanic_test %>%"
+"0","  add_predictions(titanic_part, type = 'class')"

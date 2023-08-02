@@ -1,0 +1,118 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. 
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(tidyverse)
+library(GGally)
+library(modelr)
+library(yardstick)
+
+titanic_set <- read_csv('data/titanic_decision_tree_data.csv')
+
+shuffle_index <- sample(1:nrow(titanic_set))
+
+titanic_set <- titanic_set[shuffle_index, ]
+```
+
+1.1
+
+```{r}
+titanic_clean <- titanic_set %>%
+  filter(survived %in% c(0,1)) %>%
+# Convert to factor level
+    mutate(sex = as.factor(sex), 
+           age_status = as.factor(if_else(age <= 16, "child", "adult")),
+         class = factor(pclass, levels = c(3,2,1), labels = c("Lower", "Middle", "Upper")), 
+           survived_flag = factor(survived, levels = c(0,1), labels = c("No", "Yes")), 
+           port_embarkation = as.factor(embarked)) %>%
+  select(sex, age_status, class, port_embarkation, sib_sp, parch, survived_flag) %>%
+  na.omit()
+```
+
+1.2
+
+A little tricky to read but should be ok without a split. Female/Male looks good for prediction, Adult Child, and so does the class.
+
+```{r message = F}
+ggpairs(titanic_clean)
+
+```
+
+```{r}
+
+n_data <- nrow(titanic_clean)
+
+
+test_index <- sample(1:n_data, size = n_data*0.2)
+
+
+titanic_test  <- slice(titanic_clean, test_index)
+
+
+titanic_train <- slice(titanic_clean, -test_index)
+
+titanic_test %>%
+ janitor::tabyl(survived_flag)
+
+titanic_train %>%
+ janitor::tabyl(survived_flag)
+
+#proportions are roughly the same at 60/40
+```
+```{r}
+titanic_part <- rpart(
+  formula = survived_flag ~ ., 
+  data = titanic_train, 
+  method = 'class'
+)
+
+rpart.plot(titanic_part, 
+           yesno = 2, 
+           fallen.leaves = TRUE, 
+           faclen = 6, 
+           digits = 2)
+```
+Looking at the root node considering everything you were more likely to have died with the chance at survival at .4
+Moving down the tree (or up) If you were male you had even worse odds with a likelihood at survival of .2 But if you weren't, you were more likely to have survived. For both male and female not being in the lower classes further improved the likelihood of survival. Not having siblings increased the likelihood of survival in both branches and so did having parents/children aboard.
+From the tree highest likelihood of survival was females in the upper class of the ship and the least likely was male children in the lower class decks with 2 or more siblings. 
+```{r}
+titanic_test_pred <- titanic_test %>%
+  add_predictions(titanic_part, type = 'class')
+```
+
+```{r}
+titanic_test_pred %>%
+  select(sex, class, sib_sp, age_status, survived_flag, pred)
+```
+
+```{r}
+
+
+conf_mat <- titanic_test_pred %>%
+              conf_mat(truth = survived_flag, estimate = pred)
+
+conf_mat
+```
+When  no was the truth predicted no 80 times when no was the truth predicted
+yes 3 times.
+
+when yes was the truth predicted yes 26 times when yes was the truth predicted yes 33 times.
+
+So the model is highly sensitive ? Still struggle with knowing which is which
+
+ok it was
+
+```{r}
+titanic_test_pred %>% 
+sensitivity(truth = survived_flag, estimate = pred)
+
+titanic_test_pred %>% 
+specificity(truth = survived_flag, estimate = pred)
+```
+

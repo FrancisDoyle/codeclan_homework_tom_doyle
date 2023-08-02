@@ -1,0 +1,5 @@
+"0","n_data_white <- nrow(white)"
+"0","test_prop <- 0.1"
+"0","test_index_white <- sample(1:n_data_white, size = n_data_white* test_prop)"
+"0","test_white <- slice(white, test_index_white)"
+"0","train_white <- slice(white, -test_index_white)"
