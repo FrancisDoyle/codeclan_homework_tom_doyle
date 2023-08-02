@@ -1,0 +1,1 @@
+"0","clustered_mall2<- kmeans(mall, 5, nstart = 25)"

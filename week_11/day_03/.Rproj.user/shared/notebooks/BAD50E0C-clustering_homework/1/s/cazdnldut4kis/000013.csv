@@ -1,0 +1,38 @@
+"0","mall <- clean_names(read_csv(""data/mall_customers.csv"")) %>% "
+"0","  select(-customer_id) %>%  "
+"0","  mutate(gender = ifelse(gender == ""female"", 1,2))"
+"2","[1mRows: [22m[34m200[39m [1mColumns: [22m[34m5[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (1): Gender
+[32mdbl[39m (4): CustomerID, Age, Annual Income (k$), Spending Score (1-100)"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","# just realized i only needed spending score and annual income for this"
+"0",""
+"0",""
+"0","  "
+"0",""
+"0",""
+"0","skimr::skim(mall)"
+"1","── Data Summary ────────────────────────
+"
+"1","                           Values
+"
+"1","Name                       mall  
+"
+"1","Number of rows             200   
+"
+"1","Number of columns          4     
+"
+"1","_______________________          
+"
+"1","Column type frequency:           
+"
+"1","  numeric                  4     
+"
+"1","________________________         
+"
+"1","Group variables            None  
+"

@@ -1,0 +1,3 @@
+"0","clusters2 %>% "
+"0","  group_by(.cluster) %>%"
+"0","  summarise(mean(spending_score_1_100), mean(annual_income_k))"

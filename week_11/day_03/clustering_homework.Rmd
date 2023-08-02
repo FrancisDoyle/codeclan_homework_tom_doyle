@@ -1,0 +1,108 @@
+---
+title: "Clustering homework"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(factoextra)
+library(broom)
+```
+Task 1
+
+Do some exploratory analysis on the data. Comment on findings.
+
+
+- 5 cols 200 rows
+- No missing values in any col, mean age is 38.5, mean annual income is 60.56 (k$) mean spend score is 50.2
+```{r}
+mall <- clean_names(read_csv("data/mall_customers.csv")) %>% 
+  select(-customer_id) %>%  
+  mutate(gender = ifelse(gender == "female", 1,2))
+
+# just realized i only needed spending score and annual income for this
+
+
+  
+
+
+skimr::skim(mall)
+```
+Task 2
+
+We are interested in creating a marketing campaign to target customers based on their spending score and annual income. Select an appropriate value for k and perform k-means clustering to find if there are meaningful clusters in the data to target the customers.
+
+Elbow method maybe 3 
+
+```{r}
+fviz_nbclust(mall, 
+             kmeans, 
+             method = "wss", 
+             nstart = 25)
+```
+Silhouette 6 clusters
+
+```{r}
+fviz_nbclust(mall, kmeans, method = "silhouette", nstart = 25)
+```
+Gap 1
+
+```{r}
+fviz_nbclust(mall, kmeans, method = "gap_stat")
+```
+
+Choosing 3
+
+```{r}
+clustered_mall<- kmeans(mall, 3, nstart = 25)
+```
+
+```{r}
+clusters <- augment(clustered_mall, mall)
+
+ggplot(clusters, aes(annual_income_k, spending_score_1_100, colour = .cluster)) +
+  geom_point() 
+```
+
+```{r}
+clusters %>% 
+  group_by(.cluster) %>%
+  summarise(mean(spending_score_1_100), mean(annual_income_k))
+```
+
+
+I think so but could be better, in the plot there is a clear group of 3 distinct clusters. 5 is better.
+
+Cluster 1:
+
+This group has high annual income 87k and low spending score 18.
+
+Cluster 2:
+
+This cluster has annual income of above aprox 86k but high spending score of
+82 on avg.
+
+Cluster 3:
+
+This cluster has lower mean income of around 44k and a mean spending score of 49.
+
+```{r}
+clustered_mall2<- kmeans(mall, 5, nstart = 25)
+```
+
+```{r}
+clusters2 <- augment(clustered_mall2, mall)
+
+ggplot(clusters2, aes(annual_income_k, spending_score_1_100, colour = .cluster)) +
+  geom_point() 
+```
+
+Yep 5 is much better !
+
+```{r}
+clusters2 %>% 
+  group_by(.cluster) %>%
+  summarise(mean(spending_score_1_100), mean(annual_income_k))
+```
+
