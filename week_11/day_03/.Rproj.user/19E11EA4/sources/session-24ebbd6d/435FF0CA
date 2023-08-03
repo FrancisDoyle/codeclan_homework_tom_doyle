@@ -3,7 +3,7 @@
     "path": "~/codeclan/codeclan_homework_tom_doyle/codeclan_homework_tom_doyle/week_11/day_03/clustering_homework.Rmd",
     "project_path": "clustering_homework.Rmd",
     "type": "r_markdown",
-    "hash": "174350711",
+    "hash": "3942953124",
     "contents": "",
     "dirty": false,
     "created": 1690991180462.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "74,103",
-        "scrollLine": "66"
+        "cursorPosition": "19,0",
+        "scrollLine": "11"
     },
     "folds": "",
-    "lastKnownWriteTime": 1690991300,
+    "lastKnownWriteTime": 1691051914,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1690991300600,
+    "last_content_update": 1691051914972,
     "read_only": false,
     "read_only_alternatives": []
 }

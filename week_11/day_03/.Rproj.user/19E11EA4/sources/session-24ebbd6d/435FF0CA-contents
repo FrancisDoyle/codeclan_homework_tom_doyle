@@ -21,6 +21,10 @@ mall <- clean_names(read_csv("data/mall_customers.csv")) %>%
   select(-customer_id) %>%  
   mutate(gender = ifelse(gender == "female", 1,2))
 
+mall <- mall %>% 
+  select(annual_income_k, spending_score_1_100) %>%
+    mutate_all(scale)
+
 # just realized i only needed spending score and annual income for this
 
 
